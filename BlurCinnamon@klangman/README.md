@@ -53,10 +53,15 @@ Not every effect is offered for every component. The Desktop, Expo and Overview 
 - Coordinates with the Rounded Corners extension to match the blurred background with corner rounding by the extension
 - Special handling for the Cinnamon Burn-My-Windows extension
 - Support for Centered Cinnamon Dock
+- Optional transparent hover highlighting for panel applets, with configurable dimming strength and color
+- A "Blur grain" setting that dithers the blur to hide color banding
+- Blurred panels, desklets and windows on the faces of the Desktop-Cube-Reloaded extension
 
 ## Requirements
 
 This extension requires Cinnamon 6.0 or better (i.e. Mint 21.3 or better).
+
+Wayland sessions are supported on Cinnamon 6.6 and later; testing has mostly been on 6.8, but 6.6 should still work.
 
 If you have installed any of the following Cinnamon extensions, you should **disable** them **before** enabling Blur Cinnamon:
 
@@ -70,7 +75,6 @@ Using any of the above with Blur Cinnamon may have some odd side effects that wo
 
 1. The Applet popup menu effects are intended to be used with the Cinnamon (6.4) theme or the Mint-Y dark desktop themes. The effects might work well with other themes but I have not tested them so the effects might not work out just right. You can try the Mint-Y light themes but it might be hard to read the menu items without some playing around with the settings and the background image. And don't forget that Blur Cinnamon Popup-menu effects are disabled by default.
 2. The Applet popup-menu effects work for all the applets that I have tested except "Cinnamenu". Cinnamenu is preventing other code from receiving the "open-state-changed" event which Blur Cinnamon uses to know when to apply popup-menu theme setting and when to resize and show the blur background element. This issue is fixed in the latest Cinnamenu from [Fredcw GitHub](https://github.com/fredcw/Cinnamenu) but you will need to manually fix the current Cinnamon Spices version of Cinnamenu (see [here](https://github.com/linuxmint/cinnamon-spices-extensions/issues/873))
-3. This extension currently has **experimental Wayland support** tested under Cinnamon 6.6 only.
 
 ## Installation
 
@@ -123,7 +127,7 @@ To enable application window title bar blurring for GTK3 windows when using the 
 1. Enable the "Blur window title bars" option under the "Component specific settings" tab with the "Windows" component selected.
 
 2. Add the following CSS code into the `~/.config/gtk-3.0/gtk.css` file. Create the file if it does not exist, which will likely be the case.
-   
+
    ```
    /* Make the titlebars semi-transparent, Opacity 0.5 */
    headerbar, .titlebar {
@@ -163,6 +167,6 @@ The Dual Kawase algorithm effect code was written by [Lucas-X-A](https://github.
 
 The Blur Cinnamon icon was designed by [Selinaru](https://github.com/Selinaru).
 
-Special thanks to the following people for contributing code to Blur Cinnamon: [Lucas-X-A](https://github.com/Lucas-X-A) and [anthonytheinventor](https://github.com/anthonytheinventor).
+Special thanks to the following people for contributing code to Blur Cinnamon: [Lucas-X-A](https://github.com/Lucas-X-A), [anthonytheinventor](https://github.com/anthonytheinventor) and [Tedpac](https://github.com/Tedpac).
 
 Thanks to all who have reported bugs and made suggestions, you have helped make Blur Cinnamon better for everyone!

@@ -42,6 +42,72 @@ function toSnippet(source) {
 const SNIPPET_CODE = 'effect_base_main();\n' +
                      'cogl_color_out.rgb /= max(cogl_color_out.a, 0.0001);\n';
 
+// Dithering
+//
+// Each blur pass renders into an 8-bit texture or the framebuffer, so a smooth blurred gradient comes out
+// in one-level steps that show as bands. The blur shaders pass their result through blurcinnamon_dither(),
+// which adds triangular noise of up to dither_amount levels before it is rounded. Inner passes use one
+// level, which the passes after them mostly average away. The pass that writes the blur's result uses the
+// effect's grain property (the "Blur grain" setting): anything translucent drawn over the blur, like a
+// window, lets only part of the noise through, so it may need more than one level to still break up the
+// bands. A grain of 0 turns dithering off in every pass.
+//
+// The noise is interleaved gradient noise (Jimenez, 2014), which is cheap and has little low-frequency
+// content. It depends only on the pixel, so it doesn't change between frames. The inner passes of a blur
+// draw into textures that line up, and they all use the same pattern with alternating signs, so that
+// passes that barely blur (small radii) don't pile it up. The pass that writes the result uses the
+// pattern transposed, so that what is left of the inner noise doesn't add up with its own. In
+// simulations, a pattern shifted from one inner pass to the next left low-frequency artifacts instead.
+// Near 0 and alpha the noise is scaled down rather than clamped, so black stays black.
+//
+// DITHER_SOURCE goes in front of every effect's source. Effect classes whose shader calls
+// blurcinnamon_dither() define passes_after (how many passes of the blur Clutter applies after this one,
+// 0 for the pass that writes the result) and a grain property that they pass on to their inner passes.
+// Its setter calls updateDither().
+const DITHER_SOURCE = `
+uniform float dither_amount;
+uniform int dither_pattern;
+
+vec4 blurcinnamon_dither(vec4 color) {
+    if (dither_amount <= 0.0)
+        return color;
+    vec2 p = floor(gl_FragCoord.xy);
+    if (dither_pattern == 2)
+        p = p.yx;
+    float u = fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715))));
+    float noise = (u < 0.5) ? sqrt(2.0 * u) - 1.0 : 1.0 - sqrt(2.0 - 2.0 * u);
+    if (dither_pattern == 1)
+        noise = -noise;
+    vec3 room = max(min(color.rgb, color.a - color.rgb), 0.0) * 255.0;
+    color.rgb += noise * min(vec3(dither_amount), room) / 255.0;
+    return color;
+}
+`;
+
+const INNER_DITHER = 1;
+
+function _updateDither(effect) {
+    let passesAfter = effect.passes_after;
+    let amount = 0;
+    if (effect.grain > 0)
+        amount = (passesAfter === 0) ? effect.grain : INNER_DITHER;
+    effect.set_uniform_value('dither_amount', parseFloat(amount - 1e-6));
+    // 2: transposed for the pass that writes the result; 0 and 1: alternating signs for the inner passes
+    effect.set_uniform_value('dither_pattern', (passesAfter === 0) ? 2 : passesAfter % 2);
+}
+
+// Sets the dither uniforms when an effect is attached: by then its place among the blur's passes is known
+function _noteDitherActor(effect, actor) {
+    if (actor && effect.passes_after !== undefined)
+        _updateDither(effect);
+}
+
+// For the grain setters. A detached effect gets its new grain when it's attached again.
+function updateDither(effect) {
+    if (effect._effect_base_attached)
+        _updateDither(effect);
+}
+
 // Muffin's ClutterActorMeta forgets its actor when that actor is destroyed, but keeps the id of its
 // "destroy" handler. The next time the effect is attached anywhere it disconnects that id from NULL,
 // logging "invalid (NULL) pointer instance" and "g_signal_handler_disconnect: assertion failed".
@@ -70,7 +136,7 @@ const GlslEffectBase = USE_GLSL_EFFECT ? GObject.registerClass({
             this.constructor._effect_base_renamed = new Set();
             return;
         }
-        let snippet = toSnippet(source);
+        let snippet = toSnippet(DITHER_SOURCE + source);
         this.constructor._effect_base_renamed = snippet.renamed;
         this.add_glsl_snippet(Cinnamon.SnippetHook.FRAGMENT, snippet.declarations, SNIPPET_CODE, true);
     }
@@ -95,6 +161,7 @@ const GlslEffectBase = USE_GLSL_EFFECT ? GObject.registerClass({
 
     vfunc_set_actor(actor) {
         _noteSetActor(this, actor);
+        _noteDitherActor(this, actor);
         super.vfunc_set_actor(actor);
     }
 
@@ -118,11 +185,12 @@ const ShaderEffectBase = USE_GLSL_EFFECT ? null : GObject.registerClass({
         super(params);
         let source = this.get_effect_source();
         if (source)
-            this.set_shader_source(source);
+            this.set_shader_source(DITHER_SOURCE + source);
     }
 
     vfunc_set_actor(actor) {
         _noteSetActor(this, actor);
+        _noteDitherActor(this, actor);
         super.vfunc_set_actor(actor);
     }
 });

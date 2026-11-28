@@ -1,5 +1,36 @@
 # Changelog
 
+## 2.8.0
+
+### New features
+
+* Cinnamon 6.8 support: menus, notifications and other blurred components no longer turn invisible, and backgrounds are placed correctly
+* Wallpaper blur now works on Cinnamon 6.8 under Wayland
+* New option: transparent hover highlighting for panel applets, with its own dimming strength and color
+* New "Blur grain" setting: adds a fine dither to the blur to hide color banding, most noticeable behind translucent windows (Thanks to [Tedpac](https://github.com/Tedpac))
+* Improved blurring of elements on Desktop-Cube-Reloaded cube faces
+
+### Improvements
+
+* Window blur now stays under the window during open, close, minimize, restore, resize and workspace-switch animations instead of disappearing until the animation ends; the focused-window backlight follows animations too (Thanks to [Tedpac](https://github.com/Tedpac))
+* The static blur types now only process the visible area (plus the blur margin) instead of the whole display, which reduces GPU memory use (Thanks to [Tedpac](https://github.com/Tedpac))
+* New windows are blurred only once they have drawn their first frame, avoiding an empty blurred frame while slow apps start
+* Popup menu blur is faster, with fewer delays and positioning glitches (Thanks to [Lucas-X-A](https://github.com/Lucas-X-A))
+
+### Fixes
+
+* Fixed windows not blurring properly when using the Rounded Corners extension (alpha blending issue)
+* Panels shown over a full-screen window (e.g. when opening the menu or using Alt-Tab) are now blurred instead of appearing invisible
+* Menu sidebar accent highlighting is only applied when the theme itself paints that area, fixing a mismatched strip with themes such as Soul-Dark
+* Fixed inline CSS handling for popup menus, and the gap between a panel and its menu is now kept when the blur is clipped (Thanks to [Lucas-X-A](https://github.com/Lucas-X-A))
+* Fixed a flash of the background when popup menu animations are enabled
+* Fixed a frame of stale window content when a window is raised
+* A blur next to an edge shared by two monitors no longer picks up the other monitor's wallpaper (Thanks to [Tedpac](https://github.com/Tedpac))
+* Fixed panel styling not being removed in some cases with a maximized window
+* With "Restore theme settings when a window is maximized", the correct panel is now restored when a maximized window moves to another monitor
+* Fixed an error with desklets that failed to load
+* Fixed blurred background clipping for panels that use a margin to shrink the size of the panel
+
 ## 2.7.1
 
 * New option: “Make windows opaque when maximized or full-screen”

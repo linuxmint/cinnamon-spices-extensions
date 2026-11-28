@@ -4,11 +4,20 @@
 const GObject = imports.gi.GObject;
 
 const St = imports.gi.St;
-const Utils    = require("./utils.js");
+// Cinnamon 6.8+ deprecates require() in favour of the xlet's own importer (which only exposes
+// top-level var/function names). Older Cinnamon has no getCurrentExtension(), so fall back to
+// require() there - and when loaded outside of Cinnamon (no global), as before.
+const Me = (typeof global !== 'undefined' && imports.ui.extension.getCurrentExtension) ?
+              imports.ui.extension.getCurrentExtension() : null;
+function importLocal(name) {
+   return Me ? Me.imports[name] : require("./" + name);
+}
+
+const Utils    = importLocal("utils");
 const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 
-const EffectBaseModule = require("./effect_base");
+const EffectBaseModule = importLocal("effect_base");
 const EffectBase = EffectBaseModule.EffectBase;
 
 const UUID = "BlurCinnamon@klangman";
@@ -16,12 +25,12 @@ const UUID = "BlurCinnamon@klangman";
 const SHADER_FILENAME = 'gaussian_blur.glsl';
 const DEFAULT_PARAMS = {
     radius: 30, brightness: .6,
-    width: 0, height: 0, direction: 0, chained_effect: null
+    width: 0, height: 0, direction: 0, chained_effect: null, grain: 0
 };
 
 // Pool of released direction=1 "chained" effects, keyed by nothing in particular - any one of
 // them can serve any future top-level (direction=0) instance's chained partner, since they're
-// all identical in shape and just need their radius/brightness/width/height refreshed. Reusing
+// all identical in shape and just need their radius/brightness/width/height/grain refreshed. Reusing
 // one avoids constructing a fresh GaussianBlurEffect. Capped like BlurBase's gaussian pool (one
 // chained effect per top-level effect); see effect_base.js.
 const CHAINED_EFFECT_CACHE = [];
@@ -33,6 +42,7 @@ function _acquireChainedEffect(params) {
         effect.brightness = params.brightness;
         effect.width = params.width;
         effect.height = params.height;
+        effect.grain = params.grain;
         return effect;
     }
     return new GaussianBlurEffect({ ...params, direction: 1 });
@@ -48,7 +58,7 @@ function drainPools() {
 }
 
 
-const GaussianBlurEffect =
+var GaussianBlurEffect =
     new GObject.registerClass({
         GTypeName: `GaussianBlurEffect_${Math.floor(Math.random() * 100000) + 1}`,
         Properties: {
@@ -99,6 +109,14 @@ const GaussianBlurEffect =
                 GObject.ParamFlags.READWRITE,
                 GObject.Object,
             ),
+            'grain': GObject.ParamSpec.double(
+                `grain`,
+                `Grain`,
+                `Blur grain`,
+                GObject.ParamFlags.READWRITE,
+                0.0, 100.0,
+                0.0,
+            ),
         }
     }, class GaussianBlurEffect extends EffectBase {
         constructor(params) {
@@ -133,6 +151,11 @@ const GaussianBlurEffect =
                this.chained_effect = params.chained_effect;
             else
                this.chained_effect = null;
+
+            if (params && params.grain !== undefined)
+               this.grain = params.grain;
+            else
+               this.grain = 0;
 
             const theme_context = St.ThemeContext.get_for_stage(global.stage);
             this.set_uniform_value('sigma', parseFloat(this.radius * theme_context.scale_factor / 2 - 1e-6));
@@ -179,6 +202,27 @@ const GaussianBlurEffect =
                 return 0;
             const scale_factor = St.ThemeContext.get_for_stage(global.stage).scale_factor;
             return 2 * Math.ceil(1.5 * (this._radius * scale_factor / 2));
+        }
+
+        // For dithering (see effect_base.js). Clutter applies an actor's effects in reverse order, so the
+        // chained direction 1 pass, added after this one, runs before it.
+        get passes_after() {
+            return (this.direction === 0) ? 0 : 1;
+        }
+
+        get grain() {
+            return this._grain;
+        }
+
+        set grain(value) {
+            if (this._grain !== value) {
+                this._grain = value;
+
+                EffectBaseModule.updateDither(this);
+
+                if (this.chained_effect)
+                    this.chained_effect.grain = value;
+            }
         }
 
         get brightness() {
@@ -299,7 +343,7 @@ const GaussianBlurEffect =
                             _releaseChainedEffect(this.chained_effect);
                             this.chained_effect = _acquireChainedEffect({
                                 radius: this.radius, brightness: this.brightness,
-                                width: this.width, height: this.height
+                                width: this.width, height: this.height, grain: this.grain
                             });
                         }
                         // Reuse the SAME chained_effect instance rather than destroying it and
@@ -313,6 +357,7 @@ const GaussianBlurEffect =
                         this.chained_effect.brightness = this.brightness;
                         this.chained_effect.width = this.width;
                         this.chained_effect.height = this.height;
+                        this.chained_effect.grain = this.grain;
                         actor.add_effect(this.chained_effect);
                     } else {
                         // Real teardown (not just a reattachment) - release the chained_effect
@@ -329,7 +374,8 @@ const GaussianBlurEffect =
                         radius: this.radius,
                         brightness: this.brightness,
                         width: this.width,
-                        height: this.height
+                        height: this.height,
+                        grain: this.grain
                     });
                     actor.add_effect(this.chained_effect);
                 }

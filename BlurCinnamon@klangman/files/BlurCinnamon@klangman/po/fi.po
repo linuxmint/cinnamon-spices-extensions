@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BlurCinnamon@klangman 1.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/linuxmint/cinnamon-spices-"
 "extensions/issues\n"
-"POT-Creation-Date: 2026-11-07 15:45-0500\n"
+"POT-Creation-Date: 2026-11-28 12:56-0500\n"
 "PO-Revision-Date: 2025-03-30 10:53+0300\n"
 "Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>\n"
 "Language-Team: \n"
@@ -18,55 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. 6.0/extension.js:5454
+#. 6.0/extension.js:6401
 msgid ""
 "Click a window to add its application to the Blur Cinnamon window list.  Esc "
 "or right-click to cancel."
 msgstr ""
 
-#. 6.0/extension.js:5465
+#. 6.0/extension.js:6412
 msgid "Couldn't start the window picker. Close any open menus and try again."
 msgstr ""
 
-#. 6.0/extension.js:5539
+#. 6.0/extension.js:6486
 msgid "(unknown application)"
 msgstr ""
 
-#. 6.0/extension.js:5574
+#. 6.0/extension.js:6521
 msgid ""
 "Note: The blur is only visible behind transparent windows. If this "
 "application doesn't support transparency, set its \"Opacity\" in the window "
 "list to less than 100."
 msgstr ""
 
-#. 6.0/extension.js:5577
+#. 6.0/extension.js:6524
 msgid ""
 "Unable to determine the application or the WM_CLASS of that window, "
 "therefore Blur Cinnamon effects can not be applied to it."
 msgstr ""
 
-#. 6.0/extension.js:5585
+#. 6.0/extension.js:6532
 #, javascript-format
 msgid "\"%s\" is already in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5590
+#. 6.0/extension.js:6537
 #, javascript-format
 msgid "Enabled \"%s\" in the window list."
 msgstr ""
 
-#. 6.0/extension.js:5594
+#. 6.0/extension.js:6541
 #, javascript-format
 msgid ""
 "Added \"%s\" to the window list. Adjust its effect settings in the table."
 msgstr ""
 
-#. 6.0/extension.js:6726
+#. 6.0/extension.js:7741
 #, fuzzy
 msgid "Welcome to Blur Cinnamon"
 msgstr "Blur Cinnamon"
 
-#. 6.0/extension.js:6727
+#. 6.0/extension.js:7742
 msgid ""
 "Hope you are enjoying your new Panel, Expo, Overview and Alt-Tab effects.\n"
 "\n"
@@ -77,16 +77,16 @@ msgid ""
 "tint."
 msgstr ""
 
-#. 6.0/extension.js:6731
+#. 6.0/extension.js:7746
 #, fuzzy
 msgid "Open Blur Cinnamon Settings"
 msgstr "Blur Cinnamon"
 
-#. 6.0/extension.js:6837
+#. 6.0/extension.js:7852
 msgid "Testing Blur Cinnamon Notification Effects"
 msgstr ""
 
-#. 6.0/extension.js:6838
+#. 6.0/extension.js:7853
 msgid ""
 "This is how notifications will appear when using the current Blur Cinnamon "
 "Notification Popup effects.\n"
@@ -791,6 +791,12 @@ msgid "Saturation"
 msgstr "Kylläisyys"
 
 #. 6.0->settings-schema.json->panel-unique-settings->columns->title
+#. 6.0->settings-schema.json->windows-inclusion-list->columns->title
+#. 6.0->settings-schema.json->desklets-list->columns->title
+msgid "Grain"
+msgstr ""
+
+#. 6.0->settings-schema.json->panel-unique-settings->columns->title
 msgid "Custom CSS"
 msgstr ""
 
@@ -833,6 +839,35 @@ msgid ""
 "is only effective when either the tint strength is greater than 0 or "
 "saturation is less than 100."
 msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover->description
+msgid "Dim the background of hovered panel applets"
+msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover->tooltip
+msgid ""
+"Replace the theme's solid highlight shown when the mouse hovers over a panel "
+"applet with a darkened (or tinted) view of the blurred panel background."
+msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover-opacity->description
+#, fuzzy
+msgid "Hover dimming strength (%)"
+msgstr "Himmennä/värjää taustaa (prosenttia)"
+
+#. 6.0->settings-schema.json->dim-panel-hover-color->description
+msgid "Hover dimming color"
+msgstr ""
+
+#. 6.0->settings-schema.json->dim-panel-hover-color->tooltip
+#, fuzzy
+msgid ""
+"The color blended over the panel background behind a hovered applet, "
+"weighted by the strength above. Use black to darken, or white to lighten."
+msgstr ""
+"Määrittää värin, joka sekoitetaan taustaan ​​yllä olevan säätimen perusteella. "
+"Käytä mustaa normaaliin himmentämiseen tai jotain muuta väriä "
+"värisekoitukseen"
 
 #. 6.0->settings-schema.json->opacity->description
 #. 6.0->settings-schema.json->overview-opacity->description
@@ -1061,6 +1096,38 @@ msgid ""
 "Adjusts the color saturation of the background image from gray-scale to full "
 "color."
 msgstr "Säätää taustakuvan värikylläisyyttä."
+
+#. 6.0->settings-schema.json->grain->description
+#. 6.0->settings-schema.json->overview-grain->description
+#. 6.0->settings-schema.json->expo-grain->description
+#. 6.0->settings-schema.json->panels-grain->description
+#. 6.0->settings-schema.json->popup-grain->description
+#. 6.0->settings-schema.json->desktop-grain->description
+#. 6.0->settings-schema.json->notification-grain->description
+#. 6.0->settings-schema.json->appswitcher-grain->description
+#. 6.0->settings-schema.json->tooltips-grain->description
+#. 6.0->settings-schema.json->desklets-grain->description
+#. 6.0->settings-schema.json->osd-grain->description
+#, fuzzy
+msgid "Blur grain"
+msgstr "Blur Cinnamon"
+
+#. 6.0->settings-schema.json->grain->tooltip
+#. 6.0->settings-schema.json->overview-grain->tooltip
+#. 6.0->settings-schema.json->expo-grain->tooltip
+#. 6.0->settings-schema.json->panels-grain->tooltip
+#. 6.0->settings-schema.json->popup-grain->tooltip
+#. 6.0->settings-schema.json->desktop-grain->tooltip
+#. 6.0->settings-schema.json->notification-grain->tooltip
+#. 6.0->settings-schema.json->appswitcher-grain->tooltip
+#. 6.0->settings-schema.json->tooltips-grain->tooltip
+#. 6.0->settings-schema.json->desklets-grain->tooltip
+#. 6.0->settings-schema.json->osd-grain->tooltip
+msgid ""
+"Adds a fine grain to the blur that hides the bands its smooth gradients "
+"would otherwise show. Raise it if bands still show, for example through a "
+"translucent window, or set it to 0 to turn it off."
+msgstr ""
 
 #. 6.0->settings-schema.json->effect-specific-type->options
 #. 6.0->settings-schema.json->overview-blurType->options

@@ -45,6 +45,7 @@ const Cinnamon        = imports.gi.Cinnamon;
 const DeskletManager  = imports.ui.deskletManager;
 const OsdWindow       = imports.ui.osdWindow;
 const GLib            = imports.gi.GLib;
+const Gio             = imports.gi.Gio;
 const GObject         = imports.gi.GObject;
 const Gettext         = imports.gettext;
 
@@ -68,6 +69,10 @@ function isDefaultWindowSettings(element) {
    return element.application === DEFAULT_WINDOW_SETTINGS || element.application === _(DEFAULT_WINDOW_SETTINGS);
 }
 
+// Rows of the windows, panels and desklets tables with no grain (saved before the "Grain" column existed, or
+// created without one) use the column's default from settings-schema.json, which the settings dialog shows too.
+const DEFAULT_TABLE_GRAIN = 2;
+
 // For Plank support (reading X11 property)
 imports.gi.versions.Gdk = '3.0';
 imports.gi.versions.GdkX11 = '3.0';
@@ -86,13 +91,22 @@ try {
 const Applet    = imports.ui.applet;
 const PopupMenu = imports.ui.popupMenu;
 
-const GaussianBlur = require("./gaussian_blur");
-const MonteCarloBlur = require("./monte_carlo_blur");
-const DualKawaseBlur = require("./dual_kawase_blur");
-const Refraction = require("./refraction");
-const CornerEffect = require("./corner");
-const EffectPool = require("./effect_base");
-const Utils = require("./utils.js");
+// Cinnamon 6.8+ deprecates require() in favour of the xlet's own importer (which only exposes
+// top-level var/function names). Older Cinnamon has no getCurrentExtension(), so fall back to
+// require() there - and when loaded outside of Cinnamon (no global), as before.
+const Me = (typeof global !== 'undefined' && imports.ui.extension.getCurrentExtension) ?
+              imports.ui.extension.getCurrentExtension() : null;
+function importLocal(name) {
+   return Me ? Me.imports[name] : require("./" + name);
+}
+
+const GaussianBlur = importLocal("gaussian_blur");
+const MonteCarloBlur = importLocal("monte_carlo_blur");
+const DualKawaseBlur = importLocal("dual_kawase_blur");
+const Refraction = importLocal("refraction");
+const CornerEffect = importLocal("corner");
+const EffectPool = importLocal("effect_base");
+const Utils = importLocal("utils");
 
 const ANIMATION_TIME = 0.25;
 const AUTOHIDE_ANIMATION_TIME = 0.2;  // This is a copy of "Panel.AUTOHIDE_ANIMATION_TIME", we can't legally access it since it's a const and EC6 does not allow it
@@ -101,6 +115,8 @@ const BLUR_EFFECT_NAME = "blur";
 const DESAT_EFFECT_NAME = "desat";
 const CORNER_EFFECT_NAME = "corner";
 const NOCULL_EFFECT_NAME = "blurcinnamon-nocull";
+// Popup menu accent actors that are only accented when the theme itself paints a background on them
+const THEME_CHECKED_ACCENT_CLASSES = ["menu-favorites-box", "appmenu-sidebar"];
 
 // An effect that does nothing at all. Muffin's window culling (meta-cullable.c) skips any window actor
 // that has an enabled effect: such a window is not treated as hiding the windows underneath it, so
@@ -113,10 +129,50 @@ const NoCullEffect = GObject.registerClass({
    GTypeName: `BlurCinnamonNoCullEffect_${Math.floor(Math.random() * 100000) + 1}`
 }, class NoCullEffect extends Clutter.Effect {});
 
+// The parent for all our blurred background actors. They have to sit just above the windows (global.window_group)
+// and below the panels, menus and other chrome in Main.uiGroup. Up to Cinnamon 6.6 global.overlay_group was in that
+// slot. Cinnamon 6.8 moved global.overlay_group to the very top of the stage (above all chrome, for DND icons and IM
+// popups) and put the new Main.switcherGroup (which now holds Expo, Overview and the 3D switchers) in the old slot.
+function getBackgroundParent() {
+   return Main.switcherGroup || global.overlay_group;
+}
+
 // Inline style BlurPanels appends to a panel's own inline style so the theme background doesn't hide the blurred background
 const PANEL_TRANSPARENT_STYLE = "border-image: none;  border-color: transparent;  box-shadow: 0 0 transparent; " +
                                 "background-gradient-direction: vertical; background-gradient-start: transparent; " +
                                 "background-gradient-end: transparent;    background: transparent; ";
+
+// Style class added to blurred (transparent) panels so the generated hover stylesheet only affects those panels.
+// Each generated stylesheet uses a new class (prefix + serial number): Cinnamon's St doesn't flush its cache of
+// computed theme nodes when a stylesheet is loaded/unloaded (GNOME Shell's St does), but the cache is keyed on the
+// parent node, so giving the panel a new class makes the panel and everything inside it compute fresh styles.
+const PANEL_HOVER_CLASS_PREFIX = "blurcinnamon-panel-";
+// Panel hover/highlight selectors that get the "dimmed background" treatment. The class names are set by Cinnamon's
+// JS (applet.js and the stock applets), not by the theme, so the same list works for every theme.
+const PANEL_HOVER_SELECTORS = [
+   ".applet-box:hover",
+   ".applet-box:checked",                    // Applet whose menu is open
+   ".grouped-window-list-item-box:hover",    // Grouped window list
+   ".window-list-item-box:hover",            // Classic window list
+   ".launcher:hover",                        // Panel launchers
+   ".workspace-button:hover"                 // Workspace switcher
+];
+const PANEL_HOVER_FILE_PREFIX = "panel-hover-";
+
+// A new window's actor exists (with its full size) before the app has drawn anything into it.
+// Until then the window is empty, but its blurred background would still be drawn, a visible
+// blurred frame for as long as the app takes to draw (a second or more for slow starters like
+// Resources). So new windows are blurred only once Muffin says their first frame is on screen.
+// If that never comes, blur them anyway after this long. It only matters if the first-frame
+// signal is missed, and a window left unblurred for good would be worse than a late blur.
+const FIRST_FRAME_TIMEOUT_MS = 10000;
+const HAS_FIRST_FRAME_SIGNAL = (() => {
+   try {
+      return GObject.signal_lookup("first-frame", Meta.WindowActor) !== 0;
+   } catch (e) {
+      return false;
+   }
+})();
 
 // Detect workspace API availability once when the module is loaded, used by "windowIsOnWorkspace"
 const HAS_LOCATED_ON_WORKSPACE = typeof Meta.Window.prototype.located_on_workspace === 'function';
@@ -278,6 +334,7 @@ function _animateVisibleOverview() {
    let blendColor = (settings.overviewOverride) ? settings.overviewBlendColor : settings.blendColor;
    let opacity = (settings.overviewOverride) ? settings.overviewOpacity : settings.opacity;
    let saturation = (settings.overviewOverride) ? settings.overviewSaturation : settings.saturation;
+   let grain = (settings.overviewOverride) ? settings.overviewGrain : settings.grain;
 
    // Get the overview's background image and add the BlurEffect to it if configured to do so
    // The Liquid Glass blur doesn't make any sense for the Overview so we'll default to Gaussian if the generic settings calls for Liquid Glass
@@ -287,11 +344,11 @@ function _animateVisibleOverview() {
       if (blurType === BlurType.Simple) {
          fx = new Clutter.BlurEffect();
       } else if (blurType === BlurType.Gaussian || blurType === BlurType.DynamicBlur || isLiquidGlassBlurType(blurType)) {
-         fx = new GaussianBlur.GaussianBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
+         fx = new GaussianBlur.GaussianBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0, grain: grain } );
       } else if (blurType === BlurType.MonteCarlo || blurType === BlurType.DynamicMC) {
-         fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } );
+         fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0, grain: grain } );
       } else { // Dual-Kawase
-         fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
+         fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0, grain: grain } );
       }
       desktopBackground.add_effect_with_name( BLUR_EFFECT_NAME, fx );
    }
@@ -322,6 +379,7 @@ function _animateVisibleExpo() {
    let blendColor = (settings.expoOverride) ? settings.expoBlendColor : settings.blendColor;
    let opacity = (settings.expoOverride) ? settings.expoOpacity : settings.opacity;
    let saturation = (settings.expoOverride) ? settings.expoSaturation : settings.saturation;
+   let grain = (settings.expoOverride) ? settings.expoGrain : settings.grain;
 
    // The Liquid Glass blur doesn't make any sense for the Expo so we'll default to Gaussian if the generic settings calls for Liquid Glass
    let desktopBackground = this._background
@@ -330,11 +388,11 @@ function _animateVisibleExpo() {
       if (blurType === BlurType.Simple) {
          fx =  new Clutter.BlurEffect();
       } else if (blurType === BlurType.Gaussian || blurType === BlurType.DynamicBlur || isLiquidGlassBlurType(blurType)) {
-         fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0} );
+         fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0, grain: grain} );
       } else if (blurType === BlurType.MonteCarlo || blurType === BlurType.DynamicMC) {
-         fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } );
+         fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0, grain: grain } );
       } else { // Dual-Kawase
-         fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
+         fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0, grain: grain } );
       }
       desktopBackground.add_effect_with_name( BLUR_EFFECT_NAME, fx );
    }
@@ -364,6 +422,7 @@ function _showAppSwitcher3D(...params) {
       let blendColor = (settings.appswitcherOverride) ? settings.appswitcherBlendColor : settings.blendColor;
       let opacity = (settings.appswitcherOverride) ? settings.appswitcherOpacity : settings.opacity;
       let saturation = (settings.appswitcherOverride) ? settings.appswitcherSaturation : settings.saturation;
+      let grain = (settings.appswitcherOverride) ? settings.appswitcherGrain : settings.grain;
 
       // The Liquid Glass blur doesn't make any sense for the 3dAppSwicher so we'll default to Gaussian of the generic settings calls for Liquid Glass
       let desktopBackground = this._background
@@ -372,11 +431,11 @@ function _showAppSwitcher3D(...params) {
          if (blurType === BlurType.Simple) {
             fx =  new Clutter.BlurEffect();
          } else if (blurType === BlurType.Gaussian || blurType === BlurType.DynamicBlur || isLiquidGlassBlurType(blurType)) {
-            fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0} );
+            fx = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0, grain: grain} );
          } else if (blurType === BlurType.MonteCarlo || blurType === BlurType.DynamicMC) {
-            fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } );
+            fx = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0, grain: grain } );
          } else { // Dual-Kawase
-            fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
+            fx = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0, grain: grain } );
          }
          desktopBackground.add_effect_with_name( BLUR_EFFECT_NAME, fx );
          this._blurCinnamonBlurEffect = fx;
@@ -449,9 +508,22 @@ function rectOverlap(aX, aY, aX2, aY2, bX, bY, bX2, bY2) {
    return false;
 }
 
+// Is metaWindow minimized with its actor still shown, as it is until the minimize animation ends.
+// Muffin leaves that actor where it was among the window actors until then (see
+// meta_compositor_sync_stack()), while the stacking order can already have the window that got the
+// focus above it. So the window's place among the actors is the one to go by meanwhile.
+function isMinimizing(metaWindow) {
+   let compositor = metaWindow.get_compositor_private();
+   return metaWindow.minimized && !!compositor && compositor.visible;
+}
+
 // Is metawindow a above b
 function isAbove(a, b) {
    if (a === b) return false;
+   if (isMinimizing(a) || isMinimizing(b)) {
+      const actors = global.get_window_actors();
+      return actors.indexOf(a.get_compositor_private()) > actors.indexOf(b.get_compositor_private());
+   }
    const windows = global.display.sort_windows_by_stacking([a, b]);
    return windows[0] === b;
 }
@@ -471,24 +543,49 @@ function getViewportMargin(viewport) {
    return Math.ceil(effect.sample_reach) + VIEWPORT_EDGE_PAD;
 }
 
-// The visible rect grown by margin on every side, then cut to the stage, as [x, y, width, height].
+// The area a blur over the given visible rect may sample, as [x, y, width, height]: the box around the monitors
+// the rect is on, or the whole stage when it is on none of them. The wallpaper is a single stage-sized image,
+// so a blur that samples past the edge of its monitor picks up the wallpaper of the monitor next to it. For a
+// rect on two monitors that don't line up, the box also takes in some of the stage that neither shows. Less
+// than half a pixel on a monitor doesn't count: the rect of a window that is being animated isn't exact.
+function getSamplingBounds(x, y, width, height) {
+   let x1 = Infinity, y1 = Infinity, x2 = -Infinity, y2 = -Infinity;
+   for (let monitor of Main.layoutManager.monitors) {
+      let monitorX2 = monitor.x + monitor.width;
+      let monitorY2 = monitor.y + monitor.height;
+      if (rectOverlap(x + 0.5, y + 0.5, x + width - 0.5, y + height - 0.5, monitor.x, monitor.y, monitorX2, monitorY2)) {
+         x1 = Math.min(x1, monitor.x);
+         y1 = Math.min(y1, monitor.y);
+         x2 = Math.max(x2, monitorX2);
+         y2 = Math.max(y2, monitorY2);
+      }
+   }
+   if (x1 === Infinity)
+      return [0, 0, global.stage.width, global.stage.height];
+   return [x1, y1, x2 - x1, y2 - y1];
+}
+
+// The visible rect grown by margin on every side, then cut to the box around its monitors, as [x, y, width, height].
 // Nothing outside the stage is ever cloned, so any part of the viewport out there would be transparent.
 // The blur would then mix that transparency into the pixels near the screen edge, and every inner pass
 // of the effect chain (blur passes, desaturate) stores partial alpha as a*a (see SNIPPET_CODE in
 // effect_base.js), compounding pass after pass. The final pass then lets the unblurred scene behind show
 // through over the blurred colour: a bright, glowing band along the screen edge wherever a window hangs
-// off the screen (worst with Dual Kawase, which has the most passes). Cut to the stage, the FBO holds
-// only real, opaque content and the shaders' own edge clamp applies at the screen edge, as it does for a
-// panel there. The corner effect's clip stays the full visible rect, so off-screen corners stay off screen.
-function getExpandedRect(x, y, width, height, margin) {
-   if (![x, y, width, height, margin].every(Number.isFinite) || width <= 0 || height <= 0)
+// off the screen (worst with Dual Kawase, which has the most passes). Cut to its monitors (see
+// getSamplingBounds()), the FBO holds only real, opaque content, and the shaders' own edge clamp applies at
+// their edges, including an edge shared with another monitor, so the blur doesn't take in that monitor's
+// wallpaper. The corner effect's clip stays the full visible rect, so off-screen corners stay off screen.
+// bounds is the rect to cut to, in the coordinates of x and y: the rect's sampling bounds, unless those
+// aren't stage coordinates.
+function getExpandedRect(x, y, width, height, margin, bounds = getSamplingBounds(x, y, width, height)) {
+   if (![x, y, width, height, margin, ...bounds].every(Number.isFinite) || width <= 0 || height <= 0)
       return [0, 0, 0, 0];
 
    margin = Math.max(0, margin);
-   let x1 = Math.floor(Math.max(0, x - margin));
-   let y1 = Math.floor(Math.max(0, y - margin));
-   let x2 = Math.ceil(Math.min(global.stage.width, x + width + margin));
-   let y2 = Math.ceil(Math.min(global.stage.height, y + height + margin));
+   let x1 = Math.max(Math.ceil(bounds[0]), Math.floor(x - margin));
+   let y1 = Math.max(Math.ceil(bounds[1]), Math.floor(y - margin));
+   let x2 = Math.min(Math.floor(bounds[0] + bounds[2]), Math.ceil(x + width + margin));
+   let y2 = Math.min(Math.floor(bounds[1] + bounds[3]), Math.ceil(y + height + margin));
 
    // Entirely off the stage: nothing to show
    if (x2 <= x1 || y2 <= y1)
@@ -637,8 +734,20 @@ function disconnectArtifactMitigation(windowClone) {
 }
 
 function getWindowCloneRect(metaWindow, background) {
-   if (background._blurCinnamonName !== "OsdWindow")
-      return metaWindow.get_buffer_rect();
+   if (background._blurCinnamonName !== "OsdWindow") {
+      let rect = metaWindow.get_buffer_rect();
+      // For a window's blur to stay on while a workspace switch slides the windows, the windows in
+      // it have to be where they are drawn now, not where they will end up. Only a window's position
+      // is followed: a clone draws its source without the source's transform, so a window scaled
+      // by its own animation keeps its buffer rect, and a translation isn't followed either.
+      // The other backgrounds (panels, menus, ...) place their clones as they always did.
+      let actor = metaWindow.get_compositor_private();
+      if (background._blurCinnamonMetaWindowOwner && actor && actor.scale_x === 1 && actor.scale_y === 1) {
+         let [x, y] = _stagePosition(actor);
+         return { x: x, y: y, width: rect.width, height: rect.height };
+      }
+      return rect;
+   }
 
    const compositor = metaWindow.get_compositor_private();
    if (!compositor || !compositor.get_stage())
@@ -784,7 +893,7 @@ function createWindowClone(metaWindow, background, desktopOnly) {
 // Stage position of an actor, from the x/y properties of it and its ancestors, ignoring any
 // scale/pivot. BMW containers are never scaled or rotated, and x/y (unlike the allocation) are up
 // to date as soon as BMW moves them from its timeline, so the clone never lags a frame behind.
-// Also used to position a window's blur inside its (possibly BMW-scaled) compositor actor.
+// Also used, through _stageTransform(), to position a window's blur inside its compositor actor.
 function _stagePosition(actor) {
    let x = 0, y = 0;
    for (let a = actor ; a && a !== global.stage ; a = a.get_parent()) {
@@ -792,6 +901,129 @@ function _stagePosition(actor) {
       y += a.y;
    }
    return [x, y];
+}
+
+// Keep a blur's clip in step with actor's geometry by calling fn() before the next stage relayout.
+// notify::allocation is emitted inside the relayout, and repositioning/resizing our background, viewport
+// or clones there leaves them (and their ancestors) needing an allocation when the stage updates its
+// views right after ("Can't update stage views actor ... because it needs an allocation"). Clutter emits
+// notify::position/notify::size when the actor's fixed position/size is set (i.e. a panel's auto-hide
+// slide, a menu being placed), before the relayout, so for those the deferred call still lands in the
+// frame that draws the change; only layout-driven size changes are picked up a frame later. Calls are
+// coalesced to one per frame, and dropped once signalManager no longer has these handlers connected.
+// True when the panel is hidden because its monitor has a fullscreen window. Cinnamon still shows panels over a
+// fullscreen window in some cases (e.g. while the menu or Alt-Tab is open on that monitor, or a raised panel on 6.8+).
+// Its Chrome tracks that with skip_paint on Main.uiGroup rather than the actor's visibility, so follow that.
+function panelHiddenByFullscreen(panel) {
+   if (!global.display.get_monitor_in_fullscreen(panel.monitorIndex))
+      return false;
+   if (typeof Main.uiGroup.get_skip_paint === "function")
+      return Main.uiGroup.get_skip_paint(panel.actor);
+   return true;
+}
+
+// The panel's visible rect in its parent's coordinates, as [x, y, width, height]. Read from the allocation box,
+// not x/y/get_width()/get_height(): while a relayout is pending those return the fixed position/size the panel
+// code set, which still includes CSS margins (e.g. "margin-left: 100px" to shrink the panel), so the blur would
+// extend past the panel's ends. A relayout that leaves the allocation unchanged emits no notify::allocation,
+// so that wrong clip would stick until something else re-clipped. The allocation box is the last real layout:
+// if the pending relayout changes it, notify::allocation follows and re-clips (see connectDeferredClip()).
+// get_allocation_box() is untransformed, which matches the old x/y/width/height semantics (Centered Cinnamon
+// Dock's scale-to-zero is handled by _syncPanelOpacity(), not the clip). get_width()/get_height() in the
+// fallback: Cinnamon 6.8's Panel overrides the height property (deprecated, and it returns the applet zone size).
+function getPanelRect(actor) {
+   if (actor.has_allocation() || actor.get_allocation_box().get_width() > 0) {
+      let box = actor.get_allocation_box();
+      return [box.x1, box.y1, box.x2 - box.x1, box.y2 - box.y1];
+   }
+   // Never allocated yet: take the requested geometry minus the theme margins; notify::allocation corrects it
+   let left = actor.margin_left || 0, right = actor.margin_right || 0;
+   let top = actor.margin_top || 0, bottom = actor.margin_bottom || 0;
+   return [actor.x + left, actor.y + top, actor.get_width() - (left + right), actor.get_height() - (top + bottom)];
+}
+
+function connectDeferredClip(signalManager, actor, fn) {
+   let laterId = 0;
+   const queue = () => {
+      if (laterId)
+         return;
+      laterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         laterId = 0;
+         if (signalManager.isConnected("notify::allocation", actor, queue))
+            fn();
+         return false;
+      });
+   };
+   signalManager.connect(actor, "notify::allocation", queue);
+   signalManager.connect(actor, "notify::position", queue);
+   signalManager.connect(actor, "notify::size", queue);
+}
+
+// Where a window actor draws its contents, as [ox, oy, sx, sy]: a point (x, y) in the actor's
+// coordinates lands on the stage at (ox + sx*x, oy + sy*y). On top of _stagePosition() this follows
+// what Cinnamon's window animations change: the actor's scale around its pivot point (open, close,
+// minimize) and its translation (animated size change). Like _stagePosition() it reads properties,
+// which are current as soon as a transition advances, while the allocation only catches up at the
+// next layout. Rotation is not followed.
+//
+// An actor with an opacity of 0 isn't drawn itself. What can still show it is a clone, which draws its
+// source without the source's transform: BMW animates a clone of the window that way, placed at
+// the actor's position, while the actor keeps the scale Cinnamon's own animation started with.
+// So only the position counts then.
+function _stageTransform(actor) {
+   let [ox, oy] = _stagePosition(actor);
+   if (actor.opacity === 0)
+      return [ox, oy, 1, 1];
+   let sx = actor.scale_x, sy = actor.scale_y;
+   let pivot = actor.pivot_point;
+   ox += actor.translation_x + pivot.x * actor.width * (1 - sx);
+   oy += actor.translation_y + pivot.y * actor.height * (1 - sy);
+   return [ox, oy, sx, sy];
+}
+
+// What changes _stageTransform() without changing the actor's allocation. A hidden actor isn't
+// allocated, and one that is moved and hidden before the next layout doesn't notify its new position,
+// hence notify::visible.
+const STAGE_TRANSFORM_SIGNALS = ["notify::position", "notify::scale-x", "notify::scale-y", "notify::translation-x", "notify::translation-y",
+                                 "notify::pivot-point", "notify::opacity", "notify::visible"];
+
+// A window's frame rect in its actor's coordinates. While the actor doesn't draw the window at its
+// current size it draws the frame where it was, so this returns lastRect (what this returned before)
+// then. The actor can be behind: Muffin freezes it until the client has redrawn for a resize. Its own
+// size doesn't always tell: while an open or minimize animation runs Muffin leaves it at the size it
+// had, and only the texture it draws gets the window's new size (and emits "size-changed"). Nor does
+// the texture's size alone, which Muffin divides by the scale of a Wayland buffer. So either one will
+// do. And a closing window is no longer managed: it has lost its decorations, and Muffin has given a
+// maximized one its unmaximized frame rect back, while the actor draws the window as it was until the
+// close animation ends.
+function _frameInActorCoordinates(metaWindow, actor, lastRect) {
+   let frameRect = metaWindow.get_frame_rect();
+   let bufferRect = metaWindow.get_buffer_rect();
+   if (lastRect) {
+      let texture = actor.get_texture();
+      let [hasSize, width, height] = texture ? texture.get_preferred_size() : [false];
+      let drawsCurrentSize = (actor.width === bufferRect.width && actor.height === bufferRect.height) ||
+                             (hasSize && width === bufferRect.width && height === bufferRect.height);
+      if (metaWindow.get_compositor_private() !== actor || !drawsCurrentSize)
+         return lastRect;
+   }
+   return { x: frameRect.x - bufferRect.x, y: frameRect.y - bufferRect.y, width: frameRect.width, height: frameRect.height };
+}
+
+// A stage rect in a window actor's coordinates (see _stageTransform()), as [x, y, width, height], for
+// getExpandedRect() to cut a viewport inside that actor to. Muffin leaves part of an effect's texture
+// undrawn when the texture is larger than the stage (see Utils.extendOffscreenViewport()), which a
+// viewport inside a scaled-down actor could be. So the rect is never larger than the stage itself: it
+// is then the part of the given rect around (centerX, centerY).
+function _stageRectInActorCoordinates([ox, oy, sx, sy], [stageX, stageY, stageWidth, stageHeight], centerX, centerY) {
+   let limit = (start, size, maxSize, center) => {
+      if (size <= maxSize)
+         return [start, size];
+      return [Math.min(Math.max(center - maxSize / 2, start), start + size - maxSize), maxSize];
+   };
+   let [x, width] = limit((stageX - ox) / sx, stageWidth / sx, global.stage.width, centerX);
+   let [y, height] = limit((stageY - oy) / sy, stageHeight / sy, global.stage.height, centerY);
+   return [x, y, width, height];
 }
 
 function _positionEffectClone(windowClone) {
@@ -1010,8 +1242,13 @@ function cancelWindowCloneUpdate(background) {
 //
 // Clip updates call this on every frame of a window drag or a panel animation, so keep at most one pending
 // update per background: further calls before it runs only record the latest desktopOnly.
-function cloneWindowsForBackground(background, desktopOnly) {
-  if (background._blurCinnamonName === "OsdWindow") {
+//
+// beforeRedraw: update in a BEFORE_REDRAW later instead of on idle, so the change is in the next frame drawn.
+// A redraw has priority over an idle, so the idle runs after that frame (i.e. a window raised above a
+// blurred one is missing from the blur for a frame). A later is outside "notify::focus-window", and Muffin
+// syncs the stack in an earlier later of the same frame, so sort_windows_by_stacking() is right by then.
+function cloneWindowsForBackground(background, desktopOnly, beforeRedraw = false) {
+  if (background._blurCinnamonName === "OsdWindow" || beforeRedraw) {
       if (!background._blurCinnamonWinClones || background._blurCinnamonCloneUpdateId)
           return;
       background._blurCinnamonCloneUpdateId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
@@ -1055,6 +1292,10 @@ function cloneWindowsForBackgroundNow(background, desktopOnly) {
    let blurY2 = blurY + blurHeight;
    let windowsToClone = [];
    let metaWindowOwner = background._blurCinnamonMetaWindowOwner;
+   // A closing window's blur stays on until its animation ends. That window is no longer found among
+   // the windows below, so the windows above it would be cloned too. Its clones are left as they are.
+   if (metaWindowOwner && !metaWindowOwner.get_compositor_private())
+      return;
 
    // Find all windows that are visible and overlap with the passed in background
    let windows = global.get_window_actors();
@@ -1079,14 +1320,24 @@ function cloneWindowsForBackgroundNow(background, desktopOnly) {
           let winY = winRect.y;
           let winX2 = winRect.x + winRect.width;
           let winY2 = winRect.y + winRect.height;
-          if (rectOverlap(winX, winY, winX2, winY2, blurX, blurY, blurX2, blurY2)) {
+          // The owner always goes in the list, which is cut at the owner further down: while its
+          // actor is scaled, its own rect needn't overlap the blur
+          if (metaWindow === metaWindowOwner || rectOverlap(winX, winY, winX2, winY2, blurX, blurY, blurX2, blurY2)) {
               windowsToClone.push(metaWindow);
           }
       }
    });
 
-   // Sort the windows bye the stacking order (lowest -> highest z-order)
-   windowsToClone = global.display.sort_windows_by_stacking(windowsToClone);
+   // Sort the windows by the stacking order (lowest -> highest z-order). A minimizing window isn't
+   // drawn where that order has it (see isMinimizing()): it goes below the first window whose actor
+   // is above its own
+   let minimizing = windowsToClone.filter(isMinimizing);
+   windowsToClone = global.display.sort_windows_by_stacking( windowsToClone.filter( (metaWindow) => !minimizing.includes(metaWindow) ) );
+   for (let metaWindow of minimizing) {
+      let actorIdx = windows.indexOf(metaWindow.get_compositor_private());
+      let idx = windowsToClone.findIndex( (element) => windows.indexOf(element.get_compositor_private()) > actorIdx );
+      windowsToClone.splice((idx === -1) ? windowsToClone.length : idx, 0, metaWindow);
+   }
 
    // Remove owner window and all windows above it
    if (metaWindowOwner) {
@@ -1167,7 +1418,9 @@ function getRoundedCornersNotifier() {
 //   notifier.panelBlurProvider    set by BlurPanels while panels are blurred (see
 //                                 BlurPanels.createPanelBlur()); the cube calls it for each panel
 //                                 on each cube face, when it draws the panels on the faces.
-// Desktop Cube emits "cube-starting" and "cube-finished" around the time it is shown.
+// Desktop Cube emits "cube-starting" and "cube-finished" around the time it is shown. While it is
+// shown, BlurPanels limits Dynamic panel blurs to the desktop window (see
+// BlurPanels._onCubeStarting()).
 function getCubeNotifier() {
    let notifier = global.desktopCubeNotifier;
    if (!notifier || typeof notifier.connect !== "function" || typeof notifier.emit !== "function") {
@@ -1177,6 +1430,10 @@ function getCubeNotifier() {
    }
    return notifier;
 }
+
+// The window manager signals, besides "switch-workspace", after which Cinnamon may move a window actor with a
+// transition of x or y (e.g. the "fly" effects). Each is emitted with that actor.
+const WINDOW_EFFECT_SIGNALS = ["map", "minimize", "unminimize", "destroy"];
 
 // Manage the window clones that are attached to blurred backgrounds when Dynamic Blurring is enabled on one or more components.
 // This will create and delete window clones as needed based on whether or not there is any overlap between a window and the
@@ -1190,7 +1447,14 @@ class CloneManager {
       this._activeWorkspaceIdx = global.workspace_manager.get_active_workspace_index();
 
       this._signalManager.connect(global.screen, "window-added", (screen, metaWindow, monitor) => this._onWindowAppeared(metaWindow) );
-      this._signalManager.connect(global.window_manager, "switch-workspace", () => this._updateCurrentWorkspace() );
+      this._signalManager.connect(global.window_manager, "switch-workspace", () => this._onSwitchWorkspace() );
+      for (let signal of WINDOW_EFFECT_SIGNALS) {
+         this._signalManager.connect(global.window_manager, signal, (wm, actor) => {
+            let metaWindow = actor.get_meta_window();
+            if (metaWindow && metaWindow._blurCinnamonAllocEventID)
+               this._queueAllocationChanged(metaWindow);
+         });
+      }
       this._signalManager.connect(global.display, "notify::focus-window", () => this._onFocusChanged() );
       this._signalManager.connect(global, 'scale-changed', () => this._uiScaleChanged());
       this._setupWindowListeners();
@@ -1212,6 +1476,16 @@ class CloneManager {
       let idx = this._backgrounds.indexOf(background);
       if (idx!==-1) {
          cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly);
+      }
+   }
+
+   // Like backgroundClipChanged(), but the clones are brought up to date right away rather than on idle.
+   // Only for callers that are outside the stage relayout/paint and outside "notify::focus-window"
+   // (see cloneWindowsForBackground()), i.e. a BEFORE_REDRAW later.
+   backgroundClipChangedNow(background) {
+      let idx = this._backgrounds.indexOf(background);
+      if (idx!==-1) {
+         cloneWindowsForBackgroundNow(background, background._blurCinnamonDesktopOnly);
       }
    }
 
@@ -1362,13 +1636,9 @@ class CloneManager {
             metaWindow._blurCinnamonVisibleEventId = compositor.connect("notify::visible", () => this._visibilityChanged(metaWindow) );
          if (compositor.visible && metaWindow.get_window_type() !== Meta.WindowType.DESKTOP)
          {
-            if (!metaWindow._blurCinnamonAllocEventID)
-               metaWindow._blurCinnamonAllocEventID = compositor.connect("notify::allocation", () => this._allocationChanged(metaWindow) );
+            this._connectGeometryListeners(metaWindow, compositor);
          } else if(metaWindow) {
-            if (metaWindow._blurCinnamonAllocEventID) {
-               compositor.disconnect(metaWindow._blurCinnamonAllocEventID);
-               delete metaWindow._blurCinnamonAllocEventID;
-            }
+            this._disconnectGeometryListeners(metaWindow, compositor);
          }
       });
    }
@@ -1392,8 +1662,7 @@ class CloneManager {
       let compositor = metaWindow.get_compositor_private();
       if (!compositor)
          return;
-      if (!metaWindow._blurCinnamonAllocEventID)
-         metaWindow._blurCinnamonAllocEventID = compositor.connect("notify::allocation", () => this._allocationChanged(metaWindow) );
+      this._connectGeometryListeners(metaWindow, compositor);
       if (!metaWindow._blurCinnamonVisibleEventId) {
          metaWindow._blurCinnamonVisibleEventId = compositor.connect("notify::visible", () => this._visibilityChanged(metaWindow) );
       }
@@ -1419,10 +1688,7 @@ class CloneManager {
 
    _onWindowDisappeared(metaWindow) {
       let compositor = metaWindow.get_compositor_private();
-      if (compositor && metaWindow._blurCinnamonAllocEventID) {
-         compositor.disconnect(metaWindow._blurCinnamonAllocEventID);
-         delete metaWindow._blurCinnamonAllocEventID;
-      }
+      this._disconnectGeometryListeners(metaWindow, compositor);
       // Remove windowClones for this window from each background
       this._backgrounds.forEach( (background) => {
          if (background._blurCinnamonName === "OsdWindow") {
@@ -1447,7 +1713,7 @@ class CloneManager {
          if (background._blurCinnamonMetaWindowOwner === window) {
             // This background is for the new focused window, we might need to create any number of clones for this background
             debugMsg( "Cloning windows because a blurred window has received the focus" );
-            cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly);
+            cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly, true);
          } else {
             if (background._blurCinnamonWinClones) {
                let dimmer = background._blurCinnamonDimmer;
@@ -1460,7 +1726,7 @@ class CloneManager {
                         // This background is for an application window. The focused window is usually raised above it now,
                         // but not above a keep-above owner, so recheck the stacking order instead of deleting the clone
                         debugMsg( "Rechecking window background clones because the clone's window has the focus now" );
-                        cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly);
+                        cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly, true);
                      } else {
                         // This background is for a non-window element (i.e panel, notification, tooltip etc), so this clone now needs to be on top of all other clones
                         debugMsg( "Moving clone to top due to focus change" );
@@ -1474,6 +1740,16 @@ class CloneManager {
             }
          }
       });
+   }
+
+   // Cinnamon is about to slide the windows, or has just started to (see _queueAllocationChanged())
+   _onSwitchWorkspace() {
+      this._updateCurrentWorkspace();
+      for (let compositor of global.get_window_actors()) {
+         let metaWindow = compositor.get_meta_window();
+         if (metaWindow._blurCinnamonAllocEventID)
+            this._queueAllocationChanged(metaWindow);
+      }
    }
 
    _updateCurrentWorkspace() {
@@ -1496,12 +1772,69 @@ class CloneManager {
    // The metaWindow has moved, so we need to move it's clones.
    // Also we check if we need to add or remove clones based on
    // the window overlap state of the new size/location of a window
+   // Track a window's geometry so its clones follow it. notify::allocation is emitted inside the stage
+   // relayout, and creating/moving/destroying clones there leaves them (and the blurred window or other
+   // background holding them) needing an allocation when the stage updates its views right after
+   // ("Can't update stage views actor ... because it needs an allocation"), so all of these just queue
+   // _allocationChanged() to run before the next relayout. position-changed/size-changed are emitted
+   // when the window moves (before the relayout of the frame that draws it), so a moving window's
+   // clones are updated in that same frame instead of trailing by one; notify::allocation still covers
+   // actor-only changes (animations etc.).
+   _connectGeometryListeners(metaWindow, compositor) {
+      if (metaWindow._blurCinnamonAllocEventID)
+         return;
+      metaWindow._blurCinnamonAllocEventID = compositor.connect("notify::allocation", () => this._queueAllocationChanged(metaWindow) );
+      metaWindow._blurCinnamonPosEventID = metaWindow.connect("position-changed", (self) => this._queueAllocationChanged(self) );
+      metaWindow._blurCinnamonSizeEventID = metaWindow.connect("size-changed", (self) => this._queueAllocationChanged(self) );
+   }
+
+   _disconnectGeometryListeners(metaWindow, compositor) {
+      if (metaWindow._blurCinnamonAllocLaterId) {
+         Meta.later_remove(metaWindow._blurCinnamonAllocLaterId);
+         delete metaWindow._blurCinnamonAllocLaterId;
+      }
+      if (!metaWindow._blurCinnamonAllocEventID)
+         return;
+      if (compositor)
+         compositor.disconnect(metaWindow._blurCinnamonAllocEventID);
+      metaWindow.disconnect(metaWindow._blurCinnamonPosEventID);
+      metaWindow.disconnect(metaWindow._blurCinnamonSizeEventID);
+      delete metaWindow._blurCinnamonAllocEventID;
+      delete metaWindow._blurCinnamonPosEventID;
+      delete metaWindow._blurCinnamonSizeEventID;
+   }
+
+   // At most one _allocationChanged() per window per frame.
+   // A transition of an allocated actor's x or y, as in a workspace switch or a "fly" effect, only
+   // notifies the new position from inside the relayout, and a call queued there runs a frame late. So
+   // this is queued when one may begin (see WINDOW_EFFECT_SIGNALS), and once queued it runs on every
+   // frame of such a transition.
+   _queueAllocationChanged(metaWindow) {
+      if (metaWindow._blurCinnamonAllocLaterId)
+         return;
+      metaWindow._blurCinnamonAllocLaterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         delete metaWindow._blurCinnamonAllocLaterId;
+         let compositor = metaWindow.get_compositor_private();
+         if (metaWindow._blurCinnamonAllocEventID && compositor) {
+            this._allocationChanged(metaWindow);
+            if (compositor.get_transition("x") || compositor.get_transition("y"))
+               this._queueAllocationChanged(metaWindow);
+         }
+         return false;
+      });
+   }
+
    _allocationChanged(metaWindow) {
       this._backgrounds.forEach( (background) => {
          if (background._blurCinnamonName === "OsdWindow") {
             cloneWindowsForBackground(background, background._blurCinnamonDesktopOnly);
             return;
          }
+         // A closing window has left the stacking order, so the other windows of its layer would count
+         // as above it and lose their clones: the blur keeps the clones it has until the window is gone
+         let owner = background._blurCinnamonMetaWindowOwner;
+         if (owner && !owner.get_compositor_private())
+            return;
          const rect = getWindowCloneRect(metaWindow, background);
          let [blurX, blurY, blurWidth, blurHeight] = getBackgroundClip(background);
          let blurX2 = blurX + blurWidth;
@@ -1541,10 +1874,7 @@ class CloneManager {
       let windows = global.get_window_actors();
       windows.forEach( (window) => {
          let metaWindow = window.get_meta_window();
-         if (metaWindow._blurCinnamonAllocEventID) {
-            metaWindow.get_compositor_private().disconnect(metaWindow._blurCinnamonAllocEventID);
-            delete metaWindow._blurCinnamonAllocEventID;
-         }
+         this._disconnectGeometryListeners(metaWindow, metaWindow.get_compositor_private());
          if (metaWindow._blurCinnamonVisibleEventId) {
             metaWindow.get_compositor_private().disconnect(metaWindow._blurCinnamonVisibleEventId);
             delete metaWindow._blurCinnamonVisibleEventId;
@@ -1564,6 +1894,14 @@ class CloneManager {
 // of its _blurCinnamonGroup, standing in for the X11BackgroundActor. Only csd-background is cloned,
 // not every DESKTOP window, so desktop icons don't show through a static blur (same as on X11).
 //
+// Cinnamon 6.8+ replaced csd-background with cinnamon-background-daemon, which on Wayland draws the
+// wallpaper as a wlr-layer-shell BACKGROUND surface. That is not a MetaWindow (it never shows up in
+// get_window_actors() or the "map" signal), so the csd-background clone above never finds anything.
+// Muffin 6.8 provides Meta.create_background_for_monitor() for exactly this: on Wayland it returns a
+// per-monitor actor that clones the layer-shell surface(s) itself and re-syncs whenever they are
+// mapped/unmapped (e.g. daemon restart) or the monitors change. When that API exists, each background
+// gets one container holding a create_background_for_monitor() actor per monitor instead.
+//
 // Dynamic backgrounds get the same clone, and CloneManager skips csd-background for any background
 // that has one (see hasStaticWallpaper()), so the wallpaper is never in a group twice and a
 // static <-> dynamic switch doesn't need any special handling.
@@ -1580,6 +1918,11 @@ function isWallpaperWindow(metaWindow) {
 // True when background carries WallpaperTracker clones (Wayland, non-Transparent)
 function hasStaticWallpaper(background) {
    return !!background._blurCinnamonWallpaperClones;
+}
+
+// True when Muffin can create the wallpaper actors itself (Cinnamon 6.8+, layer-shell wallpaper)
+function hasLayerShellBackgrounds() {
+   return typeof Meta.create_background_for_monitor === "function";
 }
 
 // Give background a wallpaper clone (Wayland only). Safe to call repeatedly.
@@ -1607,6 +1950,16 @@ class WallpaperTracker {
    constructor() {
       this._backgrounds = [];
       this._windows = [];   // csd-background MetaWindows being cloned (one, or possibly one per monitor)
+      this._mapId = 0;
+      this._monitorsChangedId = 0;
+      this._useLayerShell = hasLayerShellBackgrounds();
+      if (this._useLayerShell) {
+         // The per-monitor actors follow their layer surfaces by themselves, but the set of monitors
+         // (and their positions) is fixed when they're created, so rebuild them on a layout change.
+         this._monitorsChangedId = Main.layoutManager.connect("monitors-changed", () => this._rebuildMonitorBackgrounds());
+         debugMsg( "WallpaperTracker using Meta.create_background_for_monitor()" );
+         return;
+      }
       // Wayland clients may not have their app_id (wm_class) yet when the window is created, so
       // pick csd-background up when it maps instead. A restarted csd-background is caught the same way.
       this._mapId = global.window_manager.connect("map", (wm, actor) => this._onWindowMapped(actor));
@@ -1623,9 +1976,13 @@ class WallpaperTracker {
       background._blurCinnamonWallpaperClones = [];
       background._blurCinnamonWallpaperDestroyId = background.connect("destroy", (self) => removeStaticWallpaper(self));
       this._backgrounds.push(background);
-      if (this._windows.length === 0)
-         this._scanWindows();
-      this._windows.forEach( (metaWindow) => this._addClone(background, metaWindow) );
+      if (this._useLayerShell) {
+         this._addMonitorBackgrounds(background);
+      } else {
+         if (this._windows.length === 0)
+            this._scanWindows();
+         this._windows.forEach( (metaWindow) => this._addClone(background, metaWindow) );
+      }
       // If this background was already dynamic, drop CloneManager's own csd-background clone
       if (background._blurCinnamonWinClones)
          destroyClones(background, (clone) => isWallpaperWindow(clone._metaWindow));
@@ -1715,6 +2072,34 @@ class WallpaperTracker {
       background._blurCinnamonWallpaperClones.push(clone);
    }
 
+   // Cinnamon 6.8+: one container per background holding a wallpaper actor for each monitor, placed
+   // at the monitor's stage position (backgrounds sit at the stage origin, as for _addClone()).
+   _addMonitorBackgrounds(background) {
+      if (!background._blurCinnamonGroup)
+         return;
+      let container = new Clutter.Actor({reactive: false});
+      let monitors = Main.layoutManager.monitors;
+      for (let i = 0; i < monitors.length; i++) {
+         let actor = Meta.create_background_for_monitor(global.display, i);
+         if (!actor)
+            continue;
+         actor.set_position(monitors[i].x, monitors[i].y);
+         actor.set_size(monitors[i].width, monitors[i].height);
+         container.add_child(actor);
+      }
+      // Bottom of the group: below any dynamic window clones, the desklet clone and the dimmer
+      background._blurCinnamonGroup.insert_child_at_index(container, 0);
+      background._blurCinnamonWallpaperClones.push(container);
+   }
+
+   _rebuildMonitorBackgrounds() {
+      this._backgrounds.forEach( (background) => {
+         background._blurCinnamonWallpaperClones.forEach( (clone) => this._destroyClone(clone) );
+         background._blurCinnamonWallpaperClones = [];
+         this._addMonitorBackgrounds(background);
+      });
+   }
+
    _destroyClone(clone) {
       let parent = clone.get_parent();
       if (parent)
@@ -1733,7 +2118,10 @@ class WallpaperTracker {
    }
 
    destroy() {
-      global.window_manager.disconnect(this._mapId);
+      if (this._mapId)
+         global.window_manager.disconnect(this._mapId);
+      if (this._monitorsChangedId)
+         Main.layoutManager.disconnect(this._monitorsChangedId);
       this._backgrounds.slice().forEach( (background) => this.removeBackground(background) );
       this._windows.slice().forEach( (metaWindow) => this._untrackWindow(metaWindow) );
    }
@@ -1860,13 +2248,14 @@ class BlurBase {
    }
 
 
-   _aquireGaussianEffect(radius) {
+   _aquireGaussianEffect(radius, grain) {
       if (BlurBase.gaussianEffectCache.length > 0) {
          let effect = BlurBase.gaussianEffectCache.pop();
          effect.radius = radius;
+         effect.grain = grain;
          return(effect);
       } else {
-         return(new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1 , width: 0, height: 0} ));
+         return(new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1 , width: 0, height: 0, grain: grain} ));
       }
    }
 
@@ -1874,13 +2263,14 @@ class BlurBase {
       EffectPool.releaseToPool(BlurBase.gaussianEffectCache, effect);
    }
 
-   _aquireLiquidGlassEffect(radius) {
+   _aquireLiquidGlassEffect(radius, grain) {
       if (BlurBase.liquidGlassEffectCache.length > 0) {
          let effect = BlurBase.liquidGlassEffectCache.pop();
          applyLiquidGlassSettings(effect, radius);
+         effect.grain = grain;
          return(effect);
       } else {
-         return(new Refraction.RefractionEffect( getLiquidGlassParams(radius) ));
+         return(new Refraction.RefractionEffect( {...getLiquidGlassParams(radius), grain: grain} ));
       }
    }
 
@@ -1890,16 +2280,17 @@ class BlurBase {
       EffectPool.releaseToPool(BlurBase.liquidGlassEffectCache, effect);
    }
 
-   _aquireMonteCarloEffect(radius) {
+   _aquireMonteCarloEffect(radius, grain) {
       if (BlurBase.monteCarloEffectCache.length > 0) {
          let effect = BlurBase.monteCarloEffectCache.pop();
          effect.radius = radius;
          effect.iterations = settings.montecarloIterations;
          effect.use_base_pixel = settings.montecarloUseBasePixel;
          effect.prefer_closer_pixels = settings.montecarloPerferCloserPixels;
+         effect.grain = grain;
          return(effect);
       } else {
-         return(new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } ));
+         return(new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0, grain: grain } ));
       }
    }
 
@@ -1907,13 +2298,14 @@ class BlurBase {
       EffectPool.releaseToPool(BlurBase.monteCarloEffectCache, effect);
    }
 
-   _aquireDualKawaseEffect(radius) {
+   _aquireDualKawaseEffect(radius, grain) {
       if (BlurBase.dualKawaseEffectCache.length > 0) {
          let effect = BlurBase.dualKawaseEffectCache.pop();
          effect.radius = radius;
+         effect.grain = grain;
          return(effect);
       } else {
-         return(new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } ));
+         return(new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0, grain: grain } ));
       }
    }
 
@@ -1944,8 +2336,8 @@ class BlurBase {
 
    _getGenericSettings() {
       if (!this._supportsDynamicBlur() && (isDynamicBlurType(settings.blurType)))
-         return [settings.opacity, settings.blendColor, staticBlurType(settings.blurType), settings.radius, settings.saturation];
-      return [settings.opacity, settings.blendColor, settings.blurType, settings.radius, settings.saturation];
+         return [settings.opacity, settings.blendColor, staticBlurType(settings.blurType), settings.radius, settings.saturation, settings.grain];
+      return [settings.opacity, settings.blendColor, settings.blurType, settings.radius, settings.saturation, settings.grain];
    }
 
    _supportsDynamicBlur() {
@@ -1963,7 +2355,7 @@ class BlurBase {
       return color;
    }
 
-   // Returns [opacity, blendColor, blurType, radius, saturation]
+   // Returns [opacity, blendColor, blurType, radius, saturation, grain]
    _getSettings(override) {
       if (override) {
          return this._getUniqueSettings();
@@ -2023,7 +2415,7 @@ class BlurBase {
    // St-CRITICAL warning. background itself isn't an St.Widget (Meta.X11BackgroundActor/
    // Clutter.Actor), so its effects were always safe to attach before parenting, and still are here
    // when useViewport is false.
-   _createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, parent=global.overlay_group, cornerRadius=0, top=true, bottom=true, useViewport=false, customParent=null) {
+   _createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, parent=getBackgroundParent(), cornerRadius=0, top=true, bottom=true, useViewport=false, customParent=null) {
       let blurEffect;
       let desatEffect;
       let cornerEffect;
@@ -2034,13 +2426,13 @@ class BlurBase {
       if (blurType === BlurType.Simple) {
          blurEffect = this._aquireSimpleBlurEffect();
       } else if (blurType === BlurType.Gaussian || blurType === BlurType.DynamicBlur) {
-         blurEffect = this._aquireGaussianEffect(radius);
+         blurEffect = this._aquireGaussianEffect(radius, grain);
       } else if (blurType === BlurType.MonteCarlo || blurType === BlurType.DynamicMC) {
-         blurEffect = this._aquireMonteCarloEffect(radius);
+         blurEffect = this._aquireMonteCarloEffect(radius, grain);
       } else if (blurType === BlurType.DualKawase || blurType === BlurType.DynamicDK) {
-         blurEffect = this._aquireDualKawaseEffect(radius);
+         blurEffect = this._aquireDualKawaseEffect(radius, grain);
       } else if (isLiquidGlassBlurType(blurType)) {
-         blurEffect = this._aquireLiquidGlassEffect(radius);
+         blurEffect = this._aquireLiquidGlassEffect(radius, grain);
       }
       if (saturation < 100)
          desatEffect = this._aquireDesaturateEffect( (100-saturation)/100 );
@@ -2099,6 +2491,7 @@ class BlurBase {
          let sceneClone = new Clutter.Clone({source: background, reactive: false});
          viewport.add_child(sceneClone);
          viewport._blurCinnamonSceneClone = sceneClone;
+         viewport._blurCinnamonDynamic = isDynamicBlurType(blurType);
          effectTarget = viewport;
       }
 
@@ -2183,9 +2576,9 @@ class BlurBase {
       return background._blurCinnamonDimmer;
    }
 
+   // Updates a background that has no viewport, which only None and Transparent use (see _wantsViewport()), so
+   // there is no blur effect to update here: the types that blur are updated by _updateViewportEffects().
    _updateEffects(background, opacity, blendColor, blurType, radius, saturation) {
-      // Setup the blur effect properly
-      let curEffect = background.get_effect(BLUR_EFFECT_NAME);
       let cornerEffect = background.get_effect(CORNER_EFFECT_NAME);
       let desatEffect = background.get_effect(DESAT_EFFECT_NAME);
       let dynamicEffectActive = this._isDynamicEffectActive(background);
@@ -2220,52 +2613,7 @@ class BlurBase {
          if (desatEffect) { background.add_effect_with_name( DESAT_EFFECT_NAME, desatEffect ); }
          this.parent.add_child(background);
       }
-      if (blurType === BlurType.None && curEffect) {
-         background.remove_effect(curEffect);
-         this._releaseBlurEffect(curEffect);
-      } else if (blurType === BlurType.Simple && !(curEffect instanceof Clutter.BlurEffect)) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-            this._releaseBlurEffect(curEffect);
-         }
-         let blurEffect =  this._aquireSimpleBlurEffect();
-         background.add_effect_with_name( BLUR_EFFECT_NAME, blurEffect );
-      } else if ((blurType === BlurType.Gaussian || blurType === BlurType.DynamicBlur) && !(curEffect instanceof GaussianBlur.GaussianBlurEffect)) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-            this._releaseBlurEffect(curEffect);
-         }
-         let blurEffect = this._aquireGaussianEffect(radius);
-         background.add_effect_with_name( BLUR_EFFECT_NAME, blurEffect );
-      } else if ((blurType === BlurType.MonteCarlo || blurType === BlurType.DynamicMC) && !(curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect)) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-            this._releaseBlurEffect(curEffect);
-         }
-         let blurEffect = this._aquireMonteCarloEffect(radius);
-         background.add_effect_with_name( BLUR_EFFECT_NAME, blurEffect );
-      } else if ((blurType === BlurType.DualKawase || blurType === BlurType.DynamicDK) && !(curEffect instanceof DualKawaseBlur.DualFilteringBlurEffect)) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-            this._releaseBlurEffect(curEffect);
-         }
-         let blurEffect = this._aquireDualKawaseEffect(radius);
-         background.add_effect_with_name( BLUR_EFFECT_NAME, blurEffect );
-      } else if (isLiquidGlassBlurType(blurType) && !(curEffect instanceof Refraction.RefractionEffect)) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-            this._releaseBlurEffect(curEffect);
-         }
-         let blurEffect = this._aquireLiquidGlassEffect(radius);
-         background.add_effect_with_name( BLUR_EFFECT_NAME, blurEffect );
-      } else if (blurType === BlurType.Transparent && Meta.is_wayland_compositor() && curEffect) {
-         // Wayland keeps the same actor when switching to Transparent, so just drop the blur
-         background.remove_effect(curEffect);
-         this._releaseBlurEffect(curEffect);
-      } else if (blurType === BlurType.Transparent && background instanceof Meta.X11BackgroundActor) {
-         if (curEffect) {
-            background.remove_effect(curEffect);
-         }
+      if (blurType === BlurType.Transparent && background instanceof Meta.X11BackgroundActor) {
          let dimmer = background._blurCinnamonDimmer;
          background._blurCinnamonGroup.remove_child(background._blurCinnamonDimmer);
          this.parent.remove_child(background);
@@ -2275,8 +2623,8 @@ class BlurBase {
          let stageWidth = global.stage.width;
          let stageHeight = global.stage.height;
          background = new Clutter.Actor({width: stageWidth, height: stageHeight});
-         // Same group/dimmer layout as _createBackgroundAndEffects, so switching back to a blurred
-         // type (which removes the dimmer from _blurCinnamonGroup) works
+         // Same group/dimmer layout as _createBackgroundAndEffects, so switching back to None
+         // (which removes the dimmer from _blurCinnamonGroup) works
          let group = new St.Group({clip_to_allocation: true});
          group.set_size(stageWidth, stageHeight);
          group.add_child(dimmer);
@@ -2289,24 +2637,8 @@ class BlurBase {
          if (desatEffect) { background.add_effect_with_name( DESAT_EFFECT_NAME, desatEffect ); }
          this.parent.add_actor(background);
       }
-      curEffect = this._getBlurEffect(background);
-      // Adjust the blur effects
-      if ((curEffect instanceof GaussianBlur.GaussianBlurEffect || curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect || curEffect instanceof DualKawaseBlur.DualFilteringBlurEffect) && curEffect.radius != radius) {
-         curEffect.radius = radius;
-      }
-      // If Monte Carlo, update it's settings
-      if (curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect) {
-         curEffect.iterations = settings.montecarloIterations;
-         curEffect.use_base_pixel = settings.montecarloUseBasePixel;
-         curEffect.prefer_closer_pixels = settings.montecarloPerferCloserPixels;
-      }
-      // If Liquid Glass, update it's settings
-      if (curEffect instanceof Refraction.RefractionEffect) {
-         applyLiquidGlassSettings(curEffect, radius);
-      }
-      this._syncLiquidGlassCornerRadius(background);
       // Setup/Adjust the desaturation effect
-      curEffect = background.get_effect(DESAT_EFFECT_NAME);
+      let curEffect = background.get_effect(DESAT_EFFECT_NAME);
       if (curEffect && saturation === 100) {
          background.remove_effect(curEffect);
       } else if (curEffect && curEffect.factor !== (100-saturation)/100) {
@@ -2345,35 +2677,42 @@ class BlurBase {
    // Generic equivalent of BlurBase._updateEffects(), but for a background that's been wrapped in a
    // viewport (see _createBackgroundAndEffects's useViewport): the blur/corner/desaturate effects
    // live on viewport, not background, so _updateEffects() itself must never be called on a wrapped
-   // background directly - it looks up BLUR_EFFECT_NAME etc. on the background actor it's given,
-   // and finding none there (they're all on viewport instead) would make it create a *second*,
-   // duplicate set of effects on background alongside viewport's real ones.
-   _updateViewportEffects(background, viewport, opacity, blendColor, blurType, radius, saturation) {
+   // background directly - it looks up DESAT_EFFECT_NAME on the background actor it's given, and
+   // finding none there (it's on viewport instead) would make it add a *second* desaturate effect
+   // on background alongside viewport's real one.
+   _updateViewportEffects(background, viewport, opacity, blendColor, blurType, radius, saturation, grain) {
       let curEffect = this._getBlurEffect(viewport);
-      if (blurType === BlurType.DynamicBlur && !(curEffect instanceof GaussianBlur.GaussianBlurEffect)) {
+      let effectType = staticBlurType(blurType);
+      if (effectType === BlurType.Simple && !(curEffect instanceof Clutter.BlurEffect)) {
          if (curEffect) {
             viewport.remove_effect(curEffect);
             this._releaseBlurEffect(curEffect);
          }
-         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireGaussianEffect(radius) );
-      } else if (blurType === BlurType.DynamicMC && !(curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect)) {
+         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireSimpleBlurEffect() );
+      } else if (effectType === BlurType.Gaussian && !(curEffect instanceof GaussianBlur.GaussianBlurEffect)) {
          if (curEffect) {
             viewport.remove_effect(curEffect);
             this._releaseBlurEffect(curEffect);
          }
-         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireMonteCarloEffect(radius) );
-      } else if (blurType === BlurType.DynamicDK && !(curEffect instanceof DualKawaseBlur.DualFilteringBlurEffect)) {
+         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireGaussianEffect(radius, grain) );
+      } else if (effectType === BlurType.MonteCarlo && !(curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect)) {
          if (curEffect) {
             viewport.remove_effect(curEffect);
             this._releaseBlurEffect(curEffect);
          }
-         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireDualKawaseEffect(radius) );
-      } else if (blurType === BlurType.DynamicLG && !(curEffect instanceof Refraction.RefractionEffect)) {
+         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireMonteCarloEffect(radius, grain) );
+      } else if (effectType === BlurType.DualKawase && !(curEffect instanceof DualKawaseBlur.DualFilteringBlurEffect)) {
          if (curEffect) {
             viewport.remove_effect(curEffect);
             this._releaseBlurEffect(curEffect);
          }
-         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireLiquidGlassEffect(radius) );
+         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireDualKawaseEffect(radius, grain) );
+      } else if (effectType === BlurType.LiquidGlass && !(curEffect instanceof Refraction.RefractionEffect)) {
+         if (curEffect) {
+            viewport.remove_effect(curEffect);
+            this._releaseBlurEffect(curEffect);
+         }
+         viewport.add_effect_with_name( BLUR_EFFECT_NAME, this._aquireLiquidGlassEffect(radius, grain) );
       }
       curEffect = this._getBlurEffect(viewport);
       if ((curEffect instanceof GaussianBlur.GaussianBlurEffect || curEffect instanceof MonteCarloBlur.MonteCarloBlurEffect || curEffect instanceof DualKawaseBlur.DualFilteringBlurEffect) && curEffect.radius != radius) {
@@ -2386,6 +2725,9 @@ class BlurBase {
       }
       if (curEffect instanceof Refraction.RefractionEffect) {
          applyLiquidGlassSettings(curEffect, radius);
+      }
+      if (curEffect instanceof EffectPool.EffectBase) {
+         curEffect.grain = grain;
       }
       this._syncLiquidGlassCornerRadius(viewport);
 
@@ -2445,6 +2787,7 @@ class BlurBase {
 
       width = Math.max(0, width);
       height = Math.max(0, height);
+      const previousCloneClip = cloneManager && background._blurCinnamonWinClones ? getBackgroundClip(background) : null;
       if (viewport) {
          // Remember the visible rect so the margin can be re-derived if the blur radius/type changes
          viewport._blurCinnamonVisibleRect = [x, y, width, height];
@@ -2468,14 +2811,30 @@ class BlurBase {
             backgroundCornerEffect.clip = [x+2, y+2, Math.max(0, width-3), Math.max(0, height-3)];
          }
       }
-      if (cloneManager)
-         cloneManager.backgroundClipChanged(background);
+      if (cloneManager && background._blurCinnamonWinClones) {
+         // Window selection depends on the effective sampling rect, including the blur margin.
+         // Geometry and masks still update above even when the required window region is unchanged.
+         const cloneClip = getBackgroundClip(background);
+         if (!previousCloneClip || cloneClip.some((value, index) => value !== previousCloneClip[index]))
+            cloneManager.backgroundClipChanged(background);
+      }
    }
 
    _needsBackgroundRebuild(background, blurType, wantsViewport) {
       const changesBackgroundKind = !Meta.is_wayland_compositor() &&
          ((background instanceof Meta.X11BackgroundActor) !== (blurType !== BlurType.Transparent));
-      return !!background._blurCinnamonViewport !== wantsViewport || changesBackgroundKind;
+      return this._viewportMismatch(background, blurType, wantsViewport) || changesBackgroundKind;
+   }
+
+   // Whether background has to be rebuilt to gain or lose its viewport, or because the viewport was made for a
+   // static blur type and blurType is a dynamic one, or the other way around. Only a dynamic type's background
+   // is registered with the CloneManager and has windows cloned into it, so switching between the two rebuilds
+   // the background.
+   _viewportMismatch(background, blurType, wantsViewport) {
+      let viewport = background._blurCinnamonViewport;
+      if (!viewport)
+         return wantsViewport;
+      return !wantsViewport || viewport._blurCinnamonDynamic !== isDynamicBlurType(blurType);
    }
 
    // Generic viewport teardown helper for every consumer besides windows (BlurApplications does
@@ -2502,13 +2861,13 @@ class BlurBase {
       background.destroy();
    }
 
-   // Whether blurType is one of the three Dynamic* types - the only types _createBackgroundAndEffects's
-   // useViewport is meant for (see BlurApplications._blurWindow's own useViewport computation for the
-   // full rationale: correctness for Dynamic types specifically, since only those clone windows via
-   // CloneManager and so are the only ones that can hit the wallpaper-bleed bug viewport-wrapping
-   // fixes - plus the same FBO-shrink GPU/CPU win as a bonus).
+   // Whether blurType blurs, which is what _createBackgroundAndEffects's useViewport is meant for (see
+   // BlurApplications._blurWindow's own useViewport computation for the full rationale). A blur reads the
+   // pixels around each pixel, and the viewport keeps that within the visible rect plus the blur's margin,
+   // cut to its monitors (see getExpandedRect()); it also shrinks the FBOs from the whole stage down to that
+   // area. None and Transparent read nothing around a pixel, so they keep the plain background.
    _wantsViewport(blurType) {
-      return isDynamicBlurType(blurType);
+      return blurType !== BlurType.None && blurType !== BlurType.Transparent;
    }
 
    // viewport (see _createBackgroundAndEffects's useViewport): when the caller's background was
@@ -2637,7 +2996,7 @@ class BlurOSD extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.osdOpacity, settings.osdBlendColor, settings.osdBlurType, settings.osdRadius, settings.osdSaturation];
+      return [settings.osdOpacity, settings.osdBlendColor, settings.osdBlurType, settings.osdRadius, settings.osdSaturation, settings.osdGrain];
    }
 
    _show(...params) {
@@ -2797,7 +3156,7 @@ class BlurOSD extends BlurBase {
       }
 
       const values = this._getSettings(settings.osdOverride);
-      const [opacity, blendColor, blurType, radius, saturation] = values;
+      const [opacity, blendColor, blurType, radius, saturation, grain] = values;
       const useViewport = this._wantsViewport(blurType);
       let state = this._states.get(osd);
       if (state && (state.actor !== actor || state.clipActor !== clipActor || this._needsBackgroundRebuild(state.background, blurType, useViewport))) {
@@ -2806,11 +3165,11 @@ class BlurOSD extends BlurBase {
       }
 
       if (state) {
-         this.parent = state.background.get_parent() || global.overlay_group;
+         this.parent = state.background.get_parent() || getBackgroundParent();
          if (state.viewport)
             this._updateViewportEffects(state.background, state.viewport, ...values);
          else
-            this._updateEffects(state.background, ...values);
+            this._updateEffects(state.background, opacity, blendColor, blurType, radius, saturation);
          state.blurType = blurType;
 
          // Workspace OSD needs an explicit refresh because its visual
@@ -2823,7 +3182,7 @@ class BlurOSD extends BlurBase {
       if (osd._blurCinnamonBackground)
          delete osd._blurCinnamonBackground;
 
-      const background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, useViewport);
+      const background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, useViewport);
       const viewport = background._blurCinnamonViewport;
       background._blurCinnamonName = "OsdWindow";
       if (viewport) viewport._blurCinnamonName = "OsdWindow";
@@ -2891,7 +3250,7 @@ class BlurOSD extends BlurBase {
       // _createBackgroundAndEffects above), so _destroyBackgroundAndViewport's parent argument
       // covers the same "usually overlay_group, defensively whatever it actually is" cases the old
       // parent-detection code here handled.
-      const parent = state.background.get_parent() || global.overlay_group;
+      const parent = state.background.get_parent() || getBackgroundParent();
       this._destroyBackgroundAndViewport(state.background, parent);
       if (osd._blurCinnamonBackground === state.background)
          delete osd._blurCinnamonBackground;
@@ -2972,7 +3331,7 @@ class BlurClassicSwitcher extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.appswitcherOpacity, settings.appswitcherBlendColor, settings.appswitcherBlurType, settings.appswitcherRadius, settings.appswitcherSaturation];
+      return [settings.appswitcherOpacity, settings.appswitcherBlendColor, settings.appswitcherBlurType, settings.appswitcherRadius, settings.appswitcherSaturation, settings.appswitcherGrain];
    }
 
    // Monkey patch function. The 'this' will be for ClassicSwitcher
@@ -2993,10 +3352,10 @@ class BlurClassicSwitcher extends BlurBase {
          }
 
          // Create the effects and the background actor to apply to effects to
-         let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.appswitcherOverride);
+         let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.appswitcherOverride);
          this._blurType = blurType
          let useViewport = this._wantsViewport(blurType);
-         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, useViewport);
+         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, useViewport);
          this._background._blurCinnamonName = "ClassicSwitcher";
          this._viewport = this._background._blurCinnamonViewport;
          if (this._viewport) this._viewport._blurCinnamonName = "ClassicSwitcher";
@@ -3007,7 +3366,7 @@ class BlurClassicSwitcher extends BlurBase {
             let radius = themeNode.get_border_radius(St.Corner.TOPLEFT);
             this._updateViewportCornerRadius(this._background, this._viewport, (radius/*+6*/)/global.ui_scale, true, true);
          }
-         this._signalManager.connect(actor, "notify::allocation", () => this._setClip(actor) );
+         connectDeferredClip(this._signalManager, actor, () => this._setClip(actor) );
 
          this._setClip(actor)
          // If Dynamic Blurring is enabled, create a workspace clone and add the clone to the background
@@ -3034,7 +3393,7 @@ class BlurClassicSwitcher extends BlurBase {
          this._destroyDynamicEffect(this._background);
       }
       this._signalManager.disconnectAllSignals();
-      this._destroyBackgroundAndViewport(this._background, global.overlay_group);
+      this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
       this._viewport = null;
    }
 
@@ -3047,7 +3406,7 @@ class BlurClassicSwitcher extends BlurBase {
       ClassicSwitcher.ClassicSwitcher.prototype._show = this.original_show;
       ClassicSwitcher.ClassicSwitcher.prototype._hide = this.original_hide;
       if (this._background) {
-         this._destroyBackgroundAndViewport(this._background, global.overlay_group);
+         this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
          this._viewport = null;
       }
    }
@@ -3061,13 +3420,39 @@ class BlurPanels extends BlurBase {
       this._signalManager = new SignalManager.SignalManager(null);
       this._maximizeSignalManager = new SignalManager.SignalManager(null);
       this._blurredPanels = [];
+      this._hoverFile = null;   // Path of the generated hover stylesheet currently loaded (or null)
+      this._hoverTheme = null;  // The St.Theme it was loaded into
+      this._hoverSerial = 0;
+      this._hoverClass = null;  // The panel style class the loaded hover stylesheet targets (or null)
+      this._hoverUpdateId = 0;  // Timeout used to batch slider/color changes
       this._blurExistingPanels();
+      this._refreshHoverDim();  // Creates the hover stylesheet, then gives the blurred panels its class
 
       blurPanelsThis = this; // Make the 'this' pointer available in patch functions
 
       // Draw the panel blur on Desktop Cube's faces (see createPanelBlur())
       this._cubeNotifier = getCubeNotifier();
       this._cubeNotifier.panelBlurProvider = this;
+      this._cubeDesktopOnly = null;
+      this._cubeStartingId = this._cubeNotifier.connect("cube-starting", () => this._onCubeStarting());
+      this._cubeFinishedId = this._cubeNotifier.connect("cube-finished", () => this._onCubeFinished());
+
+      // Cinnamon's Chrome decides when a panel is shown over a fullscreen window (modal menus, Alt-Tab, raised
+      // panels), so re-check the panel backgrounds whenever it recalculates chrome visibility (see #86)
+      this._chrome = Main.layoutManager._chrome;
+      if (this._chrome && typeof this._chrome._updateVisibility === "function") {
+         this._originalUpdateVisibility = this._chrome._updateVisibility;
+         const originalUpdateVisibility = this._originalUpdateVisibility;
+         this._chrome._updateVisibility = function(...params) {
+            const ret = originalUpdateVisibility.apply(this, params);
+            try {
+               blurPanelsThis._fullscreen_changed();
+            } catch (e) {
+               global.logError(e);
+            }
+            return ret;
+         };
+      }
 
       // Monkey patch panel functions so we can manage the blurred backgrounds when the panels are hidden/shown
       this._originalPanelEnable    = Panel.Panel.prototype.enable;
@@ -3081,6 +3466,8 @@ class BlurPanels extends BlurBase {
       this._signalManager.connect(Main.layoutManager, "monitors-changed",        this._panel_changed, this);
       // Connect to an event that can hide the panels
       this._signalManager.connect(global.display,     "in-fullscreen-changed",   this._fullscreen_changed, this);
+      // A theme change creates a new St.Theme, so our hover stylesheet has to be loaded into the new one
+      this._signalManager.connect(St.ThemeContext.get_for_stage(global.stage), "changed", this._onThemeChanged, this);
 
       this.setupMaximizeMonitoring();
 
@@ -3103,8 +3490,10 @@ class BlurPanels extends BlurBase {
          this._maximizeSignalManager.connect(global.window_manager, "minimize", this._on_window_minimize, this);
          this._maximizeSignalManager.connect(global.window_manager, "switch-workspace", this._on_workspace_switch, this);
          this._maximizeSignalManager.connect(global.window_manager, "destroy", this._on_window_removed, this);
-         this._maximizeSignalManager.connect(global.screen, "window-added", this._on_window_added, this);
-         //this._maximizeSignalManager.connect(global.screen, "window-monitor-changed", this.windowMonitorChanged, this);
+         this._maximizeSignalManager.connect(global.window_manager, "map", this._on_window_mapped, this);
+         // A maximized window can move to another monitor after it was mapped (e.g. Firefox restoring its session
+         // geometry) or later on (keyboard shortcut), so both monitors' panels need to be checked again (see #63)
+         this._maximizeSignalManager.connect(global.display, "window-entered-monitor", this._on_window_entered_monitor, this);
          this._maximizeSignalManager.connect(global.screen, "window-workspace-changed", this._on_window_workspace_changed, this);
          // If there are panels to make transparent, then do it now.
          if (this._blurredPanels.length) {
@@ -3137,14 +3526,26 @@ class BlurPanels extends BlurBase {
       }
    }
 
-   _on_window_added(screen, metaWindow, monitor) {
+   // A window has moved onto another monitor. Its new monitor is already set (get_monitor()), so redoing all monitors
+   // updates both the monitor it left and the one it entered.
+   _on_window_entered_monitor(display, monitorIndex, metaWindow) {
+      if (this._blurredPanels.length === 0)
+         return;
+      let workspace = global.workspace_manager.get_active_workspace();
+      if (metaWindow && this._windowIsMaximized(metaWindow) && metaWindow.located_on_workspace(workspace)) {
+         this._setupPanelTransparencyOnAllMonitors();
+      }
+   }
+
+   // A new window is being shown. We check here rather than on "window-added" because a window that starts
+   // maximized doesn't reliably have its maximized state set until it is mapped (checking from an idle
+   // callback after "window-added" would race with the map and sometimes miss the maximized state).
+   _on_window_mapped(wm, win) {
       if (this._blurredPanels.length === 0) return;
-      // Post an event to the end of the event queue, if we check right away we won't see this new window as maximized just yet
-      Mainloop.idle_add( () => {
-            if (this._windowIsMaximized(metaWindow)) {
-               this._setTransparencyForEachPanelOnMonitor(monitor, false);
-            }
-      });
+      let metaWindow = win.get_meta_window();
+      if (metaWindow && this._windowIsMaximized(metaWindow)) {
+         this._setTransparencyForEachPanelOnMonitor(metaWindow.get_monitor(), false);
+      }
    }
 
    _on_window_removed(ws, win) {
@@ -3252,7 +3653,7 @@ class BlurPanels extends BlurBase {
       data.visibilityTimeoutId = Mainloop.timeout_add(delay, () => {
          data.visibilityTimeoutId = 0;
          if (panel.__blurredPanel !== data) return false;
-         if (visible && (panel._hidden || global.display.get_monitor_in_fullscreen(panel.monitorIndex)))
+         if (visible && (panel._hidden || panelHiddenByFullscreen(panel)))
             return false;
          if (visible) {
             data.background.show();
@@ -3278,7 +3679,7 @@ class BlurPanels extends BlurBase {
          if (panel && panel.__blurredPanel && panel.__blurredPanel.background && !panel._hidden) {
             background = panel.__blurredPanel.background;
             viewport = panel.__blurredPanel.viewport;
-            if (global.display.get_monitor_in_fullscreen(panel.monitorIndex)) {
+            if (panelHiddenByFullscreen(panel)) {
                background.hide();
                if (viewport) viewport.hide();
             } else {
@@ -3314,7 +3715,7 @@ class BlurPanels extends BlurBase {
                // _unblurPanel() - a bare background.destroy() here never gave a multi-pass blur
                // effect (Dual Kawase) a chance to tear its own sub-effects down cleanly first.
                this._destroyDynamicEffect(blurredPanel.background);
-               this._destroyBackgroundAndViewport(blurredPanel.background, global.overlay_group);
+               this._destroyBackgroundAndViewport(blurredPanel.background, getBackgroundParent());
                blurredPanel.signalManager.disconnectAllSignals();
                this._blurredPanels.splice(i,1);
             }
@@ -3328,11 +3729,11 @@ class BlurPanels extends BlurBase {
          let background = panel.__blurredPanel.background;
          let viewport = panel.__blurredPanel.viewport;
          if (actor.is_visible()) {
-            this._applyBackgroundClip(background, viewport, actor.x, actor.y, actor.width, actor.height);
+            this._applyBackgroundClip(background, viewport, ...getPanelRect(actor));
          } else {
             this._applyBackgroundClip(background, viewport, 0, 0, 0, 0);
          }
-         if (panel._hidden || panel._disabled || global.display.get_monitor_in_fullscreen(panel.monitorIndex)) {
+         if (panel._hidden || panel._disabled || panelHiddenByFullscreen(panel)) {
             background.hide();
             if (viewport) viewport.hide();
          } else if (!background.is_visible()) {
@@ -3376,11 +3777,156 @@ class BlurPanels extends BlurBase {
       let blurredPanel = panel.__blurredPanel;
       if (!blurredPanel) return;
       let style = blurredPanel.externalStyle || "";
-      if (settings.allowTransparentColorPanels && blurredPanel.transparent !== false) {
+      let transparent = settings.allowTransparentColorPanels && blurredPanel.transparent !== false;
+      if (transparent) {
          if (style.length && !style.trim().endsWith(";")) style += ";";
          style += (style.length ? " " : "") + PANEL_TRANSPARENT_STYLE + (blurredPanel.customCSS || "");
       }
       St.Widget.prototype.set_style.call(panel.actor, style.length ? style : null);
+      // Only transparent panels get the dimmed hover (see _updateHoverStylesheet). This runs every frame while some
+      // extensions restyle the panel, but the class calls are no-ops when nothing changes.
+      this._setPanelHoverClass(panel.actor, (transparent && settings.dimPanelHover) ? this._hoverClass : null);
+   }
+
+   // Make the actor's hover class wantedClass (or none when null), removing any stale generation of it
+   _setPanelHoverClass(actor, wantedClass) {
+      let classes = (actor.get_style_class_name() || "").split(/\s+/);
+      for (const cls of classes) {
+         if (cls.startsWith(PANEL_HOVER_CLASS_PREFIX) && cls !== wantedClass)
+            actor.remove_style_class_name(cls);
+      }
+      if (wantedClass && !classes.includes(wantedClass))
+         actor.add_style_class_name(wantedClass);
+   }
+
+   // Called when one of the "dim panel hover" settings changes. Batched, since dragging the strength slider changes
+   // the setting many times per second and each change creates a stylesheet file and a new set of theme nodes.
+   updateHoverDim() {
+      if (this._hoverUpdateId)
+         Mainloop.source_remove(this._hoverUpdateId);
+      this._hoverUpdateId = Mainloop.timeout_add(200, () => {
+         this._hoverUpdateId = 0;
+         this._refreshHoverDim();
+         return false;
+      });
+   }
+
+   _refreshHoverDim() {
+      this._updateHoverStylesheet();
+      this._blurredPanels.forEach( (blurredPanel) => this._applyPanelStyle(blurredPanel.panel) );
+   }
+
+   _getHoverCacheDir() {
+      return GLib.build_filenamev([GLib.get_user_cache_dir(), "BlurCinnamon"]);
+   }
+
+   _buildHoverCss() {
+      let color = this._getColor(settings.dimPanelHoverColor, settings.dimPanelHoverOpacity);
+      let rgba = `rgba(${color.red}, ${color.green}, ${color.blue}, ${(color.alpha/255).toFixed(3)})`;
+      // Prefix with the panel actor's name (e.g. "#panel") as well as our class, so we out-rank theme rules that use
+      // the id (an id beats any number of classes in CSS specificity)
+      let panels = Main.getPanels().filter( (p) => p );
+      let name = panels.length ? panels[0].actor.get_name() : null;
+      let scope = (name ? "#" + name : "") + "." + this._hoverClass;
+      let selectors = PANEL_HOVER_SELECTORS.map( (sel) => `${scope} ${sel}` ).join(",\n");
+      // Only override how the background is painted; padding, margins, radius and transitions stay the theme's
+      return `/* Generated by ${UUID} - safe to delete */\n${selectors} {\n` +
+             `   background-color: ${rgba};\n` +
+             `   background-gradient-direction: none;\n` +
+             `   background-image: none;\n` +
+             `   border-image: none;\n` +
+             `}\n`;
+   }
+
+   // (Re)generate and load the hover stylesheet, or unload it when the option is off. A new file name is used each
+   // time because St caches parsed stylesheets by file.
+   _updateHoverStylesheet() {
+      let oldFile = this._hoverFile;
+      let oldTheme = this._hoverTheme;
+      this._hoverFile = null;
+      this._hoverTheme = null;
+      this._hoverClass = null;
+      if (settings.dimPanelHover && settings.allowTransparentColorPanels) {
+         try {
+            let serial = this._hoverSerial++;
+            this._hoverClass = PANEL_HOVER_CLASS_PREFIX + serial;
+            let dir = this._getHoverCacheDir();
+            GLib.mkdir_with_parents(dir, 0o755);
+            let path = GLib.build_filenamev([dir, `${PANEL_HOVER_FILE_PREFIX}${Date.now()}-${serial}.css`]);
+            GLib.file_set_contents(path, this._buildHoverCss());
+            this._hoverFile = path;
+            this._loadHoverStylesheet();
+         } catch (e) {
+            global.logError(`${UUID}: Unable to create the panel hover stylesheet: ${e}`);
+            this._hoverFile = null;
+            this._hoverTheme = null;
+            this._hoverClass = null;
+         }
+      }
+      // Unload the old file only after the new one is loaded, so the hover doesn't flash the theme colour in between
+      if (oldFile)
+         this._unloadHoverFile(oldFile, oldTheme);
+      this._sweepHoverFiles();
+   }
+
+   _loadHoverStylesheet() {
+      if (!this._hoverFile) return;
+      let theme = St.ThemeContext.get_for_stage(global.stage).get_theme();
+      if (!theme) return;
+      // Cinnamon may already have carried our stylesheet over to a new theme; don't load it twice (Cinnamon's St
+      // would add a duplicate). Note: unlike GNOME Shell, Cinnamon's St API takes/returns paths, not Gio.Files.
+      let loaded = theme.get_custom_stylesheets().includes(this._hoverFile);
+      if (!loaded && !theme.load_stylesheet(this._hoverFile))
+         throw new Error(`St could not parse ${this._hoverFile}`);
+      this._hoverTheme = theme;
+   }
+
+   _unloadHoverStylesheet() {
+      if (!this._hoverFile) return;
+      this._unloadHoverFile(this._hoverFile, this._hoverTheme);
+      this._hoverFile = null;
+      this._hoverTheme = null;
+      this._hoverClass = null;
+   }
+
+   // Unload file from the theme it was loaded into and from the current theme (in case Cinnamon carried it over to
+   // a new theme that we haven't processed yet), then delete it
+   _unloadHoverFile(file, theme) {
+      if (theme)
+         theme.unload_stylesheet(file);
+      let current = St.ThemeContext.get_for_stage(global.stage).get_theme();
+      if (current && current !== theme)
+         current.unload_stylesheet(file);
+      this._deleteHoverFile(file);
+   }
+
+   _onThemeChanged() {
+      // Cinnamon's loadTheme() builds a new St.Theme that doesn't contain our stylesheet. Regenerate it (new file and
+      // class) rather than just loading it, since the widgets may already have computed their new styles by now.
+      if (this._hoverFile && St.ThemeContext.get_for_stage(global.stage).get_theme() !== this._hoverTheme)
+         this._refreshHoverDim();
+   }
+
+   _deleteHoverFile(path) {
+      try { Gio.File.new_for_path(path).delete(null); } catch (e) { /* Already gone */ }
+   }
+
+   // Remove stylesheets left behind by a crash or an older session
+   _sweepHoverFiles() {
+      try {
+         let dir = Gio.File.new_for_path(this._getHoverCacheDir());
+         let enumerator = dir.enumerate_children("standard::name", Gio.FileQueryInfoFlags.NONE, null);
+         let info;
+         while ((info = enumerator.next_file(null)) !== null) {
+            let fileName = info.get_name();
+            if (fileName.startsWith(PANEL_HOVER_FILE_PREFIX) && fileName.endsWith(".css")) {
+               let childPath = dir.get_child(fileName).get_path();
+               if (childPath !== this._hoverFile)
+                  this._deleteHoverFile(childPath);
+            }
+         }
+         enumerator.close(null);
+      } catch (e) { /* Directory doesn't exist, nothing to sweep */ }
    }
 
    // The panel's border radius can change at any time (e.g. Centered Cinnamon Dock rounds the panel's corners via its
@@ -3444,7 +3990,7 @@ class BlurPanels extends BlurBase {
       let cornerRadius = 0;
       let panelSettings = this._getPanelSettings(panel);
       if (!panelSettings ) return;
-      let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+      let [opacity, blendColor, blurType, radius, saturation, grain, customCSS] = panelSettings;
 
       let actor = panel.actor;
       let blurredPanel = panel.__blurredPanel;
@@ -3479,7 +4025,7 @@ class BlurPanels extends BlurBase {
       blurredPanel.bottomRadius = bottomRadius;
 
       let useViewport = this._wantsViewport(blurType);
-      let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, cornerRadius, topRadius!==0, bottomRadius!==0, useViewport);
+      let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), cornerRadius, topRadius!==0, bottomRadius!==0, useViewport);
       background._blurCinnamonName = "Panel";
       blurredPanel.background = background;
       blurredPanel.viewport = background._blurCinnamonViewport;
@@ -3491,7 +4037,7 @@ class BlurPanels extends BlurBase {
       }
 
       blurredPanel.signalManager = new SignalManager.SignalManager(null);
-      blurredPanel.signalManager.connect(actor, "notify::allocation", () => this._setClip(panel) );
+      connectDeferredClip(blurredPanel.signalManager, actor, () => this._setClip(panel) );
       blurredPanel.signalManager.connect(actor, "enter-event", () => this._onEnterEvent(panel) );
       blurredPanel.signalManager.connect(actor, "leave-event", () => this._onLeaveEvent(panel) );
       // Other code (e.g. the Centered Cinnamon Dock extension) can restyle, fade, scale or hide the panel directly
@@ -3523,7 +4069,7 @@ class BlurPanels extends BlurBase {
          if (blurredPanel) {
             let panelSettings = this._getPanelSettings(panel);
             if (!panelSettings) return
-            let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+            let [opacity, blendColor, blurType, radius, saturation, grain, customCSS] = panelSettings;
 
             let dimmerColor = this._getColor( blendColor, 0 );
             blurredPanel.background._blurCinnamonDimmer.set_background_color(dimmerColor);
@@ -3550,7 +4096,7 @@ class BlurPanels extends BlurBase {
          if (blurredPanel) {
             let panelSettings = this._getPanelSettings(panel);
             if (!panelSettings ) return;
-            let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+            let [opacity, blendColor, blurType, radius, saturation, grain, customCSS] = panelSettings;
 
             let dimmerColor = this._getColor( blendColor, opacity );
             blurredPanel.background._blurCinnamonDimmer.set_background_color(dimmerColor);
@@ -3580,14 +4126,63 @@ class BlurPanels extends BlurBase {
       for ( let i=0 ; i < panels.length ; i++ ) {
          this._unblurPanel(panels[i]);
       }
+      if (this._hoverUpdateId) {
+         Mainloop.source_remove(this._hoverUpdateId);
+         this._hoverUpdateId = 0;
+      }
+      this._unloadHoverStylesheet();
 
       // Restore the original functions that we monkey patched
       Panel.Panel.prototype.enable     = this._originalPanelEnable;
       Panel.Panel.prototype.disable    = this._originalPanelDisable;
+      if (this._originalUpdateVisibility) {
+         // Delete our own-property wrapper so the instance falls back to Chrome.prototype._updateVisibility
+         delete this._chrome._updateVisibility;
+         if (this._chrome._updateVisibility !== this._originalUpdateVisibility)
+            this._chrome._updateVisibility = this._originalUpdateVisibility;
+         this._originalUpdateVisibility = null;
+      }
 
-      if (this._cubeNotifier && this._cubeNotifier.panelBlurProvider === this)
-         this._cubeNotifier.panelBlurProvider = null;
+      if (this._cubeNotifier) {
+         this._cubeNotifier.disconnect(this._cubeStartingId);
+         this._cubeNotifier.disconnect(this._cubeFinishedId);
+         if (this._cubeNotifier.panelBlurProvider === this)
+            this._cubeNotifier.panelBlurProvider = null;
+      }
       this._cubeNotifier = null;
+   }
+
+   // While Desktop Cube is shown, the panels are glued to the wallpaper of each cube face and the
+   // windows float in front of them, so a panel never has a window behind it. A Dynamic blur would
+   // still show the windows of the current workspace behind the panel, on every face. So for that
+   // time, each Dynamic panel background only clones the desktop window (icons), like a desklet's
+   // background, and gets its normal window clones back when the cube is gone. This also applies
+   // when the cube keeps the panels above it: what is behind them then is the cube, not the windows.
+   // The panel backgrounds stay mapped while the cube is shown (global.overlay_group is only
+   // covered), so the window clones are updated right away.
+   _onCubeStarting() {
+      this._onCubeFinished(); // In case a "cube-finished" was missed
+      this._cubeDesktopOnly = new Map();
+      this._blurredPanels.forEach( (blurredPanel) => {
+         let background = blurredPanel.background;
+         if (!background || !this._isDynamicEffectActive(background) || background._blurCinnamonDesktopOnly)
+            return;
+         this._cubeDesktopOnly.set(background, background._blurCinnamonDesktopOnly);
+         background._blurCinnamonDesktopOnly = true;
+         cloneWindowsForBackgroundNow(background, true);
+      });
+   }
+
+   _onCubeFinished() {
+      if (!this._cubeDesktopOnly) return;
+      this._cubeDesktopOnly.forEach( (desktopOnly, background) => {
+         // Skip backgrounds that were destroyed or lost their Dynamic effect in the meantime
+         if (!this._isDynamicEffectActive(background) || !background._blurCinnamonWinClones)
+            return;
+         background._blurCinnamonDesktopOnly = desktopOnly;
+         cloneWindowsForBackgroundNow(background, desktopOnly);
+      });
+      this._cubeDesktopOnly = null;
    }
 
    // Called by Desktop Cube (through global.desktopCubeNotifier) for each panel on each cube face,
@@ -3635,9 +4230,10 @@ class BlurPanels extends BlurBase {
             actor.set_style(blurredPanel.externalStyle || null);
             actor.set_style_class_name(blurredPanel.original_class);
             actor.set_style_pseudo_class(blurredPanel.original_pseudo_class);
+            this._setPanelHoverClass(actor, null);
             if (blurredPanel.background) {
                this._destroyDynamicEffect(blurredPanel.background);
-               this._destroyBackgroundAndViewport(blurredPanel.background, global.overlay_group);
+               this._destroyBackgroundAndViewport(blurredPanel.background, getBackgroundParent());
                blurredPanel.viewport = null;
             }
             if (blurredPanel.signalManager)
@@ -3665,7 +4261,7 @@ class BlurPanels extends BlurBase {
       if (transparent) {
          let panelSettings = this._getPanelSettings(panel);
          if (!panelSettings ) return;
-         blurredPanel.customCSS = panelSettings[5];
+         blurredPanel.customCSS = panelSettings[6];
          // Append our transparency CSS to the panel's own style (when allowTransparentColorPanels is enabled)
          this._applyPanelStyle(panel);
          //Mainloop.idle_add( () => { this._setClip(panel) } ); // This call to _setClip causes the blurred background to disappear for some reason.
@@ -3685,20 +4281,21 @@ class BlurPanels extends BlurBase {
          if (panels[i]) {
             let panelSettings = this._getPanelSettings(panels[i]);
             if (panelSettings) {
-               let [opacity, blendColor, blurType, radius, saturation, customCSS] = panelSettings;
+               let [opacity, blendColor, blurType, radius, saturation, grain, customCSS] = panelSettings;
                let blurredPanel = panels[i].__blurredPanel;
                if (blurredPanel) {
                   let wantsViewport = this._wantsViewport(blurType);
-                  if (!!blurredPanel.viewport !== wantsViewport) {
-                     // Whether this panel's background needs to be wrapped in a viewport (see
-                     // _createBackgroundAndEffects's useViewport) has changed - rebuild rather than
-                     // migrate the actor tree in place, the same way BlurApplications.updateEffects()
-                     // rebuilds for the equivalent transition.
+                  if (this._viewportMismatch(blurredPanel.background, blurType, wantsViewport)) {
+                     // This panel's background has to gain or lose its viewport (see
+                     // _createBackgroundAndEffects's useViewport), or needs one made for the other kind
+                     // of blur (see _viewportMismatch()) - rebuild rather than migrate the actor tree in
+                     // place, the same way BlurApplications.updateEffects() rebuilds for the equivalent
+                     // transition.
                      this._unblurPanel(panels[i]);
                      this._blurPanel(panels[i]);
                      blurredPanel = panels[i].__blurredPanel;
                   } else if (blurredPanel.viewport) {
-                     this._updateViewportEffects(blurredPanel.background, blurredPanel.viewport, opacity, blendColor, blurType, radius, saturation);
+                     this._updateViewportEffects(blurredPanel.background, blurredPanel.viewport, opacity, blendColor, blurType, radius, saturation, grain);
                   } else {
                      blurredPanel.background = this._updateEffects(blurredPanel.background, opacity, blendColor, blurType, radius, saturation);
                   }
@@ -3733,7 +4330,7 @@ class BlurPanels extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.panelsOpacity, settings.panelsBlendColor, settings.panelsBlurType, settings.panelsRadius, settings.panelsSaturation];
+      return [settings.panelsOpacity, settings.panelsBlendColor, settings.panelsBlurType, settings.panelsRadius, settings.panelsSaturation, settings.panelsGrain];
    }
 
    // Determine the settings that should apply for the panel argument panel
@@ -3757,7 +4354,7 @@ class BlurPanels extends BlurBase {
                   }
                }
                if (uniqueSetting.override) {
-                  return [uniqueSetting.opacity, uniqueSetting.color, uniqueSetting.blurtype, uniqueSetting.radius, uniqueSetting.saturation, uniqueSetting.customCSS];
+                  return [uniqueSetting.opacity, uniqueSetting.color, uniqueSetting.blurtype, uniqueSetting.radius, uniqueSetting.saturation, uniqueSetting.grain ?? DEFAULT_TABLE_GRAIN, uniqueSetting.customCSS];
                } else {
                   return [...this._getGenericSettings(), ""]
                }
@@ -3772,7 +4369,7 @@ class BlurPanels extends BlurBase {
    // Functions that will be monkey patched over the Panel functions
    blurEnable(...params) {
       try {
-         if (this.__blurredPanel && this.__blurredPanel.background && !global.display.get_monitor_in_fullscreen(this.monitorIndex) && !this._hidden) {
+         if (this.__blurredPanel && this.__blurredPanel.background && !panelHiddenByFullscreen(this) && !this._hidden) {
             // Only show the blurred background after the panel animation is almost done
             blurPanelsThis._queuePanelVisibility(this, true, AUTOHIDE_ANIMATION_TIME * 1000 * .9);
          }
@@ -3800,17 +4397,18 @@ class BlurPopupMenus extends BlurBase {
       super();
       debugMsg( "Constructing popup menu object" );
       this._menus = [];
+      this._reclipLaterId = 0;
       blurPopupMenusThis = this; // Make "this" available to monkey patched functions
       this.original_popupmenu_open = PopupMenu.PopupMenu.prototype.open;
       PopupMenu.PopupMenu.prototype.open = this._popupMenuOpen;
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.popupOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.popupOverride);
 
       // Setup the popup menu box color
       this._boxColor = this._getColor( "rgba(0,0,0,0)", 0/*blendColor, opacity*/ );
 
       let useViewport = this._wantsViewport(blurType);
-      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, useViewport); // Assume a corner radius of 10, it will be fixed if needed
+      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, useViewport); // Assume a corner radius of 10, it will be fixed if needed
       this._background._blurCinnamonName = "Menus";
       this._viewport = this._background._blurCinnamonViewport;
       if (this._viewport) this._viewport._blurCinnamonName = "Menus";
@@ -3820,6 +4418,10 @@ class BlurPopupMenus extends BlurBase {
       this._accentColor = this._getColor( blendColor, accentOpacity );
 
       this._changeCount = 0;
+
+      // A theme change can change whether a theme paints the menu sidebars, so those accent decisions must be redone
+      this._themeContext = St.ThemeContext.get_for_stage(global.stage);
+      this._themeChangedId = this._themeContext.connect("changed", () => this._onThemeChanged());
       debugMsg( "BlurPopupMenus initilized, actor hidden" );
    }
 
@@ -3828,7 +4430,7 @@ class BlurPopupMenus extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.popupOpacity, settings.popupBlendColor, settings.popupBlurType, settings.popupRadius, settings.popupSaturation];
+      return [settings.popupOpacity, settings.popupBlendColor, settings.popupBlurType, settings.popupRadius, settings.popupSaturation, settings.popupGrain];
    }
 
    // Monkey patched over PupupMenu.open()
@@ -3843,6 +4445,7 @@ class BlurPopupMenus extends BlurBase {
          // If we applied effects to this menu in the past, remove the effects now
          let idx = blurPopupMenusThis._menus.indexOf(this);
          if (idx !== -1) {
+            blurPopupMenusThis._cancelAccentActorsScan(this);
             this.blurCinnamonSignalManager.disconnectAllSignals();
             delete this.blurCinnamonSignalManager;
             blurPopupMenusThis._restoreMenuStyle(this);
@@ -3852,8 +4455,62 @@ class BlurPopupMenus extends BlurBase {
       blurPopupMenusThis.original_popupmenu_open.call(this, animate);
    }
 
+   _cancelMenuReclip() {
+      if (this._reclipLaterId) {
+         Meta.later_remove(this._reclipLaterId);
+         this._reclipLaterId = 0;
+      }
+   }
+
+   _queueMenuReclip(menu) {
+      if (menu !== this._currentMenu || this._reclipLaterId)
+         return;
+
+      let laterId = 0;
+      const isCurrent = () => this._currentMenu === menu && this._reclipLaterId === laterId;
+      laterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         if (!isCurrent()) return false;
+         try {
+            const actor = menu.actor;
+            if (!actor.visible) {
+               this._applyBackgroundClip(this._background, this._viewport, 0, 0, 0, 0);
+               if (isCurrent()) this._reclipLaterId = 0;
+               return false;
+            }
+            if (!actor.get_stage() || !actor.is_mapped())
+               return true;
+
+            const ready = this._setClip(menu);
+            if (!isCurrent()) return false;
+            if (!ready) return true;
+
+            // The initial clip is empty, so addBackground() cannot populate window clones yet.
+            // Populate them before this frame is painted instead of waiting for an idle.
+            // Pending work also includes window changes unrelated to the menu's geometry.
+            const background = this._background;
+            if (cloneManager && background._blurCinnamonWinClones && background._blurCinnamonRecloneId) {
+               Mainloop.source_remove(background._blurCinnamonRecloneId);
+               background._blurCinnamonRecloneId = 0;
+               cloneManager.backgroundClipChangedNow(background);
+            }
+            if (!isCurrent()) return false;
+            this._reclipLaterId = 0;
+            return false;
+         } catch (error) {
+            if (isCurrent()) {
+               this._reclipLaterId = 0;
+               this._applyBackgroundClip(this._background, this._viewport, 0, 0, 0, 0);
+            }
+            global.logError(error);
+            return false;
+         }
+      });
+      this._reclipLaterId = laterId;
+   }
+
    // Set the visible section of the background based on the size of the popup menu
    _setClip(menu){
+      const reclipLaterId = this._reclipLaterId;
       if (menu && this._currentMenu && menu === this._currentMenu) {
          let actor = menu.actor;
          if (actor.visible) {
@@ -3863,17 +4520,33 @@ class BlurPopupMenus extends BlurBase {
             let pTop = themeNode.get_padding(St.Side.TOP);
             let pBottom = themeNode.get_padding(St.Side.BOTTOM);
             let bm = menu.box.get_margin();
+            // Read allocated bounds only after layout. The width/height properties
+            // may include CSS margins while a relayout is pending.
+            // BEFORE_REDRAW can run before Clutter's normal relayout. This helper completes
+            // pending layout here. Waiting for has_allocation() can stall throughout an animation.
+            // _setClip() runs from the scheduled callback, never directly inside allocation handlers.
+            const box = Cinnamon.util_get_transformed_allocation(actor);
+            const width = box.x2 - box.x1;
+            const height = box.y2 - box.y1;
+            if (![box.x1, box.y1, width, height].every(Number.isFinite) || width <= 0 || height <= 0)
+               return false;
+            // Completing layout can emit signals that close, reopen or replace this menu.
+            if (menu !== this._currentMenu || reclipLaterId !== this._reclipLaterId)
+               return false;
             this._applyBackgroundClip(this._background, this._viewport,
-               actor.x+bm.left+pLeft, actor.y+bm.top+pTop,
-               actor.width-(bm.left+bm.right+pLeft+pRight), actor.height-(bm.top+bm.bottom+pTop+pBottom));
+               box.x1+bm.left+pLeft, box.y1+bm.top+pTop,
+               width-(bm.left+bm.right+pLeft+pRight), height-(bm.top+bm.bottom+pTop+pBottom));
          } else {
             this._applyBackgroundClip(this._background, this._viewport, 0, 0, 0, 0);
          }
+         return true;
       }
+      return false;
    }
 
    _onOpenStateChanged(menu, open) {
       if (open) {
+         this._cancelAccentActorsScan(this._currentMenu);
          debugMsg( `Applying setting to new popup menu: ${menu}` );
          let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.popupOverride);
 
@@ -3926,14 +4599,13 @@ class BlurPopupMenus extends BlurBase {
             }
          }
 
+         this._cancelMenuReclip();
          this._currentMenu = menu;
-         if (menu.animating) {
-            // Make the background visible but zero size initially, let the paint signal re-clip the background as needed
-            this._applyBackgroundClip(this._background, this._viewport, 0, 0, 0, 0);
-         } else {
-            // Use the exact same clip-rect formula _setClip() uses for every later notify::allocation update
-            this._setClip(menu);
-         }
+         // Make the background visible but zero size initially, let the paint signal re-clip the background as needed
+         this._applyBackgroundClip(this._background, this._viewport, 0, 0, 0, 0);
+         // Use the exact same clip-rect formula _setClip() uses for every later notify::allocation update
+         // Schedule every open, even if the final allocation is unchanged and emits no notification.
+         this._queueMenuReclip(menu);
          this._background.show();
          if (this._viewport) this._viewport.show();
          debugMsg( "Blurred actor is now visible" );
@@ -3944,7 +4616,9 @@ class BlurPopupMenus extends BlurBase {
          }
 
          // Now that the menu is open we need to know if new actors are added so we can check for accent elements
-         menu.blurCinnamonSignalManager.connect(menu.actor, 'queue-relayout', () => {this._findAccentActors(menu, menu.actor);} );
+         menu.blurCinnamonSignalManager.connect(menu.actor, 'queue-relayout', () => this._queueAccentActorsScan(menu) );
+      } else {
+         this._cancelAccentActorsScan(menu);
       }
    }
 
@@ -3955,13 +4629,18 @@ class BlurPopupMenus extends BlurBase {
    }
 
    _onDestroyed(menu) {
-      if (this._currentMenu === menu && this._background.is_visible()) {
-         // In some cases the Tween for the popupMenu close animation will not call its onComplete function
-         // and therefore no "menu-animated-closed" signal which would call _onClosed().
-         // In those cases we must unblur the popup menu, but the menu is already gone so we just hide the background.
-         debugMsg( "Unblurring on destroy" );
-         this._background.hide();
-         if (this._viewport) this._viewport.hide();
+      this._cancelAccentActorsScan(menu);
+      if (this._currentMenu === menu) {
+         this._cancelMenuReclip();
+         if (this._background.is_visible()) {
+            // In some cases the Tween for the popupMenu close animation will not call its onComplete function
+            // and therefore no "menu-animated-closed" signal which would call _onClosed().
+            // In those cases we must unblur the popup menu, but the menu is already gone so we just hide the background.
+            debugMsg( "Unblurring on destroy" );
+            this._background.hide();
+            if (this._viewport) this._viewport.hide();
+         }
+         this._currentMenu = null;
       }
       if (menu.blurCinnamonSignalManager) {
          menu.blurCinnamonSignalManager.disconnectAllSignals();
@@ -3997,19 +4676,21 @@ class BlurPopupMenus extends BlurBase {
 
    _applyActorStyle(actor, color) {
       let radius = 0;
-      if (!actor._blurCinnamonData) {
-         actor._blurCinnamonData = {original_entry_color: actor.get_background_color(), original_entry_style: actor.get_style(),
+      let style = actor.get_style();
+      if (!actor._blurCinnamonData || style !== actor._blurCinnamonData.applied_entry_style) {
+         actor._blurCinnamonData = {original_entry_color: actor.get_background_color(), original_entry_style: style,
                                     original_entry_class: actor.get_style_class_name(), original_entry_pseudo_class: actor.get_style_pseudo_class()};
-      } else {
-         let style = actor.get_style();
-         if (style.startsWith(actor._blurCinnamonData.original_entry_style) === false) {
-            actor._blurCinnamonData = {original_entry_color: actor.get_background_color(), original_entry_style: actor.get_style(),
-                                    original_entry_class: actor.get_style_class_name(), original_entry_pseudo_class: actor.get_style_pseudo_class()};
-         }
       }
 
+      // Preserve the original value, including null, for exact restoration.
+      let originalStyle = actor._blurCinnamonData.original_entry_style ?? "";
+      if (originalStyle.length > 0 && !originalStyle.trimEnd().endsWith(";"))
+         originalStyle += ";";
       let rgba = `rgba(${color.red}, ${color.green}, ${color.blue}, ${color.alpha/255.0})`
-      actor.set_style( actor._blurCinnamonData.original_entry_style + `background-gradient-direction: vertical; background-gradient-start: ${rgba}; background-gradient-end: ${rgba};`  );
+      let appliedStyle = originalStyle + (originalStyle.length > 0 ? " " : "") + `background-gradient-direction: vertical; background-gradient-start: ${rgba}; background-gradient-end: ${rgba};`;
+      // Identify CSS exactly so reapplication never rebases it
+      actor._blurCinnamonData.applied_entry_style = appliedStyle;
+      actor.set_style(appliedStyle);
       return;
    }
 
@@ -4039,6 +4720,77 @@ class BlurPopupMenus extends BlurBase {
       delete actor._blurCinnamonData;
    }
 
+   _cancelAccentActorsScan(menu) {
+      if (menu && menu._blurCinnamonAccentLaterId) {
+         Meta.later_remove(menu._blurCinnamonAccentLaterId);
+         delete menu._blurCinnamonAccentLaterId;
+      }
+   }
+
+   // Coalesce content checks before painting; the initial discovery still runs synchronously on open
+   _queueAccentActorsScan(menu) {
+      if (menu !== this._currentMenu || !menu.isOpen || !settings.allowTransparentColorPopup || menu._blurCinnamonAccentLaterId)
+         return;
+
+      const laterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         if (menu._blurCinnamonAccentLaterId !== laterId)
+            return false;
+         // Allow changes during the traversal to schedule a follow-up check
+         delete menu._blurCinnamonAccentLaterId;
+         if (menu !== this._currentMenu || !menu.isOpen || !settings.allowTransparentColorPopup)
+            return false;
+         try {
+            this._findAccentActors(menu, menu.actor);
+         } catch (error) {
+            global.logError(error);
+         }
+         return false;
+      });
+      menu._blurCinnamonAccentLaterId = laterId;
+   }
+
+   // Forget the theme-dependent accent decisions so the sidebars are checked again against the new theme
+   _onThemeChanged() {
+      for (const menu of this._menus) {
+         if (menu._blurCinnamonAccentActors) {
+            menu._blurCinnamonAccentActors = menu._blurCinnamonAccentActors.filter( (child) => {
+               if (!THEME_CHECKED_ACCENT_CLASSES.includes(child.get_style_class_name()))
+                  return true;
+               if (child._blurCinnamonData)
+                  this._restoreActorStyle(child); // Leaves _blurCinnamonData undefined
+               return false;
+            });
+         }
+         this._clearThemeSkipMarkers(menu.actor);
+         // An open menu won't be rescanned until something changes in it, so rescan it now
+         if (menu === this._currentMenu && menu.isOpen)
+            this._queueAccentActorsScan(menu);
+      }
+   }
+
+   _clearThemeSkipMarkers(actor) {
+      for (const child of actor.get_children()) {
+         if (child._blurCinnamonData === null && child instanceof St.BoxLayout &&
+             THEME_CHECKED_ACCENT_CLASSES.includes(child.get_style_class_name()))
+            delete child._blurCinnamonData;
+         this._clearThemeSkipMarkers(child);
+      }
+   }
+
+   // Does the current theme paint a background (color, gradient or image) on this actor?
+   // Returns null when the actor is not on the stage yet, since its theme node can't be read then.
+   _themeFillsBackground(actor) {
+      if (!actor.get_stage())
+         return null;
+      const node = actor.get_theme_node();
+      if (node.get_background_color().alpha > 0)
+         return true;
+      const [gradientType] = node.get_background_gradient();
+      if (gradientType !== St.GradientType.NONE)
+         return true;
+      return node.get_background_image() !== null;
+   }
+
    // Look for Popup menu accent actors
    _findAccentActors(menu, actor) {
       if (!menu._blurCinnamonAccentActors)
@@ -4053,10 +4805,18 @@ class BlurPopupMenus extends BlurBase {
                menu._blurCinnamonAccentActors.push(child);
             } else if (child instanceof St.BoxLayout) {
                let styleClassName = child.get_style_class_name();
-               if (styleClassName && (styleClassName == "menu-favorites-box" || styleClassName == "appmenu-sidebar")) {
-                  debugMsg( `found new menu accent actor: ${styleClassName}` );
-                  this._applyActorStyle(child, this._accentColor);
-                  menu._blurCinnamonAccentActors.push(child);
+               if (styleClassName && THEME_CHECKED_ACCENT_CLASSES.includes(styleClassName)) {
+                  // Only accent the sidebar if the theme itself paints it (e.g. Soul-Dark leaves it transparent).
+                  // This must be checked before our inline style is applied, since the theme node includes it.
+                  const themeFilled = this._themeFillsBackground(child);
+                  if (themeFilled) {
+                     debugMsg( `found new menu accent actor: ${styleClassName}` );
+                     this._applyActorStyle(child, this._accentColor);
+                     menu._blurCinnamonAccentActors.push(child);
+                  } else if (themeFilled === false) {
+                     debugMsg( `theme does not paint ${styleClassName}, skipping accent` );
+                     child._blurCinnamonData = null; // Not interesting for future calls to this function
+                  } // else: not on the stage yet, leave it undefined so a later scan checks it again
                }
             } else if (child instanceof St.Table) {
                let name = child.get_name();
@@ -4085,16 +4845,19 @@ class BlurPopupMenus extends BlurBase {
          menu.blurCinnamonSignalManager.connect(menu, "open-state-changed", Lang.bind(this, this._onOpenStateChanged) );
          menu.blurCinnamonSignalManager.connect(menu, "menu-animated-closed", Lang.bind(this, this._onClosed) );
          menu.blurCinnamonSignalManager.connect(menu, "destroy", () => {this._onDestroyed(menu)} );
-         //menu.blurCinnamonSignalManager.connect(menu.actor, 'notify::size', () => {this._setClip(menu);} );
-         //menu.blurCinnamonSignalManager.connect(menu.actor, 'notify::position', () => {this._setClip(menu);} );
-         menu.blurCinnamonSignalManager.connect(menu.actor, "notify::allocation", () => this._setClip(menu) );
+         const queueReclip = () => this._queueMenuReclip(menu);
+         menu.blurCinnamonSignalManager.connect(menu.actor, "notify::allocation", queueReclip);
+         menu.blurCinnamonSignalManager.connect(menu.actor, "notify::size", queueReclip);
+         menu.blurCinnamonSignalManager.connect(menu.actor, "notify::position", queueReclip);
          this._menus.push(menu);
       }
       debugMsg( "attach complete" );
    }
 
    _unblurPopupMenu(menu) {
+      this._cancelAccentActorsScan(menu);
       if (this._currentMenu === menu) {
+         this._cancelMenuReclip();
          this._background.hide();
          if (this._viewport) this._viewport.hide();
          debugMsg( "blur actor hidden" );
@@ -4107,27 +4870,30 @@ class BlurPopupMenus extends BlurBase {
    }
 
    updateEffects() {
+      this._cancelAccentActorsScan(this._currentMenu);
+      this._cancelMenuReclip();
       debugMsg("updateEffects for popup menus" );
       this._changeCount++;
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.popupOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.popupOverride);
       let accentOpacity = settings.popupAccentOpacity;
 
       let wantsViewport = this._wantsViewport(blurType);
-      if (!!this._viewport !== wantsViewport) {
-         // Whether the shared menu background needs to be wrapped in a viewport (see
-         // _createBackgroundAndEffects's useViewport) has changed - rebuild rather than migrate
-         // the actor tree in place, the same way BlurApplications.updateEffects() rebuilds for the
-         // equivalent transition. Corner radius is rebuilt at the same default-10 the constructor
-         // uses - _onOpenStateChanged() re-derives the real radius from the menu's theme node the
-         // next time a menu opens, exactly as it already does after construction.
-         this._destroyBackgroundAndViewport(this._background, global.overlay_group);
-         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, wantsViewport);
+      if (this._viewportMismatch(this._background, blurType, wantsViewport)) {
+         // The shared menu background has to gain or lose its viewport (see
+         // _createBackgroundAndEffects's useViewport), or needs one made for the other kind of blur
+         // (see _viewportMismatch()) - rebuild rather than migrate the actor tree in place, the
+         // same way BlurApplications.updateEffects() rebuilds for the equivalent transition. Corner
+         // radius is rebuilt at the same default-10 the constructor uses - _onOpenStateChanged()
+         // re-derives the real radius from the menu's theme node the next time a menu opens,
+         // exactly as it already does after construction.
+         this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
+         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, wantsViewport);
          this._background._blurCinnamonName = "Menus";
          this._viewport = this._background._blurCinnamonViewport;
          if (this._viewport) this._viewport._blurCinnamonName = "Menus";
       } else if (this._viewport) {
-         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation);
+         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation, grain);
       } else {
          this._background = this._updateEffects(this._background, opacity, blendColor, blurType, radius, saturation);
       }
@@ -4157,10 +4923,18 @@ class BlurPopupMenus extends BlurBase {
    }
 
    destroy() {
+      this._cancelMenuReclip();
+      this._currentMenu = null;
       // Restore monkey patched PopupMenu open & close functions
       debugMsg( "Destroying Popup Menu object" );
+      if (this._themeChangedId) {
+         this._themeContext.disconnect(this._themeChangedId);
+         this._themeChangedId = 0;
+      }
+      for (const menu of this._menus)
+         this._cancelAccentActorsScan(menu);
       PopupMenu.PopupMenu.prototype.open = this.original_popupmenu_open;
-      this._destroyBackgroundAndViewport(this._background, global.overlay_group);
+      this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
       // Remove all data in the menus associated with blurCinnamon
       let menus = this._menus;
       if (menus) {
@@ -4178,40 +4952,48 @@ class BlurPopupMenus extends BlurBase {
 }
 
 class BlurDesktop extends BlurBase {
-   // The effects and dimmer go on the actor that paints the wallpaper (see _findTarget()): on X11 that's
-   // global.background_actor. Wayland has no root-window background, so csd-background draws the wallpaper
-   // in its own DESKTOP window (see WallpaperTracker) and that window's actor is the target instead. It
-   // may not exist yet when this class starts, and csd-background can be restarted, so on Wayland the
-   // target is picked up when the window maps and dropped when its actor is destroyed.
+   // The effects and dimmer go on the actor(s) that paint the wallpaper (see _findTargets()):
+   //  - Cinnamon 6.8+ (X11 and Wayland): global.get_background_actors(), the live per-monitor wallpaper
+   //    actors (root-pixmap actors on X11, cinnamon-background-daemon's layer-shell surfaces on Wayland).
+   //    global.background_actor is deprecated there and only covers the first monitor.
+   //  - Older Cinnamon on X11: global.background_actor.
+   //  - Older Cinnamon on Wayland: csd-background's DESKTOP window actor (see WallpaperTracker).
+   // An effect or actor can only be attached to one actor, so every target gets its own blur effect,
+   // desaturate effect and dimmer; this class keeps the wanted state and applies it to all of them.
+   // Targets can come and go (monitor changes rebuild the X11 actors, the background daemon or
+   // csd-background can restart), so the list is re-synced whenever that may have happened.
    constructor() {
       super();
       this._signalManager = new SignalManager.SignalManager(null);
-      this._target = null;
-      this._targetDestroyId = 0;
+      this._targets = new Map();   // target actor -> { blur, desat, dimmer, destroyId, sizeId, mappedId }
+      this._connected = false;
+      this._currentlyWithFocus = false;
       this._mapId = 0;
+      this._backgroundChangedId = 0;
+      this._syncLaterId = 0;
+      this._useBackgroundActors = typeof global.get_background_actors === "function";
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.desktopOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.desktopOverride);
+      this._effectKind = this._blurKindForType(blurType);
+      this._blurEnabled = blurType !== BlurType.None && !!this._effectKind;
+      this._radius = radius;
+      this._grain = grain;
+      this._desatFactor = (100 - saturation) / 100;
+      this._dimmerColor = this._getColor( blendColor, opacity );
 
-      if (blurType === BlurType.Simple)
-         this._blurEffect = new Clutter.BlurEffect();
-      else if (blurType === BlurType.Gaussian)
-         this._blurEffect = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0} );
-      else if (blurType === BlurType.MonteCarlo)
-         this._blurEffect = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } );
-      else if (blurType === BlurType.DualKawase)
-         this._blurEffect = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
-      this._blurEnabled = !!this._blurEffect;
-      this._desatEffect = new Clutter.DesaturateEffect({ factor: (100 - saturation) / 100 });
-      // A dimmer child of the target so we can change the colorization and dimming of the background
-      let dimmerColor = this._getColor( blendColor, opacity );
-      this._dimmer = new Clutter.Actor({x_expand: true, y_expand: true, width: global.screen_width, height: global.screen_height, background_color: dimmerColor});
+      this._monitorsChangedId = Main.layoutManager.connect("monitors-changed", () => this._queueSyncTargets());
+      if (this._useBackgroundActors) {
+         // The background manager emits "changed" when the daemon (re)starts or renders a new layout
+         if (Main.backgroundManager && typeof Main.backgroundManager.connect === "function")
+            this._backgroundChangedId = Main.backgroundManager.connect("changed", () => this._queueSyncTargets());
+      } else if (Meta.is_wayland_compositor()) {
+         this._mapId = global.window_manager.connect("map", (wm, actor) => {
+            if (isWallpaperWindow(actor.get_meta_window ? actor.get_meta_window() : null))
+               this._queueSyncTargets();
+         });
+      }
 
-      // Always keep the dimmer at the screen size (this used to be connected only with the "without focus" option)
-      this._monitorsChangedId = Main.layoutManager.connect("monitors-changed", () => this._monitorsChanged());
-      if (Meta.is_wayland_compositor())
-         this._mapId = global.window_manager.connect("map", (wm, actor) => this._onWindowMapped(actor));
-
-      this._setTarget(this._findTarget());
+      this._syncTargets();
       this.updateEffects();
    }
 
@@ -4223,81 +5005,152 @@ class BlurDesktop extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.desktopOpacity, settings.desktopBlendColor, settings.desktopBlurType, settings.desktopRadius, settings.desktopSaturation];
+      return [settings.desktopOpacity, settings.desktopBlendColor, settings.desktopBlurType, settings.desktopRadius, settings.desktopSaturation, settings.desktopGrain];
    }
 
-   _findTarget() {
+   // The blur effect class for a blur type, or null for a type the desktop doesn't have its own effect
+   // for (any other type keeps the current kind, as before)
+   _blurKindForType(blurType) {
+      if (blurType === BlurType.Simple)     return Clutter.BlurEffect;
+      if (blurType === BlurType.Gaussian)   return GaussianBlur.GaussianBlurEffect;
+      if (blurType === BlurType.MonteCarlo) return MonteCarloBlur.MonteCarloBlurEffect;
+      if (blurType === BlurType.DualKawase) return DualKawaseBlur.DualFilteringBlurEffect;
+      return null;
+   }
+
+   _createBlurEffect() {
+      let kind = this._effectKind;
+      if (kind === Clutter.BlurEffect)
+         return new Clutter.BlurEffect();
+      if (kind === GaussianBlur.GaussianBlurEffect)
+         return new GaussianBlur.GaussianBlurEffect( {radius: this._radius, brightness: 1, width: 0, height: 0, grain: this._grain} );
+      if (kind === MonteCarloBlur.MonteCarloBlurEffect)
+         return new MonteCarloBlur.MonteCarloBlurEffect( { radius: this._radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0, grain: this._grain } );
+      if (kind === DualKawaseBlur.DualFilteringBlurEffect)
+         return new DualKawaseBlur.DualFilteringBlurEffect( { radius: this._radius, brightness: 1, width: 0, height: 0, grain: this._grain } );
+      return null;
+   }
+
+   _findTargets() {
+      if (this._useBackgroundActors)
+         return global.get_background_actors() || [];
       if (!Meta.is_wayland_compositor())
-         return global.background_actor;
+         return global.background_actor ? [global.background_actor] : [];
       let actor = global.get_window_actors().find( (a) => isWallpaperWindow(a.get_meta_window()) );
-      return actor || null;
+      return actor ? [actor] : [];
    }
 
-   _onWindowMapped(actor) {
-      if (actor !== this._target && isWallpaperWindow(actor.get_meta_window ? actor.get_meta_window() : null))
-         this._setTarget(actor);
-   }
-
-   // The "destroy" signal's default handler (which destroys children) runs after this, so the dimmer is
-   // taken off the dying window actor here before it would be destroyed along with it.
-   _onTargetDestroyed(actor) {
-      if (actor === this._target)
-         this._setTarget(null);
-   }
-
-   // Move our effects and dimmer from the current target (if any) to target (may be null)
-   _setTarget(target) {
-      if (target === this._target)
+   // Re-sync from a later: the signals that trigger it can arrive before Muffin has rebuilt its list
+   _queueSyncTargets() {
+      if (this._syncLaterId)
          return;
-      let old = this._target;
-      if (old) {
-         if (this._targetDestroyId) {
-            old.disconnect(this._targetDestroyId);
-            this._targetDestroyId = 0;
-         }
-         if (this._blurEffect && old.get_effect(BLUR_EFFECT_NAME) === this._blurEffect)
-            old.remove_effect(this._blurEffect);
-         if (old.get_effect(DESAT_EFFECT_NAME) === this._desatEffect)
-            old.remove_effect(this._desatEffect);
-         if (this._dimmer.get_parent() === old)
-            old.remove_child(this._dimmer);
+      this._syncLaterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         this._syncLaterId = 0;
+         this._syncTargets();
+         return false;
+      });
+   }
+
+   _syncTargets() {
+      let wanted = this._findTargets();
+      for (let target of [...this._targets.keys()]) {
+         if (wanted.indexOf(target) === -1)
+            this._detach(target);
       }
-      this._target = target;
-      if (target) {
-         if (target !== global.background_actor)
-            this._targetDestroyId = target.connect("destroy", (self) => this._onTargetDestroyed(self));
-         if (this._blurEnabled)
-            target.add_effect_with_name( BLUR_EFFECT_NAME, this._blurEffect );
-         target.add_effect_with_name( DESAT_EFFECT_NAME, this._desatEffect );
-         target.add_child(this._dimmer);
-         debugMsg( `Desktop effects attached to ${target}` );
+      for (let target of wanted) {
+         if (!this._targets.has(target))
+            this._attach(target);
       }
    }
 
-   // Make the target's blur effect match this._blurEffect/this._blurEnabled
-   _syncBlurOnTarget() {
-      if (!this._target)
+   _attach(target) {
+      let entry = {blur: null, desat: null, dimmer: null, destroyId: 0, sizeId: 0, mappedId: 0};
+      entry.desat = new Clutter.DesaturateEffect({ factor: this._desatFactor });
+      entry.dimmer = new Clutter.Actor({width: target.width, height: target.height, background_color: this._dimmerColor});
+      // The "destroy" signal's default handler (which destroys children) runs after this, so the dimmer is
+      // taken off the dying actor here before it would be destroyed along with it.
+      entry.destroyId = target.connect("destroy", (self) => { this._detach(self); this._queueSyncTargets(); });
+      entry.sizeId = target.connect("notify::size", (self) => {
+         let e = this._targets.get(self);
+         if (e) e.dimmer.set_size(self.width, self.height);
+      });
+      // A layer surface that is unmapped may be dropped from the background list without being destroyed
+      entry.mappedId = target.connect("notify::mapped", () => this._queueSyncTargets());
+      this._targets.set(target, entry);
+      this._syncBlur(target, entry);
+      target.add_effect_with_name( DESAT_EFFECT_NAME, entry.desat );
+      target.add_child(entry.dimmer);
+      debugMsg( `Desktop effects attached to ${target}` );
+   }
+
+   _detach(target) {
+      let entry = this._targets.get(target);
+      if (!entry)
          return;
-      let curEffect = this._target.get_effect(BLUR_EFFECT_NAME);
-      if (this._blurEnabled) {
-         if (curEffect !== this._blurEffect) {
-            if (curEffect)
-               this._target.remove_effect(curEffect);
-            this._target.add_effect_with_name( BLUR_EFFECT_NAME, this._blurEffect );
-         }
-      } else if (curEffect) {
-         this._target.remove_effect(curEffect);
+      this._targets.delete(target);
+      target.disconnect(entry.destroyId);
+      target.disconnect(entry.sizeId);
+      target.disconnect(entry.mappedId);
+      if (entry.blur && target.get_effect(BLUR_EFFECT_NAME) === entry.blur)
+         target.remove_effect(entry.blur);
+      if (target.get_effect(DESAT_EFFECT_NAME) === entry.desat)
+         target.remove_effect(entry.desat);
+      if (entry.dimmer.get_parent() === target)
+         target.remove_child(entry.dimmer);
+      entry.dimmer.destroy();
+   }
+
+   // Make a target's blur effect match the wanted kind/enabled state and parameters
+   _syncBlur(target, entry) {
+      if (entry.blur && (!this._blurEnabled || !(entry.blur instanceof this._effectKind))) {
+         if (target.get_effect(BLUR_EFFECT_NAME) === entry.blur)
+            target.remove_effect(entry.blur);
+         entry.blur = null;
       }
+      if (this._blurEnabled && !entry.blur) {
+         entry.blur = this._createBlurEffect();
+         if (entry.blur)
+            target.add_effect_with_name( BLUR_EFFECT_NAME, entry.blur );
+         return;
+      }
+      if (!entry.blur)
+         return;
+      if (!(entry.blur instanceof Clutter.BlurEffect) && entry.blur.radius != this._radius)
+         entry.blur.radius = this._radius;
+      if (entry.blur instanceof EffectPool.EffectBase)
+         entry.blur.grain = this._grain;
+      if (entry.blur instanceof MonteCarloBlur.MonteCarloBlurEffect) {
+         entry.blur.iterations = settings.montecarloIterations;
+         entry.blur.use_base_pixel = settings.montecarloUseBasePixel;
+         entry.blur.prefer_closer_pixels = settings.montecarloPerferCloserPixels;
+      }
+   }
+
+   // Apply the wanted state to every target
+   _applyAll() {
+      for (let [target, entry] of this._targets) {
+         this._syncBlur(target, entry);
+         if (entry.desat.factor !== this._desatFactor)
+            entry.desat.set_factor(this._desatFactor);
+         entry.dimmer.set_background_color(this._dimmerColor);
+      }
+   }
+
+   _setState(s) {
+      this._radius = s.radius;
+      this._grain = s.grain;
+      this._dimmerColor = this._getColor( s.blendColor, s.opacity );
+      this._desatFactor = (100 - s.saturation) / 100;
    }
 
    updateEffects() {
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.desktopOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.desktopOverride);
 
-      this._withoutFocusSettings = {radius: radius, opacity: opacity, blendColor: blendColor, saturation: saturation};
+      this._withoutFocusSettings = {radius: radius, opacity: opacity, blendColor: blendColor, saturation: saturation, grain: grain};
       if (settings.desktopOverride && settings.desktopWithFocus) {
-         this._withFocusSettings = {radius: settings.radius, opacity: settings.opacity, blendColor: settings.blendColor, saturation: settings.saturation};
+         this._withFocusSettings = {radius: settings.radius, opacity: settings.opacity, blendColor: settings.blendColor, saturation: settings.saturation, grain: settings.grain};
       } else {
-         this._withFocusSettings = {radius: 0, opacity: 0, blendColor: "",saturation: 100};
+         this._withFocusSettings = {radius: 0, opacity: 0, blendColor: "",saturation: 100, grain: 0};
       }
       if (this._connected && !settings.desktopWithoutFocus) {
          this._signalManager.disconnectAllSignals();
@@ -4307,80 +5160,45 @@ class BlurDesktop extends BlurBase {
          this._connected = true;
       }
       // Switch to a new blur effect when the type changed (any other type keeps the current one, as before)
-      let newEffect = this._blurEffect;
-      if (blurType === BlurType.Simple && !(newEffect instanceof Clutter.BlurEffect)) {
-         newEffect = new Clutter.BlurEffect();
-      } else if (blurType === BlurType.Gaussian && !(newEffect instanceof GaussianBlur.GaussianBlurEffect)) {
-         newEffect = new GaussianBlur.GaussianBlurEffect( {radius: radius, brightness: 1, width: 0, height: 0} );
-      } else if (blurType === BlurType.MonteCarlo && !(newEffect instanceof MonteCarloBlur.MonteCarloBlurEffect)) {
-         newEffect = new MonteCarloBlur.MonteCarloBlurEffect( { radius: radius, iterations: settings.montecarloIterations, prefer_closer_pixels: settings.montecarloPerferCloserPixels, use_base_pixel: settings.montecarloUseBasePixel, brightness: 1, width: 0, height: 0 } );
-      } else if (blurType === BlurType.DualKawase && !(newEffect instanceof DualKawaseBlur.DualFilteringBlurEffect)) {
-         newEffect = new DualKawaseBlur.DualFilteringBlurEffect( { radius: radius, brightness: 1, width: 0, height: 0 } );
-      }
-      if (newEffect !== this._blurEffect && this._target && this._blurEffect && this._target.get_effect(BLUR_EFFECT_NAME) === this._blurEffect)
-         this._target.remove_effect(this._blurEffect);
-      this._blurEffect = newEffect;
-      this._blurEnabled = blurType !== BlurType.None && !!this._blurEffect;
-      this._syncBlurOnTarget();
-      // Adjust the effects
-      if ((this._blurEffect instanceof GaussianBlur.GaussianBlurEffect || this._blurEffect instanceof MonteCarloBlur.MonteCarloBlurEffect || this._blurEffect instanceof DualKawaseBlur.DualFilteringBlurEffect) && this._blurEffect.radius != radius) {
-         this._blurEffect.radius = radius;
-      }
-      // If Monte Carlo, update it's settings
-      if (this._blurEffect instanceof MonteCarloBlur.MonteCarloBlurEffect) {
-         this._blurEffect.iterations = settings.montecarloIterations;
-         this._blurEffect.use_base_pixel = settings.montecarloUseBasePixel;
-         this._blurEffect.prefer_closer_pixels = settings.montecarloPerferCloserPixels;
-      }
-      if (this._desatEffect.factor !== (100-saturation)/100) {
-         this._desatEffect.set_factor((100-saturation)/100);
-      }
-      let dimmerColor = this._getColor( blendColor, opacity );
-      this._dimmer.set_background_color(dimmerColor);
-      if (this._connected) {
-         this._onFocusChanged();
-      }
+      let kind = this._blurKindForType(blurType);
+      if (kind)
+         this._effectKind = kind;
+      this._blurEnabled = blurType !== BlurType.None && !!this._effectKind;
+      this._setState(this._withoutFocusSettings);
+      this._currentlyWithFocus = false;
+      if (this._connected)
+         this._onFocusChanged(false);
+      this._applyAll();
    }
 
-   _onFocusChanged(){
+   _onFocusChanged(apply = true){
       let window = global.display.get_focus_window();
-      if (!window || window.get_window_type() === Meta.WindowType.DESKTOP) {
-         if ((this._blurEffect instanceof GaussianBlur.GaussianBlurEffect || this._blurEffect instanceof MonteCarloBlur.MonteCarloBlurEffect || this._blurEffect instanceof DualKawaseBlur.DualFilteringBlurEffect) && this._blurEffect.radius != this._withFocusSettings.radius)
-            this._blurEffect.radius = this._withFocusSettings.radius;
-         let dimmerColor = this._getColor( this._withFocusSettings.blendColor, this._withFocusSettings.opacity );
-         this._dimmer.set_background_color(dimmerColor);
-         if (this._desatEffect.factor !== (100-this._withFocusSettings.saturation)/100)
-            this._desatEffect.set_factor((100-this._withFocusSettings.saturation)/100);
-         this._currentlyWithFocus = true;
+      let withFocus = !window || window.get_window_type() === Meta.WindowType.DESKTOP;
+      if (withFocus === this._currentlyWithFocus)
          return;
-      }
-      if (this._currentlyWithFocus) {
-         if ((this._blurEffect instanceof GaussianBlur.GaussianBlurEffect || this._blurEffect instanceof MonteCarloBlur.MonteCarloBlurEffect || this._blurEffect instanceof DualKawaseBlur.DualFilteringBlurEffect) && this._blurEffect.radius != this._withoutFocusSettings.radius)
-            this._blurEffect.radius = this._withoutFocusSettings.radius;
-         let dimmerColor = this._getColor( this._withoutFocusSettings.blendColor, this._withoutFocusSettings.opacity );
-         this._dimmer.set_background_color(dimmerColor);
-         if (this._desatEffect.factor !== (100-this._withoutFocusSettings.saturation)/100)
-            this._desatEffect.set_factor((100-this._withoutFocusSettings.saturation)/100);
-         this._currentlyWithFocus = false;
-      }
-   }
-
-   _monitorsChanged() {
-      debugMsg( `Monitor Changed: Scale ${global.ui_scale}, Width,Height ${global.screen_width},${global.screen_height}` );
-      this._dimmer.set_width(global.screen_width);
-      this._dimmer.set_height(global.screen_height);
+      this._currentlyWithFocus = withFocus;
+      this._setState(withFocus ? this._withFocusSettings : this._withoutFocusSettings);
+      if (apply)
+         this._applyAll();
    }
 
    destroy() {
       this._signalManager.disconnectAllSignals();
       Main.layoutManager.disconnect(this._monitorsChangedId);
+      if (this._backgroundChangedId) {
+         Main.backgroundManager.disconnect(this._backgroundChangedId);
+         this._backgroundChangedId = 0;
+      }
       if (this._mapId) {
          global.window_manager.disconnect(this._mapId);
          this._mapId = 0;
       }
-      this._setTarget(null);
-      this._dimmer.destroy();
-      this._dimmer = null;
+      if (this._syncLaterId) {
+         Meta.later_remove(this._syncLaterId);
+         this._syncLaterId = 0;
+      }
+      for (let target of [...this._targets.keys()])
+         this._detach(target);
    }
 }
 
@@ -4397,10 +5215,10 @@ class BlurNotifications extends BlurBase {
       MessageTray.MessageTray.prototype._hideNotification = this._hideNotification;
 
       // Create the effects and the background actor to apply to effects to
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.notificationOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.notificationOverride);
       this._blurType = blurType;
       let useViewport = this._wantsViewport(blurType);
-      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, useViewport);
+      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, useViewport);
       this._background._blurCinnamonName = "Notifications";
       this._viewport = this._background._blurCinnamonViewport;
       if (this._viewport) this._viewport._blurCinnamonName = "Notifications";
@@ -4414,30 +5232,31 @@ class BlurNotifications extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.notificationOpacity, settings.notificationBlendColor, settings.notificationBlurType, settings.notificationRadius, settings.notificationSaturation];
+      return [settings.notificationOpacity, settings.notificationBlendColor, settings.notificationBlurType, settings.notificationRadius, settings.notificationSaturation, settings.notificationGrain];
    }
 
    updateEffects() {
       this._cancelShowTimeout()
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.notificationOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.notificationOverride);
 
       this._blurType = blurType;
       let wantsViewport = this._wantsViewport(blurType);
-      if (!!this._viewport !== wantsViewport) {
-         // Whether the shared notification background needs to be wrapped in a viewport (see
-         // _createBackgroundAndEffects's useViewport) has changed - rebuild rather than migrate
-         // the actor tree in place, the same way BlurApplications.updateEffects() rebuilds for the
-         // equivalent transition. Corner radius is rebuilt at the same default-10 the constructor
-         // uses - the block below re-derives the real radius from the notification's theme node
-         // right after, exactly as it already did after construction.
-         this._destroyBackgroundAndViewport(this._background, global.overlay_group);
-         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, wantsViewport);
+      if (this._viewportMismatch(this._background, blurType, wantsViewport)) {
+         // The shared notification background has to gain or lose its viewport (see
+         // _createBackgroundAndEffects's useViewport), or needs one made for the other kind of blur
+         // (see _viewportMismatch()) - rebuild rather than migrate the actor tree in place, the
+         // same way BlurApplications.updateEffects() rebuilds for the equivalent transition. Corner
+         // radius is rebuilt at the same default-10 the constructor uses - the block below
+         // re-derives the real radius from the notification's theme node right after, exactly as it
+         // already did after construction.
+         this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
+         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, wantsViewport);
          this._background._blurCinnamonName = "Notifications";
          this._viewport = this._background._blurCinnamonViewport;
          if (this._viewport) this._viewport._blurCinnamonName = "Notifications";
       } else if (this._viewport) {
-         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation);
+         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation, grain);
       } else {
          this._background = this._updateEffects(this._background, opacity, blendColor, blurType, radius, saturation);
       }
@@ -4542,7 +5361,7 @@ class BlurNotifications extends BlurBase {
          this._createDynamicEffect(this._background);
       }
       // The notification window size can change after being shown, so we need to adjust the background when that happens
-      this._signalManager.connect(actor, "notify::allocation", () => this._setClip(actor, this._background, table, this._viewport) );
+      connectDeferredClip(this._signalManager, actor, () => this._setClip(actor, this._background, table, this._viewport) );
       if (!showFullscreenNotifications) {
          this._signalManager.connect(global.display, "in-fullscreen-changed", this._fullscreen_changed, this);
       }
@@ -4616,7 +5435,7 @@ class BlurNotifications extends BlurBase {
       // Restore monkey patched functions and destroy the _background
       MessageTray.MessageTray.prototype._showNotification = this.original_showNotification;
       MessageTray.MessageTray.prototype._hideNotification = this.original_hideNotification;
-      this._destroyBackgroundAndViewport(this._background, global.overlay_group);
+      this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
       if (blurNotificationsThis === this) blurNotificationsThis = null;
    }
 }
@@ -4634,9 +5453,9 @@ class BlurTooltips extends BlurBase {
       this.original_Tooltip_hide = Tooltips.Tooltip.prototype.hide;
       Tooltips.Tooltip.prototype.hide = this._hide_Tooltip;
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.tooltipsOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.tooltipsOverride);
       let useViewport = this._wantsViewport(blurType);
-      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, useViewport);
+      this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, useViewport);
       this._background._blurCinnamonName = "Tooltips";
       this._viewport = this._background._blurCinnamonViewport;
       if (this._viewport) this._viewport._blurCinnamonName = "Tooltips";
@@ -4647,27 +5466,28 @@ class BlurTooltips extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.tooltipOpacity, settings.tooltipBlendColor, settings.tooltipBlurType, settings.tooltipRadius, settings.tooltipSaturation];
+      return [settings.tooltipOpacity, settings.tooltipBlendColor, settings.tooltipBlurType, settings.tooltipRadius, settings.tooltipSaturation, settings.tooltipGrain];
    }
 
    _blurTooltip(actor) {
       if (this._tooltipActor)
          this._unblurTooltip(this._tooltipActor);
 
-      let [opacity, blendColor, blurType, radius, saturation] = this._getSettings(settings.tooltipsOverride);
+      let [opacity, blendColor, blurType, radius, saturation, grain] = this._getSettings(settings.tooltipsOverride);
       // Settings are re-read fresh on every show (tooltips are ephemeral, unlike the classes with a
       // live updateEffects() dispatcher), so a blur-type change since the last show is handled right
-      // here: rebuild rather than migrate the actor tree in place whenever whether this background
-      // needs to be wrapped in a viewport (see _createBackgroundAndEffects's useViewport) changes.
+      // here: rebuild rather than migrate the actor tree in place whenever this background has to
+      // gain or lose its viewport (see _createBackgroundAndEffects's useViewport), or needs one made
+      // for the other kind of blur (see _viewportMismatch()).
       let wantsViewport = this._wantsViewport(blurType);
-      if (!!this._viewport !== wantsViewport) {
-         this._destroyBackgroundAndViewport(this._background, global.overlay_group);
-         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, global.overlay_group, 10, true, true, wantsViewport);
+      if (this._viewportMismatch(this._background, blurType, wantsViewport)) {
+         this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
+         this._background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, getBackgroundParent(), 10, true, true, wantsViewport);
          this._background._blurCinnamonName = "Tooltips";
          this._viewport = this._background._blurCinnamonViewport;
          if (this._viewport) this._viewport._blurCinnamonName = "Tooltips";
       } else if (this._viewport) {
-         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation);
+         this._updateViewportEffects(this._background, this._viewport, opacity, blendColor, blurType, radius, saturation, grain);
       } else {
          this._background = this._updateEffects(this._background, opacity, blendColor, blurType, radius, saturation);
       }
@@ -4824,7 +5644,7 @@ class BlurTooltips extends BlurBase {
       this._signalManager.disconnectAllSignals();
       this._background.hide();
       if (this._viewport) this._viewport.hide();
-      this._destroyBackgroundAndViewport(this._background, global.overlay_group);
+      this._destroyBackgroundAndViewport(this._background, getBackgroundParent());
       if (blurTooltipsThis === this) blurTooltipsThis = null;
    }
 }
@@ -4837,7 +5657,14 @@ class BlurApplications extends BlurBase {
       // BlurApplication global listeners
       this._signalManager = new SignalManager.SignalManager(null);
       this._signalManager.connect(global.screen, "window-added", this._windowAdded, this);
+      // New windows are blurred only once they have drawn their first frame (see FIRST_FRAME_TIMEOUT_MS)
+      this._firstFrameWaits = new Set();
+      if (HAS_FIRST_FRAME_SIGNAL)
+         this._signalManager.connect(global.display, "window-created", this._waitForFirstFrame, this);
       this._signalManager.connect(global.display, "grab-op-begin", this._onWindowGrabbed, this);
+      this._signalManager.connect(global.window_manager, "switch-workspace", this._onSwitchWorkspace, this);
+      for (let signal of WINDOW_EFFECT_SIGNALS)
+         this._signalManager.connect(global.window_manager, signal, (wm, actor) => this._queueSetClip(actor) );
 
       // WindowTracker so we can map windows to application
       this._windowTracker = Cinnamon.WindowTracker.get_default();
@@ -4927,6 +5754,45 @@ class BlurApplications extends BlurBase {
       this._windowsWaitingForWmClass.push(metaWindow);
    }
 
+   // Hold off blurring a new window until its first frame has been drawn (see FIRST_FRAME_TIMEOUT_MS).
+   // _blurWindow() does nothing for the window while it waits.
+   _waitForFirstFrame(display, metaWindow) {
+      let compositor = metaWindow.get_compositor_private();
+      if (!compositor || compositor._blurCinnamonWaiting)
+         return;
+      let waiting = { compositor: compositor, frameId: 0, destroyId: 0, timeoutId: 0 };
+      compositor._blurCinnamonWaiting = waiting;
+      this._firstFrameWaits.add(waiting);
+      // window-added may have come first and blurred it already. Nothing has been drawn yet, so
+      // take that back until there is something to draw.
+      this._unblurWindow(compositor);
+      let done = (blur) => {
+         this._stopWaitingForFirstFrame(waiting);
+         if (blur && !this._destroyed)
+            this._blurWindow(metaWindow);
+      };
+      waiting.frameId = compositor.connect("first-frame", () => done(true));
+      waiting.destroyId = compositor.connect("destroy", () => done(false));
+      waiting.timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, FIRST_FRAME_TIMEOUT_MS, () => {
+         waiting.timeoutId = 0;
+         done(true);
+         return GLib.SOURCE_REMOVE;
+      });
+   }
+
+   _stopWaitingForFirstFrame(waiting) {
+      if (!this._firstFrameWaits.delete(waiting))
+         return;
+      let compositor = waiting.compositor;
+      if (waiting.frameId)
+         compositor.disconnect(waiting.frameId);
+      if (waiting.destroyId)
+         compositor.disconnect(waiting.destroyId);
+      if (waiting.timeoutId)
+         GLib.source_remove(waiting.timeoutId);
+      compositor._blurCinnamonWaiting = undefined;
+   }
+
    _cancelWaitForWmClass(metaWindow) {
       if (!metaWindow._blurCinnamonWmClassId)
          return;
@@ -4957,12 +5823,13 @@ class BlurApplications extends BlurBase {
    _blurWindow(metaWindow) {
       // Get the windows compositor actor
       let compositor = metaWindow.get_compositor_private();
-      // Nothing to blur yet, or already blurred (e.g. the wm_class wait and a settings change both got here)
-      if (!compositor || compositor._blurCinnamonDataWindow)
+      // Nothing to blur yet, already blurred (e.g. the wm_class wait and a settings change both got here),
+      // or still waiting for the window's first frame (see _waitForFirstFrame())
+      if (!compositor || compositor._blurCinnamonDataWindow || compositor._blurCinnamonWaiting)
          return;
 
       // Get the effect setting that should apply to Application windows
-      let [enabled, window_opacity, opacity, blendColor, blurType, radius, saturation, corner_radius, top, bottom, titlebarsOnly] = this._getSettings(metaWindow);
+      let [enabled, window_opacity, opacity, blendColor, blurType, radius, saturation, grain, corner_radius, top, bottom, titlebarsOnly] = this._getSettings(metaWindow);
       if (enabled) {
          // A signal manager for this window
          let signalManager = new SignalManager.SignalManager(null);
@@ -4982,14 +5849,17 @@ class BlurApplications extends BlurBase {
          // even when a window was really there - and it cuts the pixel count the blur has to
          // process from the whole monitor down to just the clip area, which is also a meaningful
          // GPU/CPU win.
-         let useViewport = (isDynamicBlurType(blurType)) && metaWindow.get_wm_class() !== "Plank";
+         //
+         // The static types use it too: without it, their FBOs are as large as the whole stage and
+         // the blur samples across the edge between two monitors (see getExpandedRect()).
+         let useViewport = this._wantsViewport(blurType) && metaWindow.get_wm_class() !== "Plank";
 
          // Create the effect(s) and add them to the window. background needs to sit at the bottom
          // of this window's compositor actor (index 0, below the window's own real content), and
          // viewport (when used) directly above it (index 1, still below that real content) - so
          // parenting is done via customParent rather than _createBackgroundAndEffects's generic
          // `parent` add_child fallback, which doesn't have index control.
-         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, null, corner_radius, top, bottom, useViewport,
+         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, null, corner_radius, top, bottom, useViewport,
             (bg, vp) => {
                compositor.insert_child_at_index(bg, 0);
                if (vp) compositor.insert_child_at_index(vp, 1);
@@ -5021,8 +5891,28 @@ class BlurApplications extends BlurBase {
          } else {
             // Some windows are positioned after their first allocation, so keep the blur aligned
             // when either the compositor actor or the MetaWindow reports a position update.
-            signalManager.connect(compositor, "notify::allocation", () => this._setClip(compositor) );
-            signalManager.connect(metaWindow, "position-changed", () => this._setClip(compositor) );
+            // notify::allocation is emitted inside the stage relayout, after the compositor's children
+            // were allocated, so _setClip()'s set_position()/set_size() there would leave background/
+            // viewport/clone needing an allocation when the stage updates its views right after
+            // ("Can't update stage views actor ... because it needs an allocation"). Defer it to
+            // before the next relayout instead.
+            // position-changed is deferred too: Muffin emits it *before* it moves the window actor
+            // (meta_window_move_resize_internal() calls meta_compositor_sync_window_geometry() after
+            // the signal), so _stageTransform(compositor) would still give the old position, and the
+            // blurred content would jump by the move delta for a frame. The later runs before the
+            // relayout of the frame that draws the move, once the actor has moved.
+            // The frame is read right away, though, here and when the texture's size changes: while a
+            // window is resized it has got its next size by the time the later runs, and the actor would
+            // never be seen drawing the window's current size (see _frameInActorCoordinates()).
+            signalManager.connect(compositor, "notify::allocation", () => { this._updateRect(compositor); this._queueSetClip(compositor); } );
+            signalManager.connect(metaWindow, "position-changed", () => this._queueSetClip(compositor) );
+            // Window animations also change the actor in ways that don't change its allocation
+            for (let signal of STAGE_TRANSFORM_SIGNALS)
+               signalManager.connect(compositor, signal, () => this._queueSetClip(compositor) );
+            // During some of them a resized window gets a texture of its new size, but no new allocation
+            let texture = compositor.get_texture();
+            if (texture)
+               signalManager.connect(texture, "size-changed", () => { this._updateRect(compositor); this._queueSetClip(compositor); } );
             // Resize / reposition & make visible the blurred actor
             this._setClip(compositor);
          }
@@ -5082,12 +5972,12 @@ class BlurApplications extends BlurBase {
          }
          if (element) {
             if (element.override) {
-               return this._applyRoundedCornersRadius(metaWindow, [enabled, element.window_opacity, element.opacity, element.color, element.blurtype, element.radius, element.saturation, element.corner_radius, element.corner_top, element.corner_bottom, titlebarsOnly]);
+               return this._applyRoundedCornersRadius(metaWindow, [enabled, element.window_opacity, element.opacity, element.color, element.blurtype, element.radius, element.saturation, element.grain ?? DEFAULT_TABLE_GRAIN, element.corner_radius, element.corner_top, element.corner_bottom, titlebarsOnly]);
             }
             return this._applyRoundedCornersRadius(metaWindow, [enabled, element.window_opacity, ...super._getSettings(false), element.corner_radius, element.corner_top, element.corner_bottom, titlebarsOnly ]);
          }
       }
-      return [false, 100, 0, undefined, BlurType.None, 0, 100, 0, false, false, false]
+      return [false, 100, 0, undefined, BlurType.None, 0, 100, 0, 0, false, false, false]
    }
 
    // When the "Rounded Corners" extension is rounding metaWindow, use its corner radius in place of the
@@ -5096,7 +5986,7 @@ class BlurApplications extends BlurBase {
    // then the inclusion list's values are used for that pair (they describe the app's own, e.g. client
    // side decoration, corners). Windows it isn't rounding at all (excluded, maximized, fullscreen...)
    // have no _roundedCornersRadius, or [null, null], and keep the inclusion list's values entirely.
-   // settingsArray is the _getSettings() result: [..., corner_radius(7), top(8), bottom(9), titlebarsOnly(10)]
+   // settingsArray is the _getSettings() result: [..., corner_radius(8), top(9), bottom(10), titlebarsOnly(11)]
    _applyRoundedCornersRadius(metaWindow, settingsArray) {
       if (!settings.windowsRoundedCornersSync || !this._roundedCornersNotifier || !this._roundedCornersNotifier.enabled)
          return settingsArray;
@@ -5114,17 +6004,17 @@ class BlurApplications extends BlurBase {
       if (rcTop === null && rcBottom === null)
          return settingsArray;
       // Fall back to Blur Cinnamon's own settings for any corners Rounded Corners isn't rounding
-      let ownRadius = Math.max(0, Number(settingsArray[7]) || 0);
-      let topRadius    = (rcTop    !== null) ? rcTop    : (settingsArray[8] ? ownRadius : 0);
-      let bottomRadius = (rcBottom !== null) ? rcBottom : (settingsArray[9] ? ownRadius : 0);
+      let ownRadius = Math.max(0, Number(settingsArray[8]) || 0);
+      let topRadius    = (rcTop    !== null) ? rcTop    : (settingsArray[9] ? ownRadius : 0);
+      let bottomRadius = (rcBottom !== null) ? rcBottom : (settingsArray[10] ? ownRadius : 0);
       // A title-bar-only blur ends where the window body starts, the window's bottom corners aren't part of it
-      if (settingsArray[10])
+      if (settingsArray[11])
          bottomRadius = 0;
       // The corner effect has a single radius for the corners it rounds, so if the top and bottom
       // radii differ (one from Rounded Corners, one from our settings) the larger one is used for both.
-      settingsArray[7] = Math.max(topRadius, bottomRadius);
-      settingsArray[8] = topRadius > 0;
-      settingsArray[9] = bottomRadius > 0;
+      settingsArray[8] = Math.max(topRadius, bottomRadius);
+      settingsArray[9] = topRadius > 0;
+      settingsArray[10] = bottomRadius > 0;
       return settingsArray;
    }
 
@@ -5180,7 +6070,7 @@ class BlurApplications extends BlurBase {
          let compositor = metaWindow.get_compositor_private();
          if (!compositor || !compositor._blurCinnamonDataWindow)
             continue;
-         let [enabled, , , , , , , corner_radius, top, bottom] = this._getSettings(metaWindow);
+         let [enabled, , , , , , , , corner_radius, top, bottom] = this._getSettings(metaWindow);
          if (enabled)
             this._updateWindowCorners(compositor, corner_radius, top, bottom);
       }
@@ -5214,31 +6104,78 @@ class BlurApplications extends BlurBase {
       return Math.max(0, clientRect.y - rect.y);
    }
 
-   _setClip(compositor, showNow = false) {
+   // Run _setClip() before the next stage relayout, at most once per frame per window.
+   // It is queued when a transition of the actor's x or y may begin, and once queued it runs on every
+   // frame of one, for the same reason as CloneManager._queueAllocationChanged().
+   _queueSetClip(compositor) {
+      let data = compositor._blurCinnamonDataWindow;
+      if (!data || data.setClipLaterId)
+         return;
+      data.setClipLaterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         data.setClipLaterId = 0;
+         if (compositor._blurCinnamonDataWindow === data) {
+            this._setClip(compositor, false, true);
+            if (compositor.get_transition("x") || compositor.get_transition("y"))
+               this._queueSetClip(compositor);
+         }
+         return false;
+      });
+   }
+
+   // Read the rect to blur, in the compositor's coordinates, into data.rect: the window's frame as the
+   // compositor draws it (see _frameInActorCoordinates()), or only its title bar. This moves or resizes
+   // none of our actors, so it can be called inside the stage relayout. A title bar whose height can't
+   // be determined gives a height of 0, and _setClip() hides the blur then.
+   _updateRect(compositor) {
+      let data = compositor._blurCinnamonDataWindow;
+      if (!data)
+         return;
+      let rect = _frameInActorCoordinates(data.metaWindow, compositor, data.rect);
+      // If the window is shaded or the blur is for the titlebar only, then we only want to blur under the title bar.
+      if (rect !== data.rect && (data.metaWindow.is_shaded() || data.titlebarsOnly)) {
+         //let clientRect = data.metaWindow.frame_rect_to_client_rect(rect);
+         rect.height = this._getTitlebarHeight(data.metaWindow); //clientRect.y - rect.y;
+      }
+      data.rect = rect;
+   }
+
+   // Cinnamon is about to slide the windows, or has just started to (see _queueSetClip())
+   _onSwitchWorkspace() {
+      for (let compositor of global.get_window_actors())
+         this._queueSetClip(compositor);
+   }
+
+   // The blur background (and viewport) live inside the window compositor actor, so they are drawn with
+   // the position, scale and translation the actor has right now. Cinnamon's window animations change
+   // those (open, close, minimize, size change, workspace switch) while the frame rect already is where
+   // the window will end up. So this works in the actor's coordinates, where the frame stays put: the
+   // blur then covers the window however the actor draws it. What the blur shows undoes the actor's
+   // transform instead (see _stageTransform()), so that what is behind the window stays put on the
+   // screen while the window animates over it.
+   //
+   // fromLater: called from a BEFORE_REDRAW later, where the window clones can be brought up to date
+   // right away (see CloneManager.backgroundClipChangedNow()). The idle that backgroundClipChanged()
+   // uses is held off for as long as an animation keeps drawing frames, so a window's blur, which now
+   // stays on while the window animates (i.e. unminimize), would show the bare wallpaper until then.
+   _setClip(compositor, showNow = false, fromLater = false) {
       if (compositor._blurCinnamonDataWindow) {
          let data = compositor._blurCinnamonDataWindow;
-         // When wrapped in a viewport (see _createBackgroundAndEffects's useViewport), data.background
-         // stays a genuinely shown/positioned/clipped actor in its own right - not just a clone source - so
-         // it needs to be shown/hidden in lockstep with the viewport that's painted on top of it.
-         if (compositor.get_transition("x") || compositor.get_transition("y") ) {
+         this._updateRect(compositor);
+         let rect = data.rect;
+         if (rect.height <= 0) {
+            //rect.height = 3;        // Hack, bad things happen if we set the height to 0 or less
+            // Hide the background (and viewport) since we can't determine the title bar height
+            data.rect = null;
             data.background.hide();
             if (data.viewport) data.viewport.hide();
             return;
          }
-         let rect = data.metaWindow.get_frame_rect();
 
-         // If the window is shaded or the blur is for the titlebar only, then we only want to blur under the title bar.
-         if (data.metaWindow.is_shaded() || data.titlebarsOnly) {
-            //let clientRect = data.metaWindow.frame_rect_to_client_rect(rect);
-            rect.height = this._getTitlebarHeight(data.metaWindow); //clientRect.y - rect.y;
-            if (rect.height <= 0) {
-               //rect.height = 3;        // Hack, bad things happen if we set the height to 0 or less
-               // Hide the background (and viewport) since we can't determine the title bar height
-               data.background.hide();
-               if (data.viewport) data.viewport.hide();
-               return;
-            }
-         }
+         let transform = _stageTransform(compositor);
+         let [ox, oy, sx, sy] = transform;
+         // When wrapped in a viewport (see _createBackgroundAndEffects's useViewport), data.background
+         // stays a genuinely shown/positioned/clipped actor in its own right - not just a clone source - so
+         // it needs to be shown/hidden in lockstep with the viewport that's painted on top of it.
          if (!data.background.visible || (data.viewport && !data.viewport.visible)) {
             if (showNow) {
                data.background.show();
@@ -5249,11 +6186,16 @@ class BlurApplications extends BlurBase {
                // one, so the window being shown stays invisible (i.e. Guake after F12)
                Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
                   if (compositor._blurCinnamonDataWindow === data)
-                     this._setClip(compositor, true);
+                     this._setClip(compositor, true, true);
                   return false;
                });
             }
          }
+         // An animation can start from a scale of 0 (e.g. the "move" map effect). The window, and the blur
+         // inside it, draw nothing then, and that scale can't be undone. The blur is shown, or queued to
+         // be shown, before this, so that it is there in the first frame that draws the window.
+         if (!(sx > 0 && sy > 0))
+            return;
          // Set the background position to the displays 0,0 based on the compositor's position and the shadow size
          //let windowShadowSizeX = (compositor.get_width() - rect.width) / 2;
          //let windowShadowSizeY = (compositor.get_height() - rect.height) / 2;
@@ -5263,20 +6205,12 @@ class BlurApplications extends BlurBase {
          //let [rx,ry] = data.background.get_transformed_position();
          //let [x,y] = data.background.get_position();
          //data.background.set_position( x-rx, y-ry );
-         // The blur background lives inside the window compositor actor, so it must be
-         // offset by the compositor's stage position, not by its own previous transformed
-         // position. Otherwise the blur and the real window can drift apart.
-         // Use the compositor's *untransformed* position (see _stagePosition()), not
-         // get_transformed_position(): background is in the compositor's local, pre-scale
-         // coordinates and inherits whatever scale the compositor has. Burn-My-Windows scales the
-         // window actor around its center while it opens/closes, and resets the scale to 1 at the
-         // end without any allocation change, so a scaled transformed position computed here
-         // mid-animation left the blur offset until the window was next moved.
-         let [rx, ry] = _stagePosition(compositor);
-
+         // The blur background lives inside the window compositor actor, so it undoes the compositor's
+         // transform.
          // data.background is repositioned to global (0,0) exactly as it always was, whether or not
          // it's wrapped in a viewport - it stays a real, normally-shown/mapped actor either way.
-         data.background.set_position(-rx, -ry);
+         data.background.set_position(-ox / sx, -oy / sy);
+         data.background.set_scale(1 / sx, 1 / sy);
 
          if (data.viewport) {
             // Wrapped: the corner/blur/desaturate effects live on the viewport now, not on
@@ -5287,23 +6221,29 @@ class BlurApplications extends BlurBase {
             data.viewport._blurCinnamonSamplingRect = [rect.x, rect.y, rect.width, rect.height];
 
             let margin = getViewportMargin(data.viewport);
-            let [ex, ey, ew, eh] = getExpandedRect(rect.x, rect.y, rect.width, rect.height, margin);
-            data.background.set_clip( ex, ey, ew, eh );
+            // The monitors the window is drawn on now, which an animation can change
+            let bounds = getSamplingBounds(ox + sx * rect.x, oy + sy * rect.y, sx * rect.width, sy * rect.height);
+            bounds = _stageRectInActorCoordinates(transform, bounds, rect.x + rect.width / 2, rect.y + rect.height / 2);
+            let [ex, ey, ew, eh] = getExpandedRect(rect.x, rect.y, rect.width, rect.height, margin, bounds);
+            data.background.set_clip( ox + sx * ex, oy + sy * ey, sx * ew, sy * eh );
 
             // Title-bar-only blur: the margin below the title bar lies over this window's own opaque body,
             // and Muffin doesn't paint the parts of the windows underneath that it hides - not even through
             // our clones of them - so the blur would sample bare wallpaper there. Stop this window from
-            // culling the windows below it (see NoCullEffect) so the margin has real content.
-            this._setCullsWindowsBelow(compositor, !data.titlebarsOnly);
+            // culling the windows below it (see NoCullEffect) so the margin has real content. On X11 a
+            // static blur only shows the wallpaper, which Muffin doesn't cull, so it doesn't need that. (On
+            // Wayland the wallpaper can be a clone of a window too, which this doesn't handle.)
+            this._setCullsWindowsBelow(compositor, !(data.titlebarsOnly && data.viewport._blurCinnamonDynamic));
 
-            // Size/position the viewport to the expanded rect (converted from global/stage coordinates
-            // to compositor-local, since the viewport is a child of the compositor), and offset its
-            // clone of the background so the matching crop of the background/window-clone composite
-            // lands inside it. Painted directly on top of background (see _blurWindow's z-order);
+            // Size/position the viewport to the expanded rect, and offset its clone of the background
+            // so the matching crop of the background/window-clone composite lands inside it. The
+            // viewport is drawn with the compositor's transform, like the window's own contents, so its
+            // clone of background undoes it too. Painted directly on top of background (see _blurWindow's z-order);
             // background itself is transparent (see _createBackgroundAndEffects) so only viewport shows.
-            data.viewport.set_position(ex - rx, ey - ry);
+            data.viewport.set_position(ex, ey);
             data.viewport.set_size(ew, eh);
-            data.viewport._blurCinnamonSceneClone.set_position(-ex, -ey);
+            data.viewport._blurCinnamonSceneClone.set_position(-ox / sx - ex, -oy / sy - ey);
+            data.viewport._blurCinnamonSceneClone.set_scale(1 / sx, 1 / sy);
 
             let cornerEffect = this._getCornerEffect(data.viewport);
             if (cornerEffect) {
@@ -5314,15 +6254,18 @@ class BlurApplications extends BlurBase {
             }
             this._setLiquidGlassRect(data.viewport, [rect.x - ex, rect.y - ey, rect.width, rect.height]);
          } else {
+            // The effects are on background, whose coordinates are the stage's: clip it to the frame
+            // as the compositor draws it now
+            let [x, y, width, height] = [ox + sx * rect.x, oy + sy * rect.y, sx * rect.width, sy * rect.height];
             let cornerEffect = this._getCornerEffect(data.background);
             if (cornerEffect) {
-               cornerEffect.clip = [rect.x+2, rect.y+2, rect.width-3, rect.height-3];
+               cornerEffect.clip = [x+2, y+2, width-3, height-3];
             } else {
-               data.background.set_clip( rect.x, rect.y, rect.width, rect.height );
+               data.background.set_clip( x, y, width, height );
             }
          }
          if (cloneManager)
-            cloneManager.backgroundClipChanged(data.background);
+            fromLater ? cloneManager.backgroundClipChangedNow(data.background) : cloneManager.backgroundClipChanged(data.background);
       }
    }
 
@@ -5340,6 +6283,10 @@ class BlurApplications extends BlurBase {
       if (compositor._blurCinnamonDataWindow) {
          let data = compositor._blurCinnamonDataWindow;
          data.signalManager.disconnectAllSignals();
+         if (data.setClipLaterId) {
+            Meta.later_remove(data.setClipLaterId);
+            data.setClipLaterId = 0;
+         }
          this._setCullsWindowsBelow(compositor, true);
          this._destroyDynamicEffect(data.background);
          // Strip every effect (background's own, and viewport's when wrapped - see
@@ -5394,12 +6341,12 @@ class BlurApplications extends BlurBase {
       for (let i = 0; i < windows.length; i++) {
          let compositor = windows[i].get_compositor_private();
          let data = compositor._blurCinnamonDataWindow;
-         let [enabled, window_opacity, opacity, blendColor, blurType, radius, saturation, corner_radius, top, bottom, titlebarsOnly] = this._getSettings(windows[i]);
+         let [enabled, window_opacity, opacity, blendColor, blurType, radius, saturation, grain, corner_radius, top, bottom, titlebarsOnly] = this._getSettings(windows[i]);
          if (compositor._blurCinnamonDataWindow) {
             if (!enabled) {
                this._unblurWindow(compositor);
             } else {
-               let wantsViewport = (isDynamicBlurType(blurType)) && windows[i].get_wm_class() !== "Plank";
+               let wantsViewport = this._wantsViewport(blurType) && windows[i].get_wm_class() !== "Plank";
                if (this._needsBackgroundRebuild(data.background, blurType, wantsViewport)) {
                   this._queueWindowRebuild(windows[i]);
                   continue;
@@ -5407,7 +6354,7 @@ class BlurApplications extends BlurBase {
                data.titlebarsOnly = titlebarsOnly;
                let effectsActor = data.viewport || data.background;
                if (data.viewport) {
-                  this._updateViewportEffects(data.background, data.viewport, opacity, blendColor, blurType, radius, saturation);
+                  this._updateViewportEffects(data.background, data.viewport, opacity, blendColor, blurType, radius, saturation, grain);
                } else {
                   this._updateEffects(data.background, opacity, blendColor, blurType, radius, saturation);
                }
@@ -5415,7 +6362,7 @@ class BlurApplications extends BlurBase {
                // may have changed along with the blur type or radius.
                this._updateWindowCorners(compositor, corner_radius, top, bottom);
                this._applyWindowOpacity(windows[i], window_opacity);
-               if (wantsViewport && !this._isDynamicEffectActive(data.background)) {
+               if (wantsViewport && isDynamicBlurType(blurType) && !this._isDynamicEffectActive(data.background)) {
                   this._createDynamicEffect(data.background, data.metaWindow);
                }
             }
@@ -5719,6 +6666,8 @@ class BlurApplications extends BlurBase {
       this._signalManager.disconnectAllSignals();
       this._windowsWaitingForWmClass.slice().forEach( (metaWindow) => this._cancelWaitForWmClass(metaWindow) );
       this._windowsWaitingForWmClass = null;
+      for (let waiting of [...this._firstFrameWaits])
+         this._stopWaitingForFirstFrame(waiting);
       this._disconnectRoundedCornersNotifier();
       if (this._roundedCornersIdleId) {
          Mainloop.source_remove(this._roundedCornersIdleId);
@@ -5744,6 +6693,8 @@ class BlurFocusEffect extends BlurBase {
       this._signalManager.connect(global.display, "notify::focus-window", this._onFocusChanged, this);
       this._signalManager.connect(global.display, "grab-op-begin", this._onWindowGrabbed, this);
       this._signalManager.connect(global.display, "grab-op-end", this._onFocusChanged ,this);
+      for (let signal of ["switch-workspace", ...WINDOW_EFFECT_SIGNALS])
+         this._signalManager.connect(global.window_manager, signal, this._queueSetClip, this);
 
 
       if (!Meta.is_wayland_compositor()) {
@@ -5754,7 +6705,7 @@ class BlurFocusEffect extends BlurBase {
 
       // BlurFocusEffect deliberately does NOT use viewport-wrapping as it would prevent the blur
       // effect from bleeding over the windows borders which is how this "glow" effect is acheived.
-      this._blurEffect = new GaussianBlur.GaussianBlurEffect( {radius: settings.focusedWindowEffect, brightness: 1 , width: 0, height: 0} );
+      this._blurEffect = new GaussianBlur.GaussianBlurEffect( {radius: settings.focusedWindowEffect, brightness: 1 , width: 0, height: 0, grain: settings.grain} );
       this._cornerEffect = new CornerEffect.CornerEffect( metaData.uuid, {radius: 10, corners_top: true, corners_bottom: true} );
 
       // By adding the corner effect after the blur effect, the blur effect will spill over the clip border slightly (based on the blur radius).
@@ -5789,39 +6740,72 @@ class BlurFocusEffect extends BlurBase {
       this._focusedWindow = window;
       this._focusedCompositor = window.get_compositor_private();
       this._focusedCompositor.insert_child_at_index(this._background, 0);
-      this._signalManager.connect(this._focusedCompositor, "notify::allocation", () => this._setClip() );
-      this._signalManager.connect(window, "position-changed", () => this._setClip() );
+      // Deferred for the same reason as BlurApplications._queueSetClip()
+      this._signalManager.connect(this._focusedCompositor, "notify::allocation", () => { this._updateRect(); this._queueSetClip(); } );
+      this._signalManager.connect(window, "position-changed", () => this._queueSetClip() );
+      for (let signal of STAGE_TRANSFORM_SIGNALS)
+         this._signalManager.connect(this._focusedCompositor, signal, () => this._queueSetClip() );
+      this._focusedTexture = this._focusedCompositor.get_texture();
+      if (this._focusedTexture)
+         this._signalManager.connect(this._focusedTexture, "size-changed", () => { this._updateRect(); this._queueSetClip(); } );
       this._signalManager.connect(window, "unmanaging", () => this._removeEffect() );
       this._focusedCompositor._blurCinnamonDataFocusEffect = { effectThis: this };
       this._setClip();
       this._background.show();
    }
 
+   _queueSetClip() {
+      if (this._setClipLaterId)
+         return;
+      this._setClipLaterId = Meta.later_add(Meta.LaterType.BEFORE_REDRAW, () => {
+         this._setClipLaterId = 0;
+         this._setClip();
+         // On every frame of a transition of x or y, see BlurApplications._queueSetClip()
+         let compositor = this._focusedCompositor;
+         if (compositor && (compositor.get_transition("x") || compositor.get_transition("y")))
+            this._queueSetClip();
+         return false;
+      });
+   }
+
    _removeEffect() {
+      if (this._setClipLaterId) {
+         Meta.later_remove(this._setClipLaterId);
+         this._setClipLaterId = 0;
+      }
       this._background.hide();
       if (this._focusedCompositor) {
          this._signalManager.disconnect("notify::allocation", this._focusedCompositor );
          this._signalManager.disconnect("position-changed", this._focusedWindow );
+         for (let signal of STAGE_TRANSFORM_SIGNALS)
+            this._signalManager.disconnect(signal, this._focusedCompositor );
+         if (this._focusedTexture)
+            this._signalManager.disconnect("size-changed", this._focusedTexture );
          this._signalManager.disconnect("unmanaging", this._focusedWindow );
          this._focusedCompositor.remove_child(this._background);
          this._focusedCompositor._blurCinnamonDataFocusEffect = undefined;
       }
       this._focusedWindow = undefined;
       this._focusedCompositor = undefined;
+      this._focusedTexture = undefined;
+      this._rect = undefined;
+   }
+
+   // See BlurApplications._updateRect()
+   _updateRect() {
+      if (this._focusedCompositor)
+         this._rect = _frameInActorCoordinates(this._focusedWindow, this._focusedCompositor, this._rect);
    }
 
    _setClip() {
       if (this._focusedCompositor) {
-         if (/*this._focusedCompositor.__animationInfo ||*/ this._focusedCompositor.get_transition("x") || this._focusedCompositor.get_transition("y") ) {
-            this._background.hide();
-            //if (this._focusedCompositor.__animationInfo)
-            //   Mainloop.idle_add( () => this._setClip() );
+         // Follow the compositor through window animations, see BlurApplications._setClip()
+         let [ox, oy, sx, sy] = _stageTransform(this._focusedCompositor);
+         if (!(sx > 0 && sy > 0))
             return;
-         } else {
-            this._background.show();
-         }
 
-         let rect = this._focusedWindow.get_frame_rect();
+         this._updateRect();
+         let rect = this._rect;
          // Set the background position to the displays 0,0 based on the compositor's position and the shadow size
          //let windowShadowSizeX = (compositor.get_width() - rect.width) / 2;
          //let windowShadowSizeY = (compositor.get_height() - rect.height) / 2;
@@ -5831,10 +6815,12 @@ class BlurFocusEffect extends BlurBase {
          //let [rx,ry] = this._background.get_transformed_position();
          //let [x,y] = this._background.get_position();
          //this._background.set_position( x-rx, y-ry );
-         // Keep the focus background aligned with the compositor actor in stage coordinates.
-         // Untransformed position, see BlurApplications._setClip() (window scale animations)
-         let [rx, ry] = _stagePosition(this._focusedCompositor);
-         this._background.set_position(-rx, -ry);
+         // Keep the focus background aligned with the stage, whatever the compositor's transform is
+         this._background.set_position(-ox / sx, -oy / sy);
+         this._background.set_scale(1 / sx, 1 / sy);
+
+         // The frame as the compositor draws it now
+         let [x, y, width, height] = [ox + sx * rect.x, oy + sy * rect.y, sx * rect.width, sy * rect.height];
 
          // Deliberately NOT viewport-wrapped and NOT hard-clipped via background.set_clip() either
          // (see the constructor's comment) - the corner effect's own `clip` uniform is a purely
@@ -5842,14 +6828,15 @@ class BlurFocusEffect extends BlurBase {
          // the blur (running on this genuinely full-screen background) can still sample and spill
          // a few pixels past this rect for the glow effect.
          if (this._cornerEffect)
-            this._cornerEffect.clip = [rect.x+2, rect.y+2, rect.width-3, rect.height-3];
+            this._cornerEffect.clip = [x+2, y+2, width-3, height-3];
          else
-            this._background.set_clip( rect.x, rect.y, rect.width, rect.height );
+            this._background.set_clip( x, y, width, height );
       }
    }
 
    updateEffect(radius) {
       this._blurEffect.radius = radius;
+      this._blurEffect.grain = settings.grain;
    }
 
    destroy() {
@@ -5895,7 +6882,9 @@ class BlurDesklets extends BlurBase {
       // Remove any deskletList entries that are not currently enabled
       let deskletList = settings.settings.getValue("desklets-list");
       for (let i=deskletList.length-1 ; i>=0 ; i-- ) {
-         if ( !desklets.find( (element) => element.desklet.instance_id == deskletList[i].instance ) ) {
+         // Match on the definition's desklet_id: a definition's desklet is null when that desklet
+         // failed to load (or hasn't been created yet), and its blur entry should be kept for then.
+         if ( !desklets.find( (element) => element.desklet_id == deskletList[i].instance ) ) {
             deskletList.splice(i, 1);
          }
       }
@@ -6007,10 +6996,10 @@ class BlurDesklets extends BlurBase {
          cornerRadius = Math.max(topRadius, bottomRadius);
       }
       let deskletSettings = this._getDeskletSettings(desklet);
-      let [enabled, opacity, blendColor, blurType, radius, saturation] = deskletSettings;
+      let [enabled, opacity, blendColor, blurType, radius, saturation, grain] = deskletSettings;
       if (enabled) {
          let useViewport = this._wantsViewport(blurType);
-         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, null, cornerRadius, topRadius!==0, bottomRadius!==0, useViewport,
+         let background = this._createBackgroundAndEffects(opacity, blendColor, blurType, radius, saturation, grain, null, cornerRadius, topRadius!==0, bottomRadius!==0, useViewport,
             (bg, vp) => {
                global.desklet_container.insert_child_at_index(bg, 0);
                if (vp) global.desklet_container.insert_child_at_index(vp, 1);
@@ -6024,7 +7013,7 @@ class BlurDesklets extends BlurBase {
          background.show();
          if (viewport) viewport.show();
          desklet._blurCinnamonSignalManager = new SignalManager.SignalManager(null);
-         desklet._blurCinnamonSignalManager.connect(desklet.actor, "notify::allocation", () => this._setClip(desklet) );
+         connectDeferredClip(desklet._blurCinnamonSignalManager, desklet.actor, () => this._setClip(desklet) );
          //desklet._blurCinnamonSignalManager.connect(desklet, "destroy", () => this._deskletRemoved(desklet) );
          if (isDynamicBlurType(blurType)) {
             this._createDynamicEffect(background, global.desklet_container, true);
@@ -6072,7 +7061,7 @@ class BlurDesklets extends BlurBase {
    }
 
    _getUniqueSettings() {
-      return [settings.deskletsOpacity, settings.deskletsBlendColor, settings.deskletsBlurType, settings.deskletsRadius, settings.deskletsSaturation];
+      return [settings.deskletsOpacity, settings.deskletsBlendColor, settings.deskletsBlurType, settings.deskletsRadius, settings.deskletsSaturation, settings.deskletsGrain];
    }
 
    // A string that changes whenever a global, blur type specific setting used by the given blur type changes
@@ -6095,7 +7084,7 @@ class BlurDesklets extends BlurBase {
       // It should always be found!! We add entries for new Desklet elsewhere
       if (found) {
          if (found.override) {
-            return [found.enabled, found.opacity, found.color, found.blurtype, found.radius, found.saturation];
+            return [found.enabled, found.opacity, found.color, found.blurtype, found.radius, found.saturation, found.grain ?? DEFAULT_TABLE_GRAIN];
          } else {
             return [found.enabled, ...this._getGenericSettings()];
          }
@@ -6126,7 +7115,7 @@ class BlurDesklets extends BlurBase {
             let extraSig = this._getExtraEffectSignature(deskletSettings[3], deskletSettings[4]);
             if (!desklet._blurCinnamonBackground || extraSig !== desklet._blurCinnamonBackground._blurCinnamonExtraSig ||
                 !deskletSettings.every( (e, i) => e == desklet._blurCinnamonBackground._blurCinnamonSettings[i] )) {
-               let [enabled, opacity, blendColor, blurType, radius, saturation] = deskletSettings;
+               let [enabled, opacity, blendColor, blurType, radius, saturation, grain] = deskletSettings;
                if (desklet._blurCinnamonBackground) {
                   if (enabled) {
                      let wantsViewport = this._wantsViewport(blurType);
@@ -6135,7 +7124,7 @@ class BlurDesklets extends BlurBase {
                         this._deskletDestroy(desklet);
                         this._blurDesklet(desklet);
                      } else if (viewport) {
-                        this._updateViewportEffects(desklet._blurCinnamonBackground, viewport, opacity, blendColor, blurType, radius, saturation);
+                        this._updateViewportEffects(desklet._blurCinnamonBackground, viewport, opacity, blendColor, blurType, radius, saturation, grain);
                      } else {
                         this._updateEffects( desklet._blurCinnamonBackground, opacity, blendColor, blurType, radius, saturation );
                      }
@@ -6243,6 +7232,7 @@ class BlurSettings {
       this.bind('radius',     'radius',     blurChanged);
       this.bind('blendColor', 'blendColor', colorChanged);
       this.bind('saturation', 'saturation', saturationChanged);
+      this.bind('grain',      'grain',      grainChanged);
 
       this.bind('monte-carlo-iterations', 'montecarloIterations', blurChanged);
       this.bind('monte-carlo-use-base-pixel', 'montecarloUseBasePixel', blurChanged);
@@ -6263,20 +7253,26 @@ class BlurSettings {
       this.bind('overview-radius',     'overviewRadius');
       this.bind('overview-blendColor', 'overviewBlendColor');
       this.bind('overview-saturation', 'overviewSaturation');
+      this.bind('overview-grain',      'overviewGrain');
 
       this.bind('expo-opacity',    'expoOpacity');
       this.bind('expo-blurType',   'expoBlurType');
       this.bind('expo-radius',     'expoRadius');
       this.bind('expo-blendColor', 'expoBlendColor');
       this.bind('expo-saturation', 'expoSaturation');
+      this.bind('expo-grain',      'expoGrain');
 
       this.bind('panels-opacity',    'panelsOpacity',    colorChanged);
       this.bind('panels-blurType',   'panelsBlurType',   blurChanged);
       this.bind('panels-radius',     'panelsRadius',     blurChanged);
       this.bind('panels-blendColor', 'panelsBlendColor', colorChanged);
       this.bind('panels-saturation', 'panelsSaturation', saturationChanged);
+      this.bind('panels-grain',      'panelsGrain',      blurChanged);
       this.bind('no-panel-effects-maximized', 'noPanelEffectsMaximized', maximizedOptionChanged );
       this.bind('hover-brighten-panels', 'hoverBrightenPanels' );
+      this.bind('dim-panel-hover',         'dimPanelHover',        hoverDimChanged );
+      this.bind('dim-panel-hover-opacity', 'dimPanelHoverOpacity', hoverDimChanged );
+      this.bind('dim-panel-hover-color',   'dimPanelHoverColor',   hoverDimChanged );
 
       this.bind('popup-opacity',        'popupOpacity',       updatePopupEffects);
       this.bind('popup-accent-opacity', 'popupAccentOpacity', updatePopupEffects);
@@ -6284,6 +7280,7 @@ class BlurSettings {
       this.bind('popup-radius',         'popupRadius',        updatePopupEffects);
       this.bind('popup-blendColor',     'popupBlendColor',    updatePopupEffects);
       this.bind('popup-saturation',     'popupSaturation',    updatePopupEffects);
+      this.bind('popup-grain',          'popupGrain',         updatePopupEffects);
       this.bind('allow-transparent-color-popup', 'allowTransparentColorPopup', updatePopupEffects);
       this.bind('popup-applet-menu-effects', 'popupAppletMenuEffects');
       this.bind('popup-panel-menu-effects',  'popupPanelMenuEffects');
@@ -6294,6 +7291,7 @@ class BlurSettings {
       this.bind('desktop-radius',        'desktopRadius',       updateDesktopEffects);
       this.bind('desktop-blendColor',    'desktopBlendColor',   updateDesktopEffects);
       this.bind('desktop-saturation',    'desktopSaturation',   updateDesktopEffects);
+      this.bind('desktop-grain',         'desktopGrain',        updateDesktopEffects);
       this.bind('desktop-with-focus',    'desktopWithFocus',    updateDesktopEffects);
       this.bind('desktop-without-focus', 'desktopWithoutFocus', updateDesktopEffects);
 
@@ -6302,6 +7300,7 @@ class BlurSettings {
       this.bind('notification-radius',     'notificationRadius',     updateNotificationEffects);
       this.bind('notification-blendColor', 'notificationBlendColor', updateNotificationEffects);
       this.bind('notification-saturation', 'notificationSaturation', updateNotificationEffects);
+      this.bind('notification-grain',      'notificationGrain',      updateNotificationEffects);
       this.bind('allow-transparent-color-notifications', 'allowTransparentColorNotifications', updateNotificationEffects);
 
       this.bind('appswitcher-opacity',    'appswitcherOpacity');
@@ -6309,6 +7308,7 @@ class BlurSettings {
       this.bind('appswitcher-radius',     'appswitcherRadius');
       this.bind('appswitcher-blendColor', 'appswitcherBlendColor');
       this.bind('appswitcher-saturation', 'appswitcherSaturation');
+      this.bind('appswitcher-grain',      'appswitcherGrain');
       this.bind('appswitcher-disable-3d-panels', 'appswitcherDisablePanels');
       this.bind('appswitcher-allow-classic',     'appswitcherAllowClassic', enableClassicSwitcherChecked);
       this.bind('appswitcher-allow-3d',          'appswitcherAllow3D');
@@ -6319,6 +7319,7 @@ class BlurSettings {
       this.bind('tooltips-radius',     'tooltipRadius');
       this.bind('tooltips-blendColor', 'tooltipBlendColor');
       this.bind('tooltips-saturation', 'tooltipSaturation');
+      this.bind('tooltips-grain',      'tooltipGrain');
       this.bind('allow-transparent-color-tooltips', 'allowTransparentColorTooltips');
 
       this.bind('desklets-opacity',    'deskletsOpacity',    updateDeskletEffects);
@@ -6326,12 +7327,14 @@ class BlurSettings {
       this.bind('desklets-radius',     'deskletsRadius',     updateDeskletEffects);
       this.bind('desklets-blendColor', 'deskletsBlendColor', updateDeskletEffects);
       this.bind('desklets-saturation', 'deskletsSaturation', updateDeskletEffects);
+      this.bind('desklets-grain',      'deskletsGrain',      updateDeskletEffects);
 
       this.bind('osd-opacity',        'osdOpacity');
       this.bind('osd-blurType',       'osdBlurType');
       this.bind('osd-radius',         'osdRadius');
       this.bind('osd-blendColor',     'osdBlendColor');
       this.bind('osd-saturation',     'osdSaturation');
+      this.bind('osd-grain',          'osdGrain');
       this.bind(`osd-slider-effects`, `osdSliderEffects`);
       this.bind(`osd-workspace-effects`, `osdWorkspaceEffects`);
       this.bind('allow-transparent-color-osd', 'allowTransparentColorOSD');
@@ -6374,7 +7377,7 @@ class BlurSettings {
 
       this.bind('enable-panel-unique-settings', 'enablePanelUniqueSettings', panelsSettingsChangled);
       this.bind('panel-unique-settings', 'panelUniqueSettings', panelsSettingsChangled);
-      this.bind('allow-transparent-color-panels', 'allowTransparentColorPanels', colorChanged);
+      this.bind('allow-transparent-color-panels', 'allowTransparentColorPanels', () => { colorChanged(); hoverDimChanged(); });
 
       this.bind('new-install', 'newInstall');
 
@@ -6398,6 +7401,12 @@ class BlurSettings {
    destroy() {
       this._signalManager.disconnectAllSignals();
       this.settings.finalize();
+   }
+}
+
+function hoverDimChanged() {
+   if (blurPanels) {
+      blurPanels.updateHoverDim();
    }
 }
 
@@ -6498,6 +7507,12 @@ function colorChanged() {
    if (blurPopupMenus && settings.enablePopupEffects) {
       blurPopupMenus.updateEffects();
    }
+}
+
+// Like a change to the blur, plus the focused window backlight, which uses the generic grain
+function grainChanged() {
+   blurChanged();
+   updateFocusedWindowEffect();
 }
 
 function blurChanged() {
